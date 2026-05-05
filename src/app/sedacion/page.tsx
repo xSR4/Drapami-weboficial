@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ShieldCheck, Heart, Clock, AlertCircle, FileText, ListChecks } from "lucide-react";
+import { MessageCircle, ShieldCheck, Heart, Clock, FileText, ListChecks } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Link from "next/link";
 
@@ -26,8 +26,17 @@ const tiposSedacion = [
   },
   {
     titulo: "Sedación con Óxido Nitroso",
-    descripcion: "Conocido como 'el gas de la risa'. Se inhala a través de una pequeña máscara nasal. Es extremadamente seguro y sus efectos desaparecen minutos después de retirar la máscara.",
-    beneficios: ["Recuperación inmediata", "Efecto analgésico", "Ideal para miedos leves a moderados"],
+    precio: "450.00",
+    descripcion: "Es un procedimiento médico en el que el paciente inhala la mezcla de óxido nitroso y oxígeno a través de una mascarilla nasal. El gas hilarante tiene un efecto calmante y ansiolítico, por lo tanto asegura un tratamiento dental con menor percepción del dolor.",
+    procedimiento: "Se inhala a través de una máscara nasal. Es extremadamente seguro y sus efectos desaparecen minutos después de retirar la máscara.",
+    duracion: "Se pueden realizar varios procedimientos en un rango de 1 hora.",
+    indicaciones: [
+      "Llegar a la hora puntual de la cita.",
+      "Dependiendo del horario de la sedación, tiene que estar entre 8 a 4 horas sin ingerir comidas como carne o menestras, de preferencia comer comidas ligeras.",
+      "No beber ningún líquido antes de la sedación.",
+      "Traer una manta.",
+      "Llevar una merienda ligera para que coma después de la sedación."
+    ],
     imagen: "sedacion-nitroso",
     tag: "Inhalada"
   },
@@ -61,7 +70,7 @@ export default function SedacionPage() {
             return (
               <Card key={index} className="border-none soft-shadow rounded-[3rem] overflow-hidden bg-white">
                 <CardContent className="p-0">
-                  <div className={`flex flex-col ${index === 0 ? 'md:flex-row' : (index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row')}`}>
+                  <div className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
                     <div className="md:w-1/2 relative h-80 md:h-auto min-h-[400px]">
                       <Image
                         src={imgData?.imageUrl || ""}
@@ -78,7 +87,7 @@ export default function SedacionPage() {
                         {tipo.precio && (
                           <div className="text-right">
                             <span className="text-2xl font-bold text-pami-blue block">S/ {tipo.precio}</span>
-                            <span className="text-[10px] text-muted-foreground">+ IGV</span>
+                            <span className="text-[10px] text-muted-foreground font-medium">+ IGV</span>
                           </div>
                         )}
                       </div>
@@ -99,7 +108,7 @@ export default function SedacionPage() {
                       {tipo.duracion && (
                         <div className="mb-6 bg-pami-turquoise/5 p-4 rounded-2xl">
                           <div className="flex items-center gap-2 text-pami-turquoise font-bold mb-2 text-sm">
-                            <Clock className="h-4 w-4" /> Duración Máxima
+                            <Clock className="h-4 w-4" /> Duración
                           </div>
                           <p className="text-xs text-muted-foreground leading-relaxed">{tipo.duracion}</p>
                         </div>
