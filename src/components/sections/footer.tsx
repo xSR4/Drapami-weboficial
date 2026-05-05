@@ -52,13 +52,13 @@ export function Footer() {
         </div>
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="relative h-44 w-96">
+          <div className="relative h-22 w-48">
             <Image
               src="/LOGO.jpg"
               alt="Dra. Pami Logo"
-              width={384}
-              height={176}
-              className="h-44 w-auto object-contain"
+              width={192}
+              height={88}
+              className="h-22 w-auto object-contain"
               unoptimized
             />
           </div>
