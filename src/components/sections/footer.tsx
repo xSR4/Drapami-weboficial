@@ -146,7 +146,7 @@ export function Footer() {
                 <div className="bg-pami-turquoise/10 p-3 rounded-full">
                   <Mail className="h-5 w-5 text-pami-turquoise" />
                 </div>
-                <span className="font-medium">drapamiconsultorios@gmail.com</span>
+                <span className="font-medium">r.alva@pucp.edu.pe</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="bg-pami-pink/10 p-3 rounded-full">
