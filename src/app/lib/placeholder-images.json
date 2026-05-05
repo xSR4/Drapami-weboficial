@@ -34,13 +34,13 @@
     {
       "id": "clinic-molar32-chorrillos",
       "description": "Sede Molar32 Chorrillos",
-      "imageUrl": "https://picsum.photos/seed/molar32-cho/600/400",
+      "imageUrl": "/logo molar.jpg",
       "imageHint": "modern dental clinic"
     },
     {
       "id": "clinic-molar32-barranco",
       "description": "Sede Molar32 Barranco",
-      "imageUrl": "https://picsum.photos/seed/molar32-ba/600/400",
+      "imageUrl": "/logo molar.jpg",
       "imageHint": "dental office interior"
     },
     {

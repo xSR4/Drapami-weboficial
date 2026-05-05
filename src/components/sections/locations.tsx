@@ -67,6 +67,8 @@ export function Locations() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {clinics.map((clinic, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === clinic.image);
+            const isLocal = imgData?.imageUrl.startsWith('/');
+            
             return (
               <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden bg-white transition-all hover:scale-[1.02] ${clinic.principal ? 'ring-2 ring-pami-blue' : ''}`}>
                 <div className="relative h-56 w-full">
@@ -77,6 +79,7 @@ export function Locations() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                     data-ai-hint={imgData?.imageHint || "dental clinic"}
+                    unoptimized={isLocal}
                   />
                   {clinic.principal && (
                     <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
