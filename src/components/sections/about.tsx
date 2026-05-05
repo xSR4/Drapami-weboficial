@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Heart, Baby, Star } from "lucide-react";
+import { Heart, Baby, Star, Sparkles } from "lucide-react";
 
 export function About() {
   const aboutImage = PlaceHolderImages.find(img => img.id === "about-dra-pami");
@@ -10,6 +10,7 @@ export function About() {
     { icon: <Baby className="text-pami-pink" />, title: "Manejo de Conducta", text: "Técnicas lúdicas para evitar el miedo dental." },
     { icon: <Heart className="text-pami-orange" />, title: "Atención con Amor", text: "Trato paciente y empático con cada niño." },
     { icon: <Star className="text-pami-blue" />, title: "Prevención Temprana", text: "Educación para una vida de sonrisas sanas." },
+    { icon: <Sparkles className="text-pami-purple" />, title: "Prevención de Maloclusiones", text: "Detección temprana de hábitos para asegurar un crecimiento facial y dental armónico." },
   ];
 
   return (
