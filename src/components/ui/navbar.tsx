@@ -25,7 +25,7 @@ export function Navbar() {
         </Link>
         <div className="hidden lg:flex items-center gap-6 font-semibold text-sm text-[#2D3142]">
           <Link href="/" className="hover:text-pami-blue transition-colors">Inicio</Link>
-          <Link href="/#tratamientos" className="hover:text-pami-blue transition-colors text-nowrap">Tratamientos</Link>
+          <Link href="/tratamientos" className="hover:text-pami-blue transition-colors text-nowrap">Tratamientos</Link>
           <Link href="/sedacion" className="hover:text-pami-blue transition-colors text-nowrap">Sedación</Link>
           <Link href="/#capacitaciones" className="hover:text-pami-blue transition-colors text-nowrap">Capacitaciones</Link>
           <Link href="/#sedes" className="hover:text-pami-blue transition-colors text-nowrap">Sedes</Link>
