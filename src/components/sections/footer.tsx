@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from "next/image";
@@ -16,10 +15,11 @@ import {
   FormItem, 
   FormMessage 
 } from "@/components/ui/form";
-import { Facebook, Instagram, Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react";
-import { useFirestore, useAuth, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
+import { Mail, MapPin, Phone, Loader2, CheckCircle2, Instagram, Facebook } from "lucide-react";
+import { useFirestore, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail } from "@/app/actions/contact";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "El nombre es requerido"),
@@ -61,32 +61,50 @@ export function Footer() {
 
     setIsSubmitting(true);
 
-    // 1. Guardar en Firestore
-    const submissionsRef = collection(firestore, "contactFormSubmissions");
-    const newDocRef = doc(submissionsRef);
-    
-    const submissionData = {
-      id: newDocRef.id,
-      fullName: values.fullName,
-      email: values.email,
-      phoneNumber: values.phoneNumber,
-      subject: values.subject,
-      message: values.message,
-      submissionDateTime: new Date().toISOString(),
-      isRead: false,
-    };
+    try {
+      // 1. Guardar en Firestore (para respaldo y gestión interna)
+      const submissionsRef = collection(firestore, "contactFormSubmissions");
+      const newDocRef = doc(submissionsRef);
+      
+      const submissionData = {
+        id: newDocRef.id,
+        fullName: values.fullName,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        subject: values.subject,
+        message: values.message,
+        submissionDateTime: new Date().toISOString(),
+        isRead: false,
+      };
 
-    // Guardado no bloqueante en Firestore
-    setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
+      // Guardado no bloqueante en Firestore
+      setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
 
-    // Finalizar proceso de envío (se ha eliminado el envío de email)
-    setIsSubmitted(true);
-    form.reset();
-    toast({
-      title: "¡Consulta enviada!",
-      description: "Dra. Pami ha recibido tu mensaje exitosamente.",
-    });
-    setIsSubmitting(false);
+      // 2. Enviar Email vía Resend
+      await sendContactEmail({
+        fullName: values.fullName,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        subject: values.subject,
+        message: values.message,
+      });
+
+      setIsSubmitted(true);
+      form.reset();
+      toast({
+        title: "¡Consulta enviada!",
+        description: "Dra. Pami ha recibido tu mensaje exitosamente.",
+      });
+    } catch (error) {
+      console.error("Error al procesar la consulta:", error);
+      toast({
+        title: "Error",
+        description: "No pudimos enviar tu mensaje. Por favor, inténtalo más tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
