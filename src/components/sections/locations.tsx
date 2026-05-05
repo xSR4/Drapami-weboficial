@@ -1,6 +1,8 @@
+
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Building2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const clinics = [
   {
@@ -8,7 +10,43 @@ const clinics = [
     address: "San Juan de Lurigancho, Lima, Perú",
     phone: "+51 991 112 048",
     hours: "Lun - Sáb: 09:00 - 19:00",
-    image: "clinic-1"
+    image: "clinic-1",
+    principal: true
+  },
+  {
+    name: "Molar32 niños - Sede Chorrillos",
+    address: "Chorrillos, Lima (Dirección por confirmar)",
+    phone: "+51 991 112 048",
+    hours: "Previa Cita",
+    image: "clinic-molar32-chorrillos"
+  },
+  {
+    name: "Molar32 - Sede Barranco",
+    address: "Barranco, Lima (Dirección por confirmar)",
+    phone: "+51 991 112 048",
+    hours: "Previa Cita",
+    image: "clinic-molar32-barranco"
+  },
+  {
+    name: "Clínica Karisma - Sede San Martín",
+    address: "San Martín de Porres, Lima (Dirección por confirmar)",
+    phone: "+51 991 112 048",
+    hours: "Previa Cita",
+    image: "clinic-karisma-sm"
+  },
+  {
+    name: "Clínica Karisma - Sede Pueblo Libre",
+    address: "Pueblo Libre, Lima (Dirección por confirmar)",
+    phone: "+51 991 112 048",
+    hours: "Previa Cita",
+    image: "clinic-karisma-pl"
+  },
+  {
+    name: "Odontosonrisas - Sede Chorrillos",
+    address: "Chorrillos, Lima (Dirección por confirmar)",
+    phone: "+51 991 112 048",
+    hours: "Previa Cita",
+    image: "clinic-odontosonrisas"
   }
 ];
 
@@ -17,47 +55,56 @@ export function Locations() {
     <section className="py-20 bg-pami-bgSoft/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">Nuestra Ubicación</h2>
-          <p className="text-muted-foreground">Visítanos en nuestro consultorio especializado para niños.</p>
+          <span className="bg-pami-blue/10 text-pami-blue font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wider mb-4 inline-block">
+            Nuestras Sedes
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#2D3142]">¿Dónde encontrarnos?</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Atendemos en nuestro consultorio principal y en prestigiosas clínicas aliadas para estar más cerca de ti.
+          </p>
         </div>
-        <div className="max-w-4xl mx-auto">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {clinics.map((clinic, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === clinic.image);
             return (
-              <div key={index} className="bg-white rounded-[2rem] overflow-hidden soft-shadow flex flex-col md:flex-row border border-pami-blue/5">
-                <div className="md:w-1/2 relative h-64 md:h-auto">
+              <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden bg-white transition-all hover:scale-[1.02] ${clinic.principal ? 'ring-2 ring-pami-blue' : ''}`}>
+                <div className="relative h-56 w-full">
                   <Image
-                    src={imgData?.imageUrl || ""}
+                    src={imgData?.imageUrl || "https://picsum.photos/seed/dentist/600/400"}
                     alt={clinic.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
+                    data-ai-hint={imgData?.imageHint || "dental clinic"}
                   />
+                  {clinic.principal && (
+                    <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                      Sede Principal
+                    </div>
+                  )}
                 </div>
-                <div className="p-10 md:w-1/2 flex flex-col justify-center">
-                  <h3 className="text-2xl font-bold mb-6 text-pami-blue">{clinic.name}</h3>
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold mb-6 text-[#2D3142] flex items-start gap-2">
+                    <Building2 className="h-5 w-5 text-pami-blue shrink-0 mt-1" />
+                    {clinic.name}
+                  </h3>
                   <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-muted-foreground">
-                      <div className="bg-pami-turquoise/10 p-2 rounded-lg">
-                        <MapPin className="h-5 w-5 text-pami-turquoise" />
-                      </div>
-                      <span className="text-lg">{clinic.address}</span>
+                    <div className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+                      <MapPin className="h-4 w-4 text-pami-turquoise shrink-0 mt-0.5" />
+                      <span>{clinic.address}</span>
                     </div>
-                    <div className="flex items-center gap-4 text-muted-foreground">
-                      <div className="bg-pami-turquoise/10 p-2 rounded-lg">
-                        <Phone className="h-5 w-5 text-pami-turquoise" />
-                      </div>
-                      <span className="text-lg">{clinic.phone}</span>
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <Phone className="h-4 w-4 text-pami-turquoise shrink-0" />
+                      <span>{clinic.phone}</span>
                     </div>
-                    <div className="flex items-center gap-4 text-muted-foreground">
-                      <div className="bg-pami-turquoise/10 p-2 rounded-lg">
-                        <Clock className="h-5 w-5 text-pami-turquoise" />
-                      </div>
-                      <span className="text-lg">{clinic.hours}</span>
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <Clock className="h-4 w-4 text-pami-turquoise shrink-0" />
+                      <span>{clinic.hours}</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

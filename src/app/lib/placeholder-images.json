@@ -32,6 +32,36 @@
       "imageHint": "pediatric dental chair"
     },
     {
+      "id": "clinic-molar32-chorrillos",
+      "description": "Sede Molar32 Chorrillos",
+      "imageUrl": "https://picsum.photos/seed/molar32-cho/600/400",
+      "imageHint": "modern dental clinic"
+    },
+    {
+      "id": "clinic-molar32-barranco",
+      "description": "Sede Molar32 Barranco",
+      "imageUrl": "https://picsum.photos/seed/molar32-ba/600/400",
+      "imageHint": "dental office interior"
+    },
+    {
+      "id": "clinic-karisma-sm",
+      "description": "Clínica Karisma San Martín",
+      "imageUrl": "https://picsum.photos/seed/karisma-sm/600/400",
+      "imageHint": "pediatric dentistry room"
+    },
+    {
+      "id": "clinic-karisma-pl",
+      "description": "Clínica Karisma Pueblo Libre",
+      "imageUrl": "https://picsum.photos/seed/karisma-pl/600/400",
+      "imageHint": "dental clinic reception"
+    },
+    {
+      "id": "clinic-odontosonrisas",
+      "description": "Odontosonrisas Chorrillos",
+      "imageUrl": "https://picsum.photos/seed/odontosonrisas/600/400",
+      "imageHint": "colorful dental clinic"
+    },
+    {
       "id": "blog-brushing",
       "description": "Niño cepillándose los dientes",
       "imageUrl": "https://picsum.photos/seed/brushing-kids/400/300",
