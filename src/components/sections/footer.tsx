@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,19 +19,19 @@ export function Footer() {
                 <div className="bg-pami-blue/10 p-3 rounded-full">
                   <Phone className="h-5 w-5 text-pami-blue" />
                 </div>
-                <span className="font-medium">+54 11 4444-5555</span>
+                <span className="font-medium">+51 991 112 048</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="bg-pami-turquoise/10 p-3 rounded-full">
                   <Mail className="h-5 w-5 text-pami-turquoise" />
                 </div>
-                <span className="font-medium">hola@drapami.com</span>
+                <span className="font-medium">drapamiconsultorios@gmail.com</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="bg-pami-pink/10 p-3 rounded-full">
                   <MapPin className="h-5 w-5 text-pami-pink" />
                 </div>
-                <span className="font-medium">Buenos Aires, Argentina</span>
+                <span className="font-medium">San Juan de Lurigancho, Lima, Perú</span>
               </div>
             </div>
           </div>
@@ -52,7 +51,7 @@ export function Footer() {
         </div>
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="relative h-22 w-48">
+          <div className="relative h-22 w-48 flex items-center">
             <Image
               src="/LOGO.jpg"
               alt="Dra. Pami Logo"
