@@ -1,0 +1,108 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * CORE PHILOSOPHY
+     * This ruleset implements a Database Access Control (DBAC) model combined with Public Submission 
+     * capabilities. It enables unauthenticated (anonymous) visitors to submit inquiries while 
+     * restricting management capabilities to authorized clinic staff.
+     *
+     * DATA STRUCTURE
+     * - /contactFormSubmissions/{submissionId}: Flat collection of inquiries.
+     * - /clinicStaffRoles/{uid}: Administrative collection used to verify staff status.
+     *
+     * KEY SECURITY DECISIONS
+     * 1. Public Submissions: To prevent spam and maintain a security baseline while allowing 
+     *    "unauthenticated" access, this ruleset leverages Firebase Anonymous Authentication. 
+     *    All submissions require a valid (even if anonymous) session.
+     * 2. DBAC for Staff: Authorization for reading and managing inquiries is centralized 
+     *    through the /clinicStaffRoles collection. A UID present in that collection grants 
+     *    administrative access to all submissions.
+     * 3. Relational Integrity: The rules enforce that the document ID inside the data 
+     *    matches the Firestore document path during creation and remains immutable.
+     *
+     * DENORMALIZATION FOR AUTHORIZATION
+     * - The system uses a centralized role lookup (/clinicStaffRoles) to avoid complex 
+     *   per-document ownership checks for staff members, facilitating efficient list operations.
+     */
+
+    /** 
+     * STEP 1: IR Analysis & Synthesis
+     * - Intent: Implement a secure contact form submission system for "Dra. Pami".
+     * - Access Patterns: 
+     *    1. ContactFormSubmission: Public Submission (via Auth) / Staff-only Management.
+     *    2. ClinicStaffRoles: Internal lookup (Read-only for rules).
+     * - Identified Patterns: 
+     *    - Ownership (Self-Creation) is NOT used because submissions are often made by 
+     *      visitors who do not "own" the data in a traditional user-account sense.
+     *    - Shared Access (Roles): Used for clinic staff management.
+     */
+
+    // --- Global Helper Functions ---
+
+    /** 
+     * @description Checks if the request is from an authenticated user (including anonymous).
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** 
+     * @description Verifies if the authenticated user's UID exists in the staff roles collection.
+     */
+    function isStaff() {
+      return isSignedIn() && exists(/databases/$(database)/documents/clinicStaffRoles/$(request.auth.uid));
+    }
+
+    /** 
+     * @description Ensures the user is staff AND the document being targeted actually exists.
+     */
+    function isExistingStaff() {
+      return isStaff() && resource != null;
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Rules for the staff roles collection used for Database Access Control.
+     * @path /clinicStaffRoles/{uid}
+     * @allow (get) Only staff members can check their own or another staff's status.
+     * @deny (create, update, delete, list) Any client-side modification or bulk listing.
+     * @principle Restricts modification of authorization metadata to server-side/admin environments.
+     *            Access to this collection for rules evaluation is via `exists()` for `isStaff()`.
+     */
+    match /clinicStaffRoles/{uid} {
+      // Corrected: Only staff members can read entries in this collection.
+      // The previous rule `isSignedIn()` allowed any authenticated user (including anonymous)
+      // to potentially enumerate staff UIDs, which is an information leak.
+      allow get: if isStaff(); 
+      allow list: if false;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Rules for contact form inquiries submitted by potential patients.
+     * @path /contactFormSubmissions/{submissionId}
+     * @allow (create) Any authenticated user (including anonymous) can submit a form.
+     * @allow (get, list, update, delete) Authorized clinic staff can manage inquiries.
+     * @deny (get, list) Unauthenticated or non-staff users attempting to read inquiries.
+     * @principle Implements public write access with staff-only management via DBAC.
+     */
+    match /contactFormSubmissions/{submissionId} {
+      
+      // Read Permissions: Only staff can view individual or list submissions.
+      allow get, list: if isStaff();
+
+      // Write Permissions: 
+      // Create: Allow if signed in (Anonymous or Password). Enforce path/ID consistency.
+      allow create: if isSignedIn() && request.resource.data.id == submissionId;
+
+      // Update: Only staff can update (e.g., marking as read, adding notes). ID must be immutable.
+      allow update: if isExistingStaff() && request.resource.data.id == resource.data.id;
+
+      // Delete: Only staff can remove old inquiries.
+      allow delete: if isExistingStaff();
+    }
+  }
+}

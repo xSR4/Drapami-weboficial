@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "ContactFormSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactFormSubmission",
+      "type": "object",
+      "description": "Stores details of inquiries submitted through the website's contact form, facilitating communication with potential patients and tracking follow-ups.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactFormSubmission entity."
+        },
+        "fullName": {
+          "type": "string",
+          "description": "The full name of the person submitting the inquiry."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the inquiry, used for correspondence.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number provided by the person, for direct communication if preferred."
+        },
+        "message": {
+          "type": "string",
+          "description": "The detailed message or question submitted by the user in their inquiry."
+        },
+        "submissionDateTime": {
+          "type": "string",
+          "description": "The date and time when the inquiry was submitted.",
+          "format": "date-time"
+        },
+        "isRead": {
+          "type": "boolean",
+          "description": "A flag indicating whether the clinic staff has marked this inquiry as read."
+        },
+        "responseDateTime": {
+          "type": "string",
+          "description": "The date and time when a response was sent for this inquiry.",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Internal notes added by clinic staff regarding this inquiry or any follow-up actions."
+        }
+      },
+      "required": [
+        "id",
+        "fullName",
+        "email",
+        "message",
+        "submissionDateTime"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/contactFormSubmissions/{submissionId}",
+        "definition": {
+          "entityName": "ContactFormSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/ContactFormSubmission"
+          },
+          "description": "Stores inquiries submitted by users through the contact form. Designed for public write access by any user and restricted read/update access for authorized clinic staff. This collection ensures Authorization Independence as each document is self-contained. Supports Query All Policies (QAPs) for staff access by leveraging a separate roles collection for DBAC.",
+          "params": [
+            {
+              "name": "submissionId",
+              "description": "Unique identifier for a contact form submission."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure for Dra. Pami's landing page primarily focuses on handling contact form submissions securely and scalably. A single top-level collection, `/contactFormSubmissions`, is recommended.\n\n**Authorization Independence (CRITICAL):** Each document within the `/contactFormSubmissions` collection is entirely self-contained for authorization purposes. There are no hierarchical dependencies on parent documents to determine access rights. Submissions are standalone records; therefore, no denormalization of authorization context from a parent is needed, as there is no parent.\n\n**Query All Policies (QAPs) and Security Rules:**\n1.  **Public Write Access:** Unauthenticated users (visitors to the landing page) must be able to create (`write`) new `ContactFormSubmission` documents. This allows anyone to submit an inquiry without needing to log in.\n2.  **Restricted Read/Update Access for Clinic Staff:** Only authorized clinic staff members should be able to read, mark as read, add internal notes, or delete `ContactFormSubmission` documents. To achieve this, a **Database Access Control (DBAC)** pattern is employed using a dedicated roles collection, conceptually `/clinicStaffRoles/{uid}`. If a `request.auth.uid` exists within this `clinicStaffRoles` collection (even as an empty document), that user is considered clinic staff.\n\nThis DBAC pattern enables secure `list` operations (QAPs) for clinic staff. Instead of attempting to filter documents on the client side or relying on complex rule logic that checks individual document fields for staff access, a simple rule can allow `read` access to the entire `/contactFormSubmissions` collection if the user is identified as clinic staff via their `uid`'s presence in `/clinicStaffRoles`. This adheres to the principle that rules are not filters, making them robust, performant, and debuggable. Documents for `ContactFormSubmission` include fields like `isRead` and `notes` for internal staff management, reflecting clear explicit state modeling.\n\n**Note on `clinicStaffRoles`:** While critical for the overall security model, a formal `firestorePaths` entry for `/clinicStaffRoles/{uid}` is not provided in the output, as the current schema context does not include a `ClinicStaffRole` or generic `Role` entity definition for `$ref` compliance. However, its conceptual existence is vital for implementing the recommended authorization."
+  }
+}
