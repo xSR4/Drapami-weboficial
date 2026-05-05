@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "ContactFormSubmission": {
@@ -22,6 +23,10 @@
         "phoneNumber": {
           "type": "string",
           "description": "The phone number provided by the person, for direct communication if preferred."
+        },
+        "subject": {
+          "type": "string",
+          "description": "The subject line or topic of the inquiry."
         },
         "message": {
           "type": "string",

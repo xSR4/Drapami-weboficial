@@ -1,11 +1,93 @@
+'use client';
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { 
+  Form, 
+  FormControl, 
+  FormField, 
+  FormItem, 
+  FormMessage 
+} from "@/components/ui/form";
+import { Facebook, Instagram, Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react";
+import { useFirestore, useAuth, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
+import { doc, collection } from "firebase/firestore";
+import { useToast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  fullName: z.string().min(2, "El nombre es requerido"),
+  email: z.string().email("Correo electrónico inválido"),
+  phoneNumber: z.string().min(7, "Teléfono inválido").optional().or(z.literal('')),
+  subject: z.string().min(2, "El asunto es requerido"),
+  message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 export function Footer() {
+  const { firestore, auth } = useFirestore();
+  const { user, isUserLoading } = useUser();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  // Aseguramos que el usuario tenga una sesión (anónima) para poder escribir en Firestore
+  useEffect(() => {
+    if (!user && !isUserLoading && auth) {
+      initiateAnonymousSignIn(auth);
+    }
+  }, [user, isUserLoading, auth]);
+
+  async function onSubmit(values: FormValues) {
+    if (!firestore) return;
+
+    setIsSubmitting(true);
+
+    // 1. Guardar en Firestore
+    const submissionsRef = collection(firestore, "contactFormSubmissions");
+    const newDocRef = doc(submissionsRef);
+    
+    const submissionData = {
+      id: newDocRef.id,
+      fullName: values.fullName,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+      subject: values.subject,
+      message: values.message,
+      submissionDateTime: new Date().toISOString(),
+      isRead: false,
+    };
+
+    // Guardado no bloqueante en Firestore
+    setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
+
+    // Finalizar proceso de envío (se ha eliminado el envío de email)
+    setIsSubmitted(true);
+    form.reset();
+    toast({
+      title: "¡Consulta enviada!",
+      description: "Dra. Pami ha recibido tu mensaje exitosamente.",
+    });
+    setIsSubmitting(false);
+  }
+
   return (
     <footer className="bg-white pt-20">
       <div className="container mx-auto px-6 pb-12">
@@ -40,17 +122,100 @@ export function Footer() {
             </div>
           </div>
           <div className="bg-pami-bgSoft/50 p-8 rounded-[2rem] border border-pami-blue/5">
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Input placeholder="Nombre completo" className="rounded-xl bg-white border-none shadow-sm h-12" />
-                <Input placeholder="Correo electrónico" type="email" className="rounded-xl bg-white border-none shadow-sm h-12" />
+            {isSubmitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in-up">
+                <div className="bg-pami-blue/10 p-4 rounded-full mb-6">
+                  <CheckCircle2 className="h-12 w-12 text-pami-blue" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#2D3142] mb-2">¡Mensaje Enviado!</h3>
+                <p className="text-muted-foreground max-w-xs mx-auto mb-8">
+                  Gracias por contactarnos. Dra. Pami ha recibido tu consulta y se pondrá en contacto contigo a la brevedad.
+                </p>
+                <Button 
+                  onClick={() => setIsSubmitted(false)}
+                  variant="outline"
+                  className="rounded-xl border-pami-blue text-pami-blue hover:bg-pami-blue/10"
+                >
+                  Enviar otro mensaje
+                </Button>
               </div>
-              <Input placeholder="Asunto" className="rounded-xl bg-white border-none shadow-sm h-12" />
-              <Textarea placeholder="Tu mensaje..." className="rounded-xl bg-white border-none shadow-sm min-h-[120px]" />
-              <Button className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold shadow-lg shadow-pami-blue/20">
-                Enviar Consulta
-              </Button>
-            </form>
+            ) : (
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="fullName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Nombre completo" className="rounded-xl bg-white border-none shadow-sm h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Correo electrónico" type="email" className="rounded-xl bg-white border-none shadow-sm h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="phoneNumber"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Teléfono / WhatsApp" className="rounded-xl bg-white border-none shadow-sm h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Asunto" className="rounded-xl bg-white border-none shadow-sm h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea placeholder="Cuéntanos cómo podemos ayudar a tu pequeño..." className="rounded-xl bg-white border-none shadow-sm min-h-[120px]" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold shadow-lg shadow-pami-blue/20"
+                  >
+                    {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Enviar Consulta"}
+                  </Button>
+                </form>
+              </Form>
+            )}
           </div>
         </div>
 
@@ -66,36 +231,14 @@ export function Footer() {
             />
           </div>
           <div className="flex gap-6">
-            <a 
-              href="https://www.instagram.com/dra.pami?igsh=MWxrMTJwN2U3MjI4dg%3D%3D&utm_source=qr" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-pami-blue transition-colors" 
-              aria-label="Instagram"
-            >
+            <a href="https://www.instagram.com/dra.pami" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
               <Instagram className="h-6 w-6" />
             </a>
-            <a 
-              href="https://www.facebook.com/share/1Cz6CsWuSV/?mibextid=wwXIfr" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-pami-blue transition-colors" 
-              aria-label="Facebook"
-            >
+            <a href="https://www.facebook.com/share/1Cz6CsWuSV/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
               <Facebook className="h-6 w-6" />
             </a>
-            <a 
-              href="https://www.tiktok.com/@dra.pami?_r=1&_t=ZS-967F5hOGtO9" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-[#000000] transition-colors" 
-              aria-label="TikTok"
-            >
-              <svg 
-                viewBox="0 0 24 24" 
-                className="h-6 w-6 fill-current" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <a href="https://www.tiktok.com/@dra.pami" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-black transition-colors">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.88-.64-1.61-1.47-2.12-2.44v.01c-.02 2.33.04 4.66-.03 6.99-.13 2.57-1.41 5.06-3.65 6.32-1.9 1.08-4.38 1.25-6.38.44-2.1-.84-3.71-2.73-4.18-4.94-.46-2.19.12-4.63 1.54-6.37 1.4-1.72 3.63-2.71 5.84-2.58v4.03c-1.14-.14-2.33.15-3.21.91-.9.76-1.39 1.96-1.31 3.12.04 1.12.55 2.2 1.44 2.88.94.72 2.21.93 3.35.54 1.08-.37 1.93-1.28 2.22-2.39.12-.48.14-.98.14-1.47V.02z"/>
               </svg>
             </a>
