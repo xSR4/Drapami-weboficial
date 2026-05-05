@@ -22,7 +22,7 @@ const clinics = [
   },
   {
     name: "Molar32 niños - Sede Barranco",
-    address: "Barranco, Lima (Dirección por confirmar)",
+    address: "Jr. San Ambrosio 420 - Barranco",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-molar32-barranco"
