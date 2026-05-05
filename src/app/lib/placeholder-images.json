@@ -2,6 +2,12 @@
 {
   "placeholderImages": [
     {
+      "id": "logo-pami",
+      "description": "Logo oficial de Dra. Pami - Odontopediatría",
+      "imageUrl": "https://picsum.photos/seed/pami-logo-brand/300/150",
+      "imageHint": "pediatric dentist logo"
+    },
+    {
       "id": "hero-dra-pami",
       "description": "Female pediatric dentist laughing with a child patient in a colorful office",
       "imageUrl": "https://picsum.photos/seed/pami-pediatric-hero/800/1000",

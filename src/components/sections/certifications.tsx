@@ -1,9 +1,8 @@
 
 "use client";
 
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, GraduationCap, BookOpen } from "lucide-react";
+import { Award, GraduationCap } from "lucide-react";
 
 const certifications = [
   {
@@ -34,21 +33,21 @@ const certifications = [
 
 export function Certifications() {
   return (
-    <section className="py-20 bg-pami-bgSoft/20">
+    <section id="capacitaciones" className="py-20 bg-pami-bgSoft/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#2D3142]">Capacitaciones y Certificaciones</h2>
-          <p className="text-muted-foreground">La formación constante nos permite brindar la mejor atención basada en evidencia.</p>
+          <p className="text-muted-foreground">La formación constante nos permite brindar la mejor atención basada en evidencia científica para tus hijos.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {certifications.map((cert, index) => (
-            <Card key={index} className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-shadow">
+            <Card key={index} className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-shadow group">
               <CardContent className="p-6">
-                <div className="bg-pami-blue/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-                  <Award className="text-pami-blue h-6 w-6" />
+                <div className="bg-pami-blue/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-pami-blue group-hover:text-white transition-colors">
+                  <Award className="h-6 w-6" />
                 </div>
                 <span className="text-[10px] uppercase tracking-wider font-bold text-pami-turquoise mb-2 block">{cert.type}</span>
-                <h3 className="font-bold text-base mb-2">{cert.title}</h3>
+                <h3 className="font-bold text-base mb-2 group-hover:text-pami-blue transition-colors">{cert.title}</h3>
                 <p className="text-sm text-muted-foreground mb-1">{cert.institution}</p>
                 <div className="flex items-center gap-2 mt-4 text-xs font-medium text-pami-blue">
                   <GraduationCap className="h-3 w-3" />

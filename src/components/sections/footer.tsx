@@ -1,17 +1,22 @@
+
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Music2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Footer() {
+  const logo = PlaceHolderImages.find(img => img.id === "logo-pami");
+
   return (
     <footer className="bg-white pt-20">
       <div className="container mx-auto px-6 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <div>
-            <h2 className="text-3xl font-headline font-bold mb-6">Contáctanos</h2>
+            <h2 className="text-3xl font-bold mb-6 text-[#2D3142]">Contáctanos</h2>
             <p className="text-muted-foreground mb-8">
-              Estamos aquí para resolver cualquier duda. Envíanos un mensaje y te responderemos lo antes posible.
+              Estamos aquí para resolver cualquier duda sobre la salud bucal de tus pequeños. Envíanos un mensaje y te responderemos lo antes posible.
             </p>
             <div className="space-y-6">
               <div className="flex items-center gap-4">
@@ -42,7 +47,7 @@ export function Footer() {
               </div>
               <Input placeholder="Asunto" className="rounded-xl bg-white border-none shadow-sm h-12" />
               <Textarea placeholder="Tu mensaje..." className="rounded-xl bg-white border-none shadow-sm min-h-[120px]" />
-              <Button className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold">
+              <Button className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold shadow-lg shadow-pami-blue/20">
                 Enviar Consulta
               </Button>
             </form>
@@ -50,8 +55,13 @@ export function Footer() {
         </div>
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-2xl font-bold text-gradient">
-            Dra. Pami
+          <div className="relative h-16 w-36">
+            <Image
+              src={logo?.imageUrl || ""}
+              alt="Dra. Pami Logo"
+              fill
+              className="object-contain"
+            />
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-muted-foreground hover:text-pami-blue transition-colors" aria-label="Instagram">
