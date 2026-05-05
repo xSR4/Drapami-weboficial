@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -18,8 +19,13 @@ interface ContactEmailData {
  * Envía un correo electrónico con los datos de la consulta utilizando Resend.
  */
 export async function sendContactEmail(data: ContactEmailData) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Error: RESEND_API_KEY no está configurada.');
+    return { success: false, error: 'Configuración faltante' };
+  }
+
   try {
-    const { error } = await resend.emails.send({
+    const { data: resData, error } = await resend.emails.send({
       from: 'Dra. Pami Web <onboarding@resend.dev>',
       to: 'drapamiconsultorios@gmail.com',
       subject: `Nueva Consulta: ${data.subject}`,
@@ -47,13 +53,13 @@ export async function sendContactEmail(data: ContactEmailData) {
     });
 
     if (error) {
-      console.error('Error de Resend:', error);
+      console.error('Error de Resend API:', error);
       return { success: false, error };
     }
 
-    return { success: true };
+    return { success: true, data: resData };
   } catch (error) {
-    console.error('Error al enviar el email:', error);
+    console.error('Error inesperado al enviar el email:', error);
     return { success: false, error };
   }
 }

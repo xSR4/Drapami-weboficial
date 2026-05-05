@@ -56,6 +56,17 @@ export function Footer() {
     }
   }, [user, isUserLoading, auth]);
 
+  const handleResetForm = () => {
+    form.reset({
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      subject: "",
+      message: "",
+    });
+    setIsSubmitted(false);
+  };
+
   async function onSubmit(values: FormValues) {
     if (!firestore) return;
 
@@ -89,15 +100,20 @@ export function Footer() {
       });
 
       if (!emailResult.success) {
-        console.warn("El correo no se pudo enviar, pero la consulta se guardó en la base de datos.");
+        console.error("Error al enviar email:", emailResult.error);
+        toast({
+          title: "Aviso",
+          description: "La consulta se guardó, pero hubo un problema al enviar el correo de notificación.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "¡Consulta enviada!",
+          description: "Tu mensaje ha sido recibido exitosamente.",
+        });
       }
 
       setIsSubmitted(true);
-      form.reset();
-      toast({
-        title: "¡Consulta enviada!",
-        description: "Tu mensaje ha sido recibido exitosamente.",
-      });
     } catch (error) {
       console.error("Error al procesar la consulta:", error);
       toast({
@@ -154,7 +170,7 @@ export function Footer() {
                   Gracias por contactarnos. Dra. Pami ha recibido tu consulta y se pondrá en contacto contigo a la brevedad.
                 </p>
                 <Button 
-                  onClick={() => setIsSubmitted(false)}
+                  onClick={handleResetForm}
                   variant="outline"
                   className="rounded-xl border-pami-blue text-pami-blue hover:bg-pami-blue/10"
                 >
