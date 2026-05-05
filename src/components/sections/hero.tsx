@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Sparkles } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -29,8 +30,10 @@ export function Hero() {
                 Agendar Primera Consulta
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
-              Ver Tratamientos
+            <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
+              <Link href="/tratamientos">
+                Ver Tratamientos
+              </Link>
             </Button>
           </div>
         </div>

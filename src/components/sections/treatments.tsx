@@ -11,15 +11,15 @@ const treatments = [
     border: "hover:border-pami-blue/30"
   },
   {
-    title: "Selladores de Fosetas",
+    title: "Sellantes",
     description: "Protección efectiva contra las caries en los dientes definitivos recién erupcionados.",
     color: "bg-pami-pink/10 text-pami-pink",
     icon: <ShieldCheck className="h-8 w-8" />,
     border: "hover:border-pami-pink/30"
   },
   {
-    title: "Limpiezas Infantiles",
-    description: "Eliminación de placa y educación en técnica de cepillado adaptada a su edad.",
+    title: "Limpiezas Dental Infantiles",
+    description: "Eliminación de placa y educación sobre las técnicas de cepillado adaptada a su edad.",
     color: "bg-pami-turquoise/10 text-pami-turquoise",
     icon: <Sparkles className="h-8 w-8" />,
     border: "hover:border-pami-turquoise/30"
