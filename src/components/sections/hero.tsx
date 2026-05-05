@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Sparkles } from "lucide-react";
@@ -39,11 +40,12 @@ export function Hero() {
           <div className="relative z-10 rounded-[3rem] overflow-hidden soft-shadow border-8 border-white">
             <Image
               src={heroImage?.imageUrl || ""}
-              alt="Dra. Pami con paciente infantil"
+              alt="Dra. Pami - Portada"
               width={800}
               height={1000}
               className="object-cover w-full h-auto"
-              data-ai-hint="pediatric dentist child"
+              unoptimized
+              priority
             />
           </div>
           <div className="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 animate-bounce-slow border border-pami-bgSoft">

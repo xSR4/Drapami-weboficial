@@ -9,49 +9,49 @@
     },
     {
       "id": "hero-dra-pami",
-      "description": "Female pediatric dentist laughing with a child patient in a colorful office",
-      "imageUrl": "https://picsum.photos/seed/pami-pediatric-hero/800/1000",
-      "imageHint": "pediatric dentist child"
+      "description": "Foto de portada de Dra. Pami",
+      "imageUrl": "/foto portada.jpg",
+      "imageHint": "pediatric dentist hero"
     },
     {
       "id": "about-dra-pami",
-      "description": "Dra. Pami showing a giant toothbrush to a curious child",
+      "description": "Dra. Pami enseñando a un niño",
       "imageUrl": "https://picsum.photos/seed/pami-pediatric-about/600/400",
       "imageHint": "child dentist fun"
     },
     {
       "id": "clinic-1",
-      "description": "Kid-friendly dental reception with toys and bright colors",
+      "description": "Recepción de la clínica",
       "imageUrl": "https://picsum.photos/seed/clinic-pami-1/600/400",
       "imageHint": "kids dental clinic"
     },
     {
       "id": "clinic-2",
-      "description": "Modern dental room with a screen for cartoons",
+      "description": "Consultorio moderno",
       "imageUrl": "https://picsum.photos/seed/clinic-pami-2/600/400",
       "imageHint": "pediatric dental chair"
     },
     {
       "id": "blog-brushing",
-      "description": "Illustration of a child brushing teeth with a dinosaur timer",
+      "description": "Niño cepillándose los dientes",
       "imageUrl": "https://picsum.photos/seed/brushing-kids/400/300",
       "imageHint": "child brushing teeth"
     },
     {
       "id": "blog-first-visit",
-      "description": "A happy child receiving a sticker after their first visit",
+      "description": "Primera visita al dentista",
       "imageUrl": "https://picsum.photos/seed/first-visit/400/300",
       "imageHint": "child dentist sticker"
     },
     {
       "id": "blog-ortho-kids",
-      "description": "Early orthodontic assessment for a young child",
+      "description": "Ortodoncia infantil",
       "imageUrl": "https://picsum.photos/seed/ortho-kids/400/300",
       "imageHint": "kids orthodontics"
     },
     {
       "id": "cert-1",
-      "description": "Close up of a professional diploma in pediatric dentistry",
+      "description": "Diploma profesional",
       "imageUrl": "https://picsum.photos/seed/cert-1/400/300",
       "imageHint": "dentistry diploma"
     }
