@@ -19,6 +19,7 @@ import { Mail, MapPin, Phone, Loader2, CheckCircle2, Instagram, Facebook } from 
 import { useFirestore, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail } from "@/app/actions/contact";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "El nombre es requerido"),
@@ -60,6 +61,7 @@ export function Footer() {
     setIsSubmitting(true);
 
     try {
+      // 1. Guardar en Firestore
       const submissionsRef = collection(firestore, "contactFormSubmissions");
       const newDocRef = doc(submissionsRef);
       
@@ -75,6 +77,13 @@ export function Footer() {
       };
 
       setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
+
+      // 2. Enviar Email vía Server Action (Resend)
+      const emailResult = await sendContactEmail(values);
+      
+      if (!emailResult.success) {
+        console.warn("El correo no pudo ser enviado, pero la consulta se guardó en la base de datos.");
+      }
 
       setIsSubmitted(true);
       form.reset();
