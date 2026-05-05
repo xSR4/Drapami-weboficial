@@ -21,7 +21,7 @@ const clinics = [
     image: "clinic-molar32-chorrillos"
   },
   {
-    name: "Molar32 - Sede Barranco",
+    name: "Molar32 niños - Sede Barranco",
     address: "Barranco, Lima (Dirección por confirmar)",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
