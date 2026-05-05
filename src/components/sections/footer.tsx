@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from "next/image";
@@ -222,7 +223,7 @@ export function Footer() {
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="relative h-22 w-48 flex items-center">
             <Image
-              src="/LOGO.jpg"
+              src="/logopami.png"
               alt="Dra. Pami Logo"
               width={192}
               height={88}
@@ -231,13 +232,13 @@ export function Footer() {
             />
           </div>
           <div className="flex gap-6">
-            <a href="https://www.instagram.com/dra.pami" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
+            <a href="https://www.instagram.com/dra.pami?igsh=MWxrMTJwN2U3MjI4dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
               <Instagram className="h-6 w-6" />
             </a>
-            <a href="https://www.facebook.com/share/1Cz6CsWuSV/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
+            <a href="https://www.facebook.com/share/1Cz6CsWuSV/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pami-blue transition-colors">
               <Facebook className="h-6 w-6" />
             </a>
-            <a href="https://www.tiktok.com/@dra.pami" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-black transition-colors">
+            <a href="https://www.tiktok.com/@dra.pami?_r=1&_t=ZS-967F5hOGtO9" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-black transition-colors">
               <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.88-.64-1.61-1.47-2.12-2.44v.01c-.02 2.33.04 4.66-.03 6.99-.13 2.57-1.41 5.06-3.65 6.32-1.9 1.08-4.38 1.25-6.38.44-2.1-.84-3.71-2.73-4.18-4.94-.46-2.19.12-4.63 1.54-6.37 1.4-1.72 3.63-2.71 5.84-2.58v4.03c-1.14-.14-2.33.15-3.21.91-.9.76-1.39 1.96-1.31 3.12.04 1.12.55 2.2 1.44 2.88.94.72 2.21.93 3.35.54 1.08-.37 1.93-1.28 2.22-2.39.12-.48.14-.98.14-1.47V.02z"/>
               </svg>

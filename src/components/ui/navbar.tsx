@@ -13,7 +13,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <div className="relative h-12 w-30">
             <Image
-              src="/LOGO.jpg"
+              src="/logopami.png"
               alt="Dra. Pami Logo"
               width={120}
               height={48}
