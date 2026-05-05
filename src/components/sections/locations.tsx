@@ -36,7 +36,7 @@ const clinics = [
   },
   {
     name: "Clínica Karisma - Sede Pueblo Libre",
-    address: "Pueblo Libre, Lima (Dirección por confirmar)",
+    address: "Av. Brasil 1644 - Pueblo Libre",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-karisma-pl"
