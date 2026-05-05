@@ -13,12 +13,20 @@ export default function Home() {
   return (
     <main className="relative">
       <Hero />
-      <About />
-      <Treatments />
-      <Certifications />
+      <div id="sobre-mi">
+        <About />
+      </div>
+      <div id="tratamientos">
+        <Treatments />
+      </div>
+      <div id="capacitaciones">
+        <Certifications />
+      </div>
       <AIAssistant />
       <Education />
-      <Locations />
+      <div id="sedes">
+        <Locations />
+      </div>
       <Footer />
       <WhatsAppFloat />
     </main>

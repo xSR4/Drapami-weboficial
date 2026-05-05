@@ -24,7 +24,7 @@ export function Navbar() {
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8 font-semibold text-sm text-[#2D3142]">
-          <Link href="#" className="hover:text-pami-blue transition-colors">Inicio</Link>
+          <Link href="/" className="hover:text-pami-blue transition-colors">Inicio</Link>
           <Link href="#tratamientos" className="hover:text-pami-blue transition-colors">Tratamientos</Link>
           <Link href="#capacitaciones" className="hover:text-pami-blue transition-colors">Capacitaciones</Link>
           <Link href="#sedes" className="hover:text-pami-blue transition-colors">Sedes</Link>
