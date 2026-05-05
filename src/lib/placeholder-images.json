@@ -31,6 +31,18 @@
       "imageHint": "pediatric dental chair"
     },
     {
+      "id": "clinic-karisma-sm",
+      "description": "Clínica Karisma San Martín",
+      "imageUrl": "/karisma logo.jpg",
+      "imageHint": "pediatric dentistry room"
+    },
+    {
+      "id": "clinic-karisma-pl",
+      "description": "Clínica Karisma Pueblo Libre",
+      "imageUrl": "/karisma logo.jpg",
+      "imageHint": "dental clinic reception"
+    },
+    {
       "id": "blog-brushing",
       "description": "Illustration of a child brushing teeth with a dinosaur timer",
       "imageUrl": "https://picsum.photos/seed/brushing-kids/400/300",

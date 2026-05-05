@@ -46,13 +46,13 @@
     {
       "id": "clinic-karisma-sm",
       "description": "Clínica Karisma San Martín",
-      "imageUrl": "https://picsum.photos/seed/karisma-sm/600/400",
+      "imageUrl": "/karisma logo.jpg",
       "imageHint": "pediatric dentistry room"
     },
     {
       "id": "clinic-karisma-pl",
       "description": "Clínica Karisma Pueblo Libre",
-      "imageUrl": "https://picsum.photos/seed/karisma-pl/600/400",
+      "imageUrl": "/karisma logo.jpg",
       "imageHint": "dental clinic reception"
     },
     {
