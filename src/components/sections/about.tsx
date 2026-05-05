@@ -34,7 +34,7 @@ export function About() {
             <h4 className="text-pami-blue font-bold tracking-wider uppercase text-sm mb-4">Sobre Dra. Pami</h4>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#2D3142]">Experta en sonrisas pequeñitas</h2>
             <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-              Soy la Dra. Pami, apasionada por la odontopediatría. Mi objetivo es que cada niño salga de la consulta con una sonrisa gigante y sin estrés. Creo en la prevención como la mejor herramienta para el futuro dental de nuestros pequeños.
+              Soy la Dra. Pami, especialista formada en la Faculdade São Leopoldo Mandic de Brasil, con un enfoque único en la atención integral de bebés. Mi misión es transformar la experiencia dental en un momento de amor y aprendizaje. Con registro de especialista RNE 04819, garantizo un tratamiento basado en evidencia científica y calidez humana.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {highlights.map((h, i) => (
