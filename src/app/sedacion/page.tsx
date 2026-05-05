@@ -2,15 +2,25 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ShieldCheck, Heart, Info, Clock, AlertCircle } from "lucide-react";
+import { MessageCircle, ShieldCheck, Heart, Clock, AlertCircle, FileText, ListChecks } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Link from "next/link";
 
 const tiposSedacion = [
   {
     titulo: "Sedación con Midazolam",
-    descripcion: "Es una sedación consciente administrada por vía oral o nasal. El niño permanece despierto pero en un estado de relajación profunda y tranquilidad, eliminando la ansiedad del tratamiento.",
-    beneficios: ["Efecto rápido", "No requiere agujas", "El niño colabora voluntariamente"],
+    precio: "250.00",
+    descripcion: "Es una sedación consciente administrada por vía oral o nasal. El niño permanece despierto pero en un estado de relajación profunda y tranquilidad.",
+    procedimiento: "Toda sedación debe ir acompañada de una Hoja de interconsulta. Necesito el nombre completo del paciente para enviarle el formato PDF (sin costo), y el Pediatra debe responder en la hoja o receta con el certificado médico 'NIÑO SANO' o 'APTO PARA SEDACIÓN'.",
+    duracion: "Se pueden realizar varios procedimientos en un rango máximo de 1 hora y 15 minutos.",
+    indicaciones: [
+      "Venir en ayunas completo (ni agua, ni leche).",
+      "Traer un frugos en cajita (durazno, no pulp).",
+      "Traer una muda de ropa y un pañal.",
+      "Traer una sobre sábana.",
+      "Asistir a su cita a la hora indicada y sano.",
+      "La noche previa dormir tarde y consumir cena ligera (no menestras ni carnes)."
+    ],
     imagen: "sedacion-midazolam",
     tag: "Consciente"
   },
@@ -23,7 +33,7 @@ const tiposSedacion = [
   },
   {
     titulo: "Sedación Profunda",
-    descripcion: "Realizada por un médico anestesiólogo especializado. El niño duerme durante todo el procedimiento. Es la opción ideal para casos complejos, pacientes muy pequeños o con necesidades especiales.",
+    descripcion: "Realizada por un médico anestesiólogo especializado. El niño duerme durante todo el procedimiento. Es la opción ideal para casos complejos o pacientes con necesidades especiales.",
     beneficios: ["Cero estrés para el niño", "Tratamiento completo en una cita", "Monitoreo constante profesional"],
     imagen: "sedacion-profunda",
     precio: "2000.00",
@@ -41,7 +51,7 @@ export default function SedacionPage() {
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-6 mt-4">Tratamientos bajo Sedación</h1>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            Entendemos que algunos pequeñitos pueden sentir mucho miedo o ansiedad. La sedación nos permite brindar una atención de calidad sin traumas, asegurando que el niño no guarde malos recuerdos del dentista.
+            La sedación nos permite brindar una atención de calidad sin traumas, asegurando que tu hijo tenga una experiencia positiva y segura.
           </p>
         </div>
 
@@ -51,17 +61,18 @@ export default function SedacionPage() {
             return (
               <Card key={index} className="border-none soft-shadow rounded-[3rem] overflow-hidden bg-white">
                 <CardContent className="p-0">
-                  <div className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                    <div className="md:w-1/2 relative h-64 md:h-auto">
+                  <div className={`flex flex-col ${index === 0 ? 'md:flex-row' : (index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row')}`}>
+                    <div className="md:w-1/2 relative h-80 md:h-auto min-h-[400px]">
                       <Image
                         src={imgData?.imageUrl || ""}
                         alt={tipo.titulo}
                         fill
                         className="object-cover"
                         data-ai-hint={imgData?.imageHint}
+                        unoptimized
                       />
                     </div>
-                    <div className="md:w-1/2 p-8 md:p-12">
+                    <div className="md:w-1/2 p-8 md:p-10">
                       <div className="flex justify-between items-start mb-4">
                         <span className="text-pami-blue font-bold text-xs uppercase tracking-widest">{tipo.tag}</span>
                         {tipo.precio && (
@@ -75,14 +86,51 @@ export default function SedacionPage() {
                       <p className="text-muted-foreground mb-6 leading-relaxed">
                         {tipo.descripcion}
                       </p>
-                      <ul className="space-y-3">
-                        {tipo.beneficios.map((ben, i) => (
-                          <li key={i} className="flex items-center gap-3 text-sm font-medium text-[#4A4E69]">
-                            <ShieldCheck className="h-5 w-5 text-pami-turquoise" />
-                            {ben}
-                          </li>
-                        ))}
-                      </ul>
+
+                      {tipo.procedimiento && (
+                        <div className="mb-6 bg-pami-blue/5 p-4 rounded-2xl">
+                          <div className="flex items-center gap-2 text-pami-blue font-bold mb-2 text-sm">
+                            <FileText className="h-4 w-4" /> Procedimiento
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{tipo.procedimiento}</p>
+                        </div>
+                      )}
+
+                      {tipo.duracion && (
+                        <div className="mb-6 bg-pami-turquoise/5 p-4 rounded-2xl">
+                          <div className="flex items-center gap-2 text-pami-turquoise font-bold mb-2 text-sm">
+                            <Clock className="h-4 w-4" /> Duración Máxima
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{tipo.duracion}</p>
+                        </div>
+                      )}
+
+                      {tipo.indicaciones && (
+                        <div className="bg-pami-pink/5 p-4 rounded-2xl">
+                          <div className="flex items-center gap-2 text-pami-pink font-bold mb-2 text-sm">
+                            <ListChecks className="h-4 w-4" /> Indicaciones Importantes
+                          </div>
+                          <ul className="space-y-2">
+                            {tipo.indicaciones.map((ind, i) => (
+                              <li key={i} className="flex items-start gap-2 text-[11px] text-[#4A4E69]">
+                                <div className="h-1.5 w-1.5 rounded-full bg-pami-pink mt-1.5 shrink-0" />
+                                {ind}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {tipo.beneficios && (
+                        <ul className="space-y-3">
+                          {tipo.beneficios.map((ben, i) => (
+                            <li key={i} className="flex items-center gap-3 text-sm font-medium text-[#4A4E69]">
+                              <ShieldCheck className="h-5 w-5 text-pami-turquoise" />
+                              {ben}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </CardContent>
@@ -91,53 +139,26 @@ export default function SedacionPage() {
           })}
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            <Card className="bg-pami-blue/5 border-none rounded-[2rem] p-8">
-              <div className="flex gap-4 mb-4">
-                <div className="bg-pami-blue p-2 rounded-xl text-white">
-                  <Clock className="h-6 w-6" />
-                </div>
-                <h4 className="font-bold text-lg text-[#2D3142]">¿Cuándo se recomienda?</h4>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Se recomienda en niños con ansiedad extrema, fobia dental, necesidad de múltiples tratamientos en una sola sesión o pacientes con condiciones que dificulten la cooperación tradicional.
-              </p>
-            </Card>
-            <Card className="bg-pami-orange/5 border-none rounded-[2rem] p-8">
-              <div className="flex gap-4 mb-4">
-                <div className="bg-pami-orange p-2 rounded-xl text-white">
-                  <AlertCircle className="h-6 w-6" />
-                </div>
-                <h4 className="font-bold text-lg text-[#2D3142]">Seguridad Primero</h4>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Todos nuestros procedimientos bajo sedación cumplen con estrictos protocolos internacionales de monitoreo y seguridad para garantizar el bienestar total de tu hijo.
-              </p>
-            </Card>
+        <Card className="bg-white border-none soft-shadow rounded-[2rem] p-10 text-center mb-16 max-w-4xl mx-auto">
+          <Heart className="h-12 w-12 text-pami-pink mx-auto mb-6" />
+          <h2 className="text-2xl font-bold text-[#2D3142] mb-4">¿Tienes dudas sobre la sedación para tu hijo?</h2>
+          <p className="text-muted-foreground mb-8">
+            Cada niño es único. Conversa con nosotros para determinar cuál es el método más adecuado y seguro según la historia clínica de tu pequeño.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-10 h-14">
+              <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Consultar por WhatsApp
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full px-10 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
+              <Link href="/">
+                Volver al Inicio
+              </Link>
+            </Button>
           </div>
-
-          <Card className="bg-white border-none soft-shadow rounded-[2rem] p-10 text-center mb-16">
-            <Heart className="h-12 w-12 text-pami-pink mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-[#2D3142] mb-4">¿Quieres saber cuál es la mejor opción para tu hijo?</h2>
-            <p className="text-muted-foreground mb-8">
-              Agenda una evaluación previa para conversar sobre la historia clínica de tu pequeño y determinar el método más adecuado.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-10 h-14">
-                <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Consultar por WhatsApp
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-10 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
-                <Link href="/">
-                  Volver al Inicio
-                </Link>
-              </Button>
-            </div>
-          </Card>
-        </div>
+        </Card>
       </div>
     </main>
   );
