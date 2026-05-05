@@ -54,6 +54,24 @@
       "description": "Diploma profesional",
       "imageUrl": "https://picsum.photos/seed/cert-1/400/300",
       "imageHint": "dentistry diploma"
+    },
+    {
+      "id": "sedacion-midazolam",
+      "description": "Niño relajado antes del tratamiento",
+      "imageUrl": "https://picsum.photos/seed/sedation-kids-1/600/400",
+      "imageHint": "relaxed child dentist"
+    },
+    {
+      "id": "sedacion-nitroso",
+      "description": "Uso de máscara de óxido nitroso",
+      "imageUrl": "https://picsum.photos/seed/sedation-kids-2/600/400",
+      "imageHint": "laughing gas mask"
+    },
+    {
+      "id": "sedacion-profunda",
+      "description": "Equipo de anestesiología asistiendo",
+      "imageUrl": "https://picsum.photos/seed/sedation-kids-3/600/400",
+      "imageHint": "anesthesiologist pediatric dental"
     }
   ]
 }
