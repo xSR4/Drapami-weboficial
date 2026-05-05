@@ -3,7 +3,7 @@
   "placeholderImages": [
     {
       "id": "logo-pami",
-      "description": "Logo oficial de Dra. Pami - Odontopediatría",
+      "description": "Logo oficial de Dra. Pami - Odontopediatría. Reemplaza 'imageUrl' con la URL de tu logo real.",
       "imageUrl": "https://picsum.photos/seed/pami-logo-brand/300/150",
       "imageHint": "pediatric dentist logo"
     },
