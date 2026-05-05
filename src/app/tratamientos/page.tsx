@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, CheckCircle2, Info } from "lucide-react";
@@ -27,7 +26,7 @@ export default function TratamientosPage() {
     <main className="min-h-screen bg-pami-bgSoft/30 py-16">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-4">Servicios Especializados</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-4">Procedimientos Especializados</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Ofrecemos una amplia gama de procedimientos odontopediátricos con la tecnología más avanzada y un trato lleno de amor.
           </p>
