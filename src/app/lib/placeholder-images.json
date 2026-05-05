@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-dra-pami",
+      "description": "Professional photo of a female dentist smiling warmly",
+      "imageUrl": "https://picsum.photos/seed/dra-pami-hero/800/1000",
+      "imageHint": "dentist doctor smiling"
+    },
+    {
+      "id": "about-dra-pami",
+      "description": "Dra. Pami attending a patient with a kind smile",
+      "imageUrl": "https://picsum.photos/seed/dra-pami-about/600/400",
+      "imageHint": "dentist treatment"
+    },
+    {
+      "id": "clinic-1",
+      "description": "Modern dental clinic reception area",
+      "imageUrl": "https://picsum.photos/seed/clinic-1/600/400",
+      "imageHint": "dental clinic interior"
+    },
+    {
+      "id": "clinic-2",
+      "description": "Advanced dental surgery room",
+      "imageUrl": "https://picsum.photos/seed/clinic-2/600/400",
+      "imageHint": "medical office"
+    },
+    {
+      "id": "blog-brushing",
+      "description": "Infographic of correct brushing techniques",
+      "imageUrl": "https://picsum.photos/seed/brushing/400/300",
+      "imageHint": "dental hygiene"
+    },
+    {
+      "id": "blog-brackets",
+      "description": "Close up of dental brackets care",
+      "imageUrl": "https://picsum.photos/seed/brackets/400/300",
+      "imageHint": "orthodontics"
+    },
+    {
+      "id": "blog-whitening",
+      "description": "Professional teeth whitening result",
+      "imageUrl": "https://picsum.photos/seed/whitening/400/300",
+      "imageHint": "teeth whitening"
+    }
+  ]
+}
