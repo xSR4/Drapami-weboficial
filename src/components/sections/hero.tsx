@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Sparkles } from "lucide-react";
@@ -23,9 +22,11 @@ export function Hero() {
             Cuidamos la salud bucal de tus hijos con paciencia, juegos y mucho amor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg">
-              <MessageCircle className="h-5 w-5" />
-              Agendar Primera Consulta
+            <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg cursor-pointer">
+              <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                Agendar Primera Consulta
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
               Ver Tratamientos
