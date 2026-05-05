@@ -21,11 +21,12 @@ export function About() {
               <div className="absolute inset-0 bg-pami-blue rounded-[3rem] -rotate-3 -z-10 opacity-10"></div>
               <Image
                 src={aboutImage?.imageUrl || ""}
-                alt="Dra. Pami enseñando higiene a un niño"
+                alt="Dra. Pami - Especialista en Odontopediatría"
                 width={600}
                 height={400}
                 className="rounded-[3rem] object-cover soft-shadow border-4 border-white"
-                data-ai-hint="child dentist fun"
+                data-ai-hint="pediatric dentist"
+                unoptimized
               />
             </div>
           </div>
