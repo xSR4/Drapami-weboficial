@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from "next/image";
@@ -19,6 +20,7 @@ import { Mail, MapPin, Phone, Loader2, CheckCircle2, Instagram, Facebook } from 
 import { useFirestore, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail } from "@/app/actions/contact";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "El nombre es requerido"),
@@ -60,7 +62,7 @@ export function Footer() {
     setIsSubmitting(true);
 
     try {
-      // Guardar en Firestore únicamente
+      // 1. Guardar en Firestore para respaldo
       const submissionsRef = collection(firestore, "contactFormSubmissions");
       const newDocRef = doc(submissionsRef);
       
@@ -77,17 +79,30 @@ export function Footer() {
 
       setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
 
+      // 2. Enviar correo electrónico vía Resend
+      const emailResult = await sendContactEmail({
+        fullName: values.fullName,
+        email: values.email,
+        phoneNumber: values.phoneNumber || undefined,
+        subject: values.subject,
+        message: values.message,
+      });
+
+      if (!emailResult.success) {
+        console.warn("El correo no se pudo enviar, pero la consulta se guardó en la base de datos.");
+      }
+
       setIsSubmitted(true);
       form.reset();
       toast({
         title: "¡Consulta enviada!",
-        description: "Tu mensaje ha sido guardado exitosamente.",
+        description: "Tu mensaje ha sido recibido exitosamente.",
       });
     } catch (error) {
       console.error("Error al procesar la consulta:", error);
       toast({
         title: "Error",
-        description: "No pudimos enviar tu mensaje. Por favor, inténtalo más tarde.",
+        description: "No pudimos procesar tu mensaje. Por favor, inténtalo más tarde.",
         variant: "destructive",
       });
     } finally {
