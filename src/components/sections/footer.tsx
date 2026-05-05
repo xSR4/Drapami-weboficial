@@ -55,14 +55,13 @@ export function Footer() {
         </div>
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="relative h-16 w-36">
-            <Image
-              src={logo?.imageUrl || ""}
-              alt="Dra. Pami Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src={logo?.imageUrl || ""}
+            alt="Dra. Pami Logo"
+            width={144}
+            height={64}
+            className="h-16 w-auto object-contain"
+          />
           <div className="flex gap-6">
             <a href="#" className="text-muted-foreground hover:text-pami-blue transition-colors" aria-label="Instagram">
               <Instagram className="h-6 w-6" />

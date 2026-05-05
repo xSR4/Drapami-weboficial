@@ -14,15 +14,14 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-pami-blue/10">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="relative h-14 w-32">
-            <Image
-              src={logo?.imageUrl || ""}
-              alt="Dra. Pami Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <Image
+            src={logo?.imageUrl || ""}
+            alt="Dra. Pami Logo"
+            width={128}
+            height={56}
+            className="h-14 w-auto object-contain"
+            priority
+          />
         </Link>
         <div className="hidden md:flex items-center gap-8 font-semibold text-sm text-[#2D3142]">
           <Link href="#" className="hover:text-pami-blue transition-colors">Inicio</Link>

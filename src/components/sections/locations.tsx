@@ -38,6 +38,7 @@ export function Locations() {
                     src={imgData?.imageUrl || ""}
                     alt={clinic.name}
                     fill
+                    sizes="100vw"
                     className="object-cover"
                   />
                 </div>

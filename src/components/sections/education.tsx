@@ -53,6 +53,7 @@ export function Education() {
                           src={imgData?.imageUrl || ""}
                           alt={tip.title}
                           fill
+                          sizes="100vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute top-4 left-4">
