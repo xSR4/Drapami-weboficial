@@ -7,7 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 const clinics = [
   {
     name: "Consultorio Principal - Lima",
-    address: "San Juan de Lurigancho, Lima, Perú",
+    address: "Calle el habito 866 - San Juan de Lurigancho",
+    reference: "Referencia: Altura de la estación Santa Rosa del tren eléctrico",
     phone: "+51 991 112 048",
     hours: "Lun - Sáb: 09:00 - 19:00",
     image: "clinic-1",
@@ -95,7 +96,14 @@ export function Locations() {
                   <div className="space-y-4">
                     <div className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
                       <MapPin className="h-4 w-4 text-pami-turquoise shrink-0 mt-0.5" />
-                      <span>{clinic.address}</span>
+                      <div className="flex flex-col">
+                        <span>{clinic.address}</span>
+                        {"reference" in clinic && (
+                          <span className="text-xs text-muted-foreground/80 mt-1 italic">
+                            {clinic.reference as string}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-muted-foreground">
                       <Phone className="h-4 w-4 text-pami-turquoise shrink-0" />

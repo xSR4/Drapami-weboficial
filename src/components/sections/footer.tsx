@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,7 +32,10 @@ export function Footer() {
                 <div className="bg-pami-pink/10 p-3 rounded-full">
                   <MapPin className="h-5 w-5 text-pami-pink" />
                 </div>
-                <span className="font-medium">San Juan de Lurigancho, Lima, Perú</span>
+                <div className="flex flex-col">
+                  <span className="font-medium">Calle el habito 866 - SJL</span>
+                  <span className="text-[10px] text-muted-foreground">Ref: Altura estación Santa Rosa</span>
+                </div>
               </div>
             </div>
           </div>
