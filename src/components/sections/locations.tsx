@@ -15,7 +15,7 @@ const clinics = [
   },
   {
     name: "Molar32 niños - Sede Chorrillos",
-    address: "Chorrillos, Lima (Dirección por confirmar)",
+    address: "Av. Guardia Peruana 431, Chorrillos",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-molar32-chorrillos"
