@@ -4,24 +4,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MessageCircle } from "lucide-react";
 
 export function Navbar() {
-  const logo = PlaceHolderImages.find(img => img.id === "logo-pami");
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-pami-blue/10">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src={logo?.imageUrl || ""}
-            alt="Dra. Pami Logo"
-            width={128}
-            height={56}
-            className="h-14 w-auto object-contain"
-            priority
-          />
+          <div className="relative h-14 w-32">
+            <Image
+              src="/LOGO.jpg"
+              alt="Dra. Pami Logo"
+              width={128}
+              height={56}
+              className="h-14 w-auto object-contain"
+              priority
+              unoptimized
+            />
+          </div>
         </Link>
         <div className="hidden md:flex items-center gap-8 font-semibold text-sm text-[#2D3142]">
           <Link href="#" className="hover:text-pami-blue transition-colors">Inicio</Link>

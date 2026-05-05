@@ -4,11 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Footer() {
-  const logo = PlaceHolderImages.find(img => img.id === "logo-pami");
-
   return (
     <footer className="bg-white pt-20">
       <div className="container mx-auto px-6 pb-12">
@@ -55,13 +52,16 @@ export function Footer() {
         </div>
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
-          <Image
-            src={logo?.imageUrl || ""}
-            alt="Dra. Pami Logo"
-            width={144}
-            height={64}
-            className="h-16 w-auto object-contain"
-          />
+          <div className="relative h-16 w-36">
+            <Image
+              src="/LOGO.jpg"
+              alt="Dra. Pami Logo"
+              width={144}
+              height={64}
+              className="h-16 w-auto object-contain"
+              unoptimized
+            />
+          </div>
           <div className="flex gap-6">
             <a href="#" className="text-muted-foreground hover:text-pami-blue transition-colors" aria-label="Instagram">
               <Instagram className="h-6 w-6" />
