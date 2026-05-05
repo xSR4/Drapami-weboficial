@@ -29,7 +29,7 @@ const clinics = [
   },
   {
     name: "Clínica Karisma - Sede San Martín",
-    address: "San Martín de Porres, Lima (Dirección por confirmar)",
+    address: "Av. Alfredo Mendiola 290 - San Martin de Porres",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-karisma-sm"
