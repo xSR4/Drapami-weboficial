@@ -43,7 +43,7 @@ const clinics = [
   },
   {
     name: "Odontosonrisas - Sede Chorrillos",
-    address: "Chorrillos, Lima (Dirección por confirmar)",
+    address: "Av. Alameda los Cedros 275 Urb. Cedros de Villa - Chorrillos",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-odontosonrisas"
