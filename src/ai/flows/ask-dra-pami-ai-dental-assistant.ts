@@ -1,10 +1,9 @@
+
 'use server';
 /**
- * @fileOverview An AI assistant that provides expert-like advice on dental hygiene and treatments.
+ * @fileOverview An AI assistant specialized in pediatric dentistry.
  *
- * - askDraPamiAIDentalAssistant - A function that handles patient queries for dental advice.
- * - AskDraPamiAIDentalAssistantInput - The input type for the askDraPamiAIDentalAssistant function.
- * - AskDraPamiAIDentalAssistantOutput - The return type for the askDraPamiAIDentalAssistant function.
+ * - askDraPamiAIDentalAssistant - A function that handles parent queries for pediatric dental advice.
  */
 
 import {ai} from '@/ai/genkit';
@@ -12,14 +11,14 @@ import {z} from 'genkit';
 
 const AskDraPamiAIDentalAssistantInputSchema = z
   .string()
-  .describe('The patient\u0027s question regarding dental hygiene or specific treatments.');
+  .describe('The parent\'s question regarding pediatric dental hygiene, baby teeth, or child treatments.');
 export type AskDraPamiAIDentalAssistantInput = z.infer<
   typeof AskDraPamiAIDentalAssistantInputSchema
 >;
 
 const AskDraPamiAIDentalAssistantOutputSchema = z
   .string()
-  .describe('The expert-like advice provided by Dra. Pami\u0027s virtual assistant.');
+  .describe('The expert pediatric dental advice provided by Dra. Pami\'s virtual assistant.');
 export type AskDraPamiAIDentalAssistantOutput = z.infer<
   typeof AskDraPamiAIDentalAssistantOutputSchema
 >;
@@ -34,9 +33,13 @@ const askDraPamiPrompt = ai.definePrompt({
   name: 'askDraPamiAIDentalAssistantPrompt',
   input: {schema: AskDraPamiAIDentalAssistantInputSchema},
   output: {schema: AskDraPamiAIDentalAssistantOutputSchema},
-  prompt: `You are Dra. Pami's virtual assistant, an expert in UX/UI design and web development, specifically tasked with providing professional, close, empathetic, and expert advice on dental hygiene and specific treatments.
+  prompt: `You are Dra. Pami's virtual assistant, an expert in Pediatric Dentistry (Odontopediatría). Your goal is to provide professional, warm, empathetic, and expert advice to parents about their children's dental health.
 
-Respond to the patient's question with comprehensive, clear, and reassuring guidance. Your tone should be professional yet warm and understanding.
+Guidelines:
+- Tone: Professional, reassuring, warm, and child-centered.
+- Audience: Parents worried about their children's teeth (from babies to teens).
+- Focus: Baby teeth (dientes de leche), first visit, prevention, brushing techniques for kids, and trauma advice.
+- Language: Spanish.
 
 Patient's Question: {{{.}}}
 

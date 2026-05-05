@@ -8,24 +8,24 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const tips = [
   {
-    title: "Técnicas de cepillado correctas",
-    category: "Educación",
+    title: "Cuándo debe ser la primera visita",
+    category: "Bebés",
+    image: "blog-first-visit"
+  },
+  {
+    title: "El cepillado divertido en casa",
+    category: "Higiene",
     image: "blog-brushing"
   },
   {
-    title: "Cuidado de brackets y ortodoncia",
-    category: "Ortodoncia",
-    image: "blog-brackets"
+    title: "¿Qué es la ortodoncia preventiva?",
+    category: "Desarrollo",
+    image: "blog-ortho-kids"
   },
   {
-    title: "Secretos de un blanqueamiento duradero",
-    category: "Estética",
-    image: "blog-whitening"
-  },
-  {
-    title: "Cómo prevenir la sensibilidad dental",
-    category: "Prevención",
-    image: "blog-brushing"
+    title: "Premios y stickers: Refuerzo positivo",
+    category: "Psicología",
+    image: "blog-first-visit"
   }
 ];
 
@@ -35,8 +35,8 @@ export function Education() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2">Tips para tu Sonrisa</h2>
-            <p className="text-muted-foreground">Consejos prácticos para mantener tu boca sana día a día.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[#2D3142]">Guía para Padres</h2>
+            <p className="text-muted-foreground">Todo lo que necesitas saber sobre la boquita de tus hijos.</p>
           </div>
         </div>
 
@@ -46,9 +46,9 @@ export function Education() {
               const imgData = PlaceHolderImages.find(img => img.id === tip.image);
               return (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="border-none shadow-none rounded-3xl overflow-hidden group cursor-pointer">
+                  <Card className="border-none shadow-none rounded-[2rem] overflow-hidden group cursor-pointer">
                     <CardContent className="p-0">
-                      <div className="relative h-64 w-full mb-4 overflow-hidden rounded-3xl">
+                      <div className="relative h-64 w-full mb-4 overflow-hidden rounded-[2rem]">
                         <Image
                           src={imgData?.imageUrl || ""}
                           alt={tip.title}
@@ -56,7 +56,7 @@ export function Education() {
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute top-4 left-4">
-                          <span className="bg-white/90 backdrop-blur-sm text-pami-blue text-xs font-bold px-3 py-1 rounded-full">
+                          <span className="bg-white/90 backdrop-blur-sm text-pami-pink text-xs font-bold px-3 py-1 rounded-full">
                             {tip.category}
                           </span>
                         </div>
@@ -64,7 +64,7 @@ export function Education() {
                       <h3 className="text-xl font-bold group-hover:text-pami-blue transition-colors">
                         {tip.title}
                       </h3>
-                      <p className="text-sm text-pami-turquoise mt-2 font-medium">Leer más →</p>
+                      <p className="text-sm text-pami-turquoise mt-2 font-medium">Leer artículo →</p>
                     </CardContent>
                   </Card>
                 </CarouselItem>

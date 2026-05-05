@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Sparkles } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Hero() {
@@ -11,45 +11,42 @@ export function Hero() {
     <section className="relative overflow-hidden pt-20 pb-12 md:pt-32 md:pb-24 bg-white">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-12 md:mb-0 z-10">
-          <h1 className="text-4xl md:text-6xl font-headline font-bold leading-tight mb-6">
-            Una <span className="text-pami-blue">sonrisa</span> que refleja tu mejor versión
+          <div className="inline-flex items-center gap-2 bg-pami-pink/10 text-pami-pink px-4 py-2 rounded-full mb-6 font-bold text-sm">
+            <Sparkles className="h-4 w-4" />
+            Especialista en Odontopediatría
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-[#2D3142]">
+            Donde cada <span className="text-pami-blue">sonrisa</span> infantil es una aventura
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-            Combinamos tecnología de vanguardia con un trato cálido y humano. 
-            Transformamos vidas a través de la salud dental experta.
+            Convertimos la visita al dentista en una experiencia divertida y sin miedos. 
+            Cuidamos la salud bucal de tus hijos con paciencia, juegos y mucho amor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2">
+            <Button size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg">
               <MessageCircle className="h-5 w-5" />
-              Agendar Cita vía WhatsApp
+              Agendar Primera Consulta
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10">
-              Nuestros Tratamientos
+            <Button size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
+              Ver Tratamientos
             </Button>
           </div>
         </div>
         <div className="md:w-1/2 relative">
-          <div className="absolute -top-20 -right-20 w-96 h-96 bg-pami-turquoise/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="relative z-10 rounded-3xl overflow-hidden soft-shadow">
+          <div className="absolute -top-20 -right-20 w-96 h-96 bg-pami-pink/10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-pami-turquoise/10 rounded-full blur-3xl"></div>
+          <div className="relative z-10 rounded-[3rem] overflow-hidden soft-shadow border-8 border-white">
             <Image
               src={heroImage?.imageUrl || ""}
-              alt="Dra. Pami sonriendo profesionalmente"
+              alt="Dra. Pami con paciente infantil"
               width={800}
               height={1000}
               className="object-cover w-full h-auto"
-              data-ai-hint="dentist doctor smiling"
+              data-ai-hint="pediatric dentist child"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 hidden md:block border border-pami-bgSoft">
-            <div className="flex items-center gap-4">
-              <div className="bg-pami-pink/20 p-3 rounded-xl">
-                <span className="text-pami-pink font-bold text-2xl">+10</span>
-              </div>
-              <div>
-                <p className="font-bold text-sm">Años de</p>
-                <p className="text-xs text-muted-foreground">Experiencia Dental</p>
-              </div>
-            </div>
+          <div className="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 animate-bounce-slow border border-pami-bgSoft">
+            <span className="text-2xl">🦷✨</span>
           </div>
         </div>
       </div>
