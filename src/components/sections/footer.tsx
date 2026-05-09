@@ -17,7 +17,7 @@ import {
   FormMessage 
 } from "@/components/ui/form";
 import { Mail, MapPin, Phone, Loader2, CheckCircle2, Instagram, Facebook } from "lucide-react";
-import { useFirestore, useUser, setDocumentNonBlocking, initiateAnonymousSignIn } from "@/firebase";
+import { useFirestore, useAuth, setDocumentNonBlocking, initiateAnonymousSignIn, useUser } from "@/firebase";
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/app/actions/contact";
@@ -33,7 +33,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function Footer() {
-  const { firestore, auth } = useFirestore();
+  const { firestore } = useFirestore();
+  const auth = useAuth();
   const { user, isUserLoading } = useUser();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -146,7 +147,7 @@ export function Footer() {
                 <div className="bg-pami-turquoise/10 p-3 rounded-full">
                   <Mail className="h-5 w-5 text-pami-turquoise" />
                 </div>
-                <span className="font-medium">r.alva@pucp.edu.pe</span>
+                <span className="font-medium">drapamiconsultorios@gmail.com</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="bg-pami-pink/10 p-3 rounded-full">
