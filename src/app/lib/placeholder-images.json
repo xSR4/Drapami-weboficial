@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -9,39 +8,27 @@
     },
     {
       "id": "hero-dra-pami",
-      "description": "Foto de portada de Dra. Pami",
-      "imageUrl": "/foto portada.jpg",
-      "imageHint": "pediatric dentist hero"
+      "description": "Female pediatric dentist laughing with a child patient in a colorful office",
+      "imageUrl": "https://picsum.photos/seed/pami-pediatric-hero/800/1000",
+      "imageHint": "pediatric dentist child"
     },
     {
       "id": "about-dra-pami",
-      "description": "Dra. Pami enseñando a un niño",
-      "imageUrl": "/foto perfilpami.jpg",
-      "imageHint": "pediatric dentist portrait"
+      "description": "Dra. Pami showing a giant toothbrush to a curious child",
+      "imageUrl": "https://picsum.photos/seed/pami-pediatric-about/600/400",
+      "imageHint": "child dentist fun"
     },
     {
       "id": "clinic-1",
-      "description": "Recepción de la clínica",
-      "imageUrl": "https://picsum.photos/seed/clinic-pami-1/600/400",
-      "imageHint": "kids dental clinic"
+      "description": "Foto real del consultorio principal de Dra. Pami",
+      "imageUrl": "/consultorio.jpg",
+      "imageHint": "main dental office"
     },
     {
       "id": "clinic-2",
-      "description": "Consultorio moderno",
+      "description": "Modern dental room with a screen for cartoons",
       "imageUrl": "https://picsum.photos/seed/clinic-pami-2/600/400",
       "imageHint": "pediatric dental chair"
-    },
-    {
-      "id": "clinic-molar32-chorrillos",
-      "description": "Sede Molar32 Chorrillos",
-      "imageUrl": "/logo molar.jpg",
-      "imageHint": "modern dental clinic"
-    },
-    {
-      "id": "clinic-molar32-barranco",
-      "description": "Sede Molar32 Barranco",
-      "imageUrl": "/logo molar.jpg",
-      "imageHint": "dental office interior"
     },
     {
       "id": "clinic-karisma-sm",
@@ -56,52 +43,28 @@
       "imageHint": "dental clinic reception"
     },
     {
-      "id": "clinic-odontosonrisas",
-      "description": "Odontosonrisas Chorrillos",
-      "imageUrl": "/odontosonrisas logo.jpg",
-      "imageHint": "colorful dental clinic"
-    },
-    {
       "id": "blog-brushing",
-      "description": "Niño cepillándose los dientes",
+      "description": "Illustration of a child brushing teeth with a dinosaur timer",
       "imageUrl": "https://picsum.photos/seed/brushing-kids/400/300",
       "imageHint": "child brushing teeth"
     },
     {
       "id": "blog-first-visit",
-      "description": "Primera visita al dentista",
+      "description": "A happy child receiving a sticker after their first visit",
       "imageUrl": "https://picsum.photos/seed/first-visit/400/300",
       "imageHint": "child dentist sticker"
     },
     {
       "id": "blog-ortho-kids",
-      "description": "Ortodoncia infantil",
+      "description": "Early orthodontic assessment for a young child",
       "imageUrl": "https://picsum.photos/seed/ortho-kids/400/300",
       "imageHint": "kids orthodontics"
     },
     {
       "id": "cert-1",
-      "description": "Diploma profesional",
+      "description": "Close up of a professional diploma in pediatric dentistry",
       "imageUrl": "https://picsum.photos/seed/cert-1/400/300",
       "imageHint": "dentistry diploma"
-    },
-    {
-      "id": "sedacion-midazolam",
-      "description": "Niño relajado antes del tratamiento",
-      "imageUrl": "https://picsum.photos/seed/sedation-kids-1/600/400",
-      "imageHint": "relaxed child dentist"
-    },
-    {
-      "id": "sedacion-nitroso",
-      "description": "Uso de máscara de óxido nitroso",
-      "imageUrl": "https://picsum.photos/seed/sedation-kids-2/600/400",
-      "imageHint": "laughing gas mask"
-    },
-    {
-      "id": "sedacion-profunda",
-      "description": "Equipo de anestesiología asistiendo",
-      "imageUrl": "https://picsum.photos/seed/sedation-kids-3/600/400",
-      "imageHint": "anesthesiologist pediatric dental"
     }
   ]
 }
