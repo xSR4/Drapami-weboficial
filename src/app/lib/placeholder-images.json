@@ -62,10 +62,64 @@
       "imageHint": "dentistry course certificate"
     },
     {
-      "id": "cert-1",
-      "description": "Close up of a professional diploma in pediatric dentistry",
-      "imageUrl": "https://picsum.photos/seed/cert-1/400/300",
-      "imageHint": "dentistry diploma"
+      "id": "cert-ortopedia",
+      "description": "Certificado Ortopedia Maxilar",
+      "imageUrl": "/Ortopediamaxilar.jpg",
+      "imageHint": "maxillary orthopedics certificate"
+    },
+    {
+      "id": "cert-cirujia",
+      "description": "Certificado Cirugía Oral",
+      "imageUrl": "/Cirujiaoral.jpg",
+      "imageHint": "oral surgery certificate"
+    },
+    {
+      "id": "cert-anquiloglosia-v2",
+      "description": "Certificado Anquiloglosia",
+      "imageUrl": "/Anquiloglosia.jpg",
+      "imageHint": "ankyloglossia certificate"
+    },
+    {
+      "id": "cert-laser",
+      "description": "Certificado Láser",
+      "imageUrl": "/Laser.jpg",
+      "imageHint": "laser dentistry certificate"
+    },
+    {
+      "id": "cert-sedacion",
+      "description": "Certificado Sedación",
+      "imageUrl": "/Sedacion.jpg",
+      "imageHint": "sedation certificate"
+    },
+    {
+      "id": "cert-sedacion2",
+      "description": "Certificado Sedación 2",
+      "imageUrl": "/Sedacion2.jpg",
+      "imageHint": "sedation training 2"
+    },
+    {
+      "id": "cert-sedacion3",
+      "description": "Certificado Sedación 3",
+      "imageUrl": "/Sedacion3.jpg",
+      "imageHint": "sedation training 3"
+    },
+    {
+      "id": "cert-abordaje",
+      "description": "Certificado Abordaje Clínico",
+      "imageUrl": "/Abordajecleanico.jpg",
+      "imageHint": "clinical approach certificate"
+    },
+    {
+      "id": "cert-resina",
+      "description": "Certificado Resina Infiltrante",
+      "imageUrl": "/Resinainfiltrante.jpg",
+      "imageHint": "infiltrating resin certificate"
+    },
+    {
+      "id": "cert-diplomado",
+      "description": "Certificado Diplomado",
+      "imageUrl": "/Diplomado.jpg",
+      "imageHint": "pediatric dentistry diploma"
     }
   ]
 }

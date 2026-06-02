@@ -17,39 +17,81 @@ const certifications = [
     image: "cert-mandic"
   },
   {
+    title: "Diplomado en Odontología Pediátrica",
+    institution: "Institución Educativa",
+    year: "2024",
+    type: "Diplomado",
+    image: "cert-diplomado"
+  },
+  {
+    title: "Ortopedia Maxilar",
+    institution: "Especialización Avanzada",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-ortopedia"
+  },
+  {
+    title: "Cirugía Oral en Niños",
+    institution: "Curso de Especialización",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-cirujia"
+  },
+  {
     title: "Manejo de Anquiloglosia",
     institution: "ECOPAL",
-    year: "2024",
+    year: "2023",
     type: "Capacitación",
     image: "cert-ecopal"
   },
   {
-    title: "Filosofía Magui",
-    institution: "Magui",
+    title: "Abordaje Clínico Odontopediátrico",
+    institution: "Formación Profesional",
+    year: "2022",
+    type: "Capacitación",
+    image: "cert-abordaje"
+  },
+  {
+    title: "Láser en Odontopediatría",
+    institution: "Certificación Técnica",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-laser"
+  },
+  {
+    title: "Sedación y Manejo del Paciente",
+    institution: "Curso Avanzado",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-sedacion"
+  },
+  {
+    title: "Diplomado en Sedación Consciente",
+    institution: "Capacitación Superior",
+    year: "2023",
+    type: "Diplomado",
+    image: "cert-sedacion2"
+  },
+  {
+    title: "Técnicas de Sedación Nivel III",
+    institution: "Centro de Especialización",
     year: "2024",
     type: "Capacitación",
-    image: "cert-magui"
+    image: "cert-sedacion3"
   },
   {
-    title: "Curso Avanzado de Manejo de Conducta",
-    institution: "Sociedad Argentina de Odontopediatría",
-    year: "2020",
-    type: "Capacitación",
-    image: "cert-1"
-  },
-  {
-    title: "Diplomado en Ortodoncia Interceptiva",
-    institution: "IDAP",
-    year: "2021",
-    type: "Diplomado",
-    image: "cert-1"
-  },
-  {
-    title: "Actualización en Estética Infantil",
-    institution: "Círculo Odontológico",
+    title: "Uso de Resina Infiltrante",
+    institution: "Certificación Estética",
     year: "2023",
-    type: "Certificación",
-    image: "cert-1"
+    type: "Capacitación",
+    image: "cert-resina"
+  },
+  {
+    title: "Filosofía Magui",
+    institution: "Magui",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-magui"
   }
 ];
 
@@ -70,12 +112,12 @@ export function Certifications() {
               const isLocal = imageUrl.startsWith('/');
               
               return (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-all group overflow-hidden h-full">
                     {/* Image with Zoom capability */}
                     <Dialog>
                       <DialogTrigger asChild>
-                        <div className="relative h-48 w-full overflow-hidden cursor-zoom-in">
+                        <div className="relative h-64 w-full overflow-hidden cursor-zoom-in">
                           <Image
                             src={imageUrl}
                             alt={cert.title}
@@ -107,7 +149,7 @@ export function Certifications() {
                     </Dialog>
 
                     <CardContent className="p-6">
-                      <div className="flex items-start gap-4 mb-4">
+                      <div className="flex items-start gap-3 mb-4">
                         <div className="bg-pami-blue/10 w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-pami-blue group-hover:text-white transition-colors">
                           <Award className="h-5 w-5" />
                         </div>
