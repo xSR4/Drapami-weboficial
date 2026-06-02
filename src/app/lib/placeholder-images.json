@@ -122,24 +122,6 @@
       "imageHint": "pediatric dentistry diploma"
     },
     {
-      "id": "sedacion-midazolam",
-      "description": "Representación de sedación consciente",
-      "imageUrl": "https://picsum.photos/seed/sed1/800/600",
-      "imageHint": "pediatric sedation"
-    },
-    {
-      "id": "sedacion-nitroso",
-      "description": "Uso de óxido nitroso en niños",
-      "imageUrl": "https://picsum.photos/seed/sed2/800/600",
-      "imageHint": "nitrous oxide"
-    },
-    {
-      "id": "sedacion-profunda",
-      "description": "Sedación hospitalaria profesional",
-      "imageUrl": "https://picsum.photos/seed/sed3/800/600",
-      "imageHint": "dental anesthesia"
-    },
-    {
       "id": "tr-consulta",
       "description": "Consulta Integral",
       "imageUrl": "/consulta.png",
@@ -198,6 +180,36 @@
       "description": "Frenectomía",
       "imageUrl": "/frenectomia.png",
       "imageHint": "frenectomy"
+    },
+    {
+      "id": "tr-pulpectomia",
+      "description": "Pulpectomía",
+      "imageUrl": "/pulpectomia.png",
+      "imageHint": "pulpectomy"
+    },
+    {
+      "id": "tr-radiografia",
+      "description": "Radiografía",
+      "imageUrl": "/radiografia.png",
+      "imageHint": "dental x-ray"
+    },
+    {
+      "id": "tr-profilaxis",
+      "description": "Profilaxis y Flúor",
+      "imageUrl": "/profilaxisyfluor.png",
+      "imageHint": "dental prophylaxis"
+    },
+    {
+      "id": "tr-perno-corona",
+      "description": "Perno y Corona",
+      "imageUrl": "/pernoycorona.png",
+      "imageHint": "dental crown"
+    },
+    {
+      "id": "tr-evaluacion-ortopedia",
+      "description": "Evaluación Ortopedia",
+      "imageUrl": "/evaluacionortopedia.png",
+      "imageHint": "orthopedic evaluation"
     }
   ]
 }

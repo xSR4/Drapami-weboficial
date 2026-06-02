@@ -62,27 +62,27 @@ const procedimientos = [
   { 
     nombre: "Pulpectomía", 
     descripcion: "Tratamiento de nervio para salvar muelitas con infecciones profundas, evitando su pérdida prematura.",
-    imagenId: "about-dra-pami"
+    imagenId: "tr-pulpectomia"
   },
   { 
     nombre: "Radiografía Periapical", 
     descripcion: "Imagen detallada de la raíz del diente para un diagnóstico preciso de lo que no se ve a simple vista.",
-    imagenId: "about-dra-pami"
+    imagenId: "tr-radiografia"
   },
   { 
     nombre: "Profilaxis + Barniz de Flúor", 
     descripcion: "Limpieza profesional profunda seguida de una aplicación de flúor de alta concentración para fortalecer el esmalte.",
-    imagenId: "about-dra-pami"
+    imagenId: "tr-profilaxis"
   },
   { 
     nombre: "Perno + Corona", 
     descripcion: "Refuerzo interno y funda protectora para reconstruir dientes con gran pérdida de tejido dental.",
-    imagenId: "about-dra-pami"
+    imagenId: "tr-perno-corona"
   },
   { 
     nombre: "Evaluación de Ortopedia", 
     descripcion: "Estudio del crecimiento de los huesos de la cara para detectar y corregir problemas de mordida a temprana edad.",
-    imagenId: "about-dra-pami"
+    imagenId: "tr-evaluacion-ortopedia"
   },
 ];
 
