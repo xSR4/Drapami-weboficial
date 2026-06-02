@@ -210,6 +210,24 @@
       "description": "Evaluación Ortopedia",
       "imageUrl": "/evaluacionortopedia.png",
       "imageHint": "orthopedic evaluation"
+    },
+    {
+      "id": "sed-midazolam",
+      "description": "Imagen descriptiva de sedación con Midazolam",
+      "imageUrl": "/midazolam.png",
+      "imageHint": "midazolam sedation"
+    },
+    {
+      "id": "sed-nitroso",
+      "description": "Imagen descriptiva de sedación con Óxido Nitroso",
+      "imageUrl": "/oxidonitroso.png",
+      "imageHint": "nitrous oxide sedation"
+    },
+    {
+      "id": "sed-profunda",
+      "description": "Imagen descriptiva de sedación profunda",
+      "imageUrl": "/profunda.png",
+      "imageHint": "deep sedation"
     }
   ]
 }

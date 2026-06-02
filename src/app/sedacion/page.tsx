@@ -9,7 +9,6 @@ import Link from "next/link";
 const tiposSedacion = [
   {
     titulo: "Sedación con Midazolam",
-    precio: "250.00",
     descripcion: "Es una sedación consciente administrada por vía oral o nasal. El niño permanece despierto pero en un estado de relajación profunda y tranquilidad.",
     procedimiento: "Toda sedación debe ir acompañada de una Hoja de interconsulta. Necesito el nombre completo del paciente para enviarle el formato PDF (sin costo), y el Pediatra debe responder en la hoja o receta con el certificado médico 'NIÑO SANO' o 'APTO PARA SEDACIÓN'.",
     duracion: "Se pueden realizar varios procedimientos en un rango máximo de 1 hora y 15 minutos.",
@@ -21,12 +20,11 @@ const tiposSedacion = [
       "Asistir a su cita a la hora indicada y sano.",
       "La noche previa dormir tarde y consumir cena ligera (no menestras ni carnes)."
     ],
-    imagen: "sedacion-midazolam",
+    imagen: "sed-midazolam",
     tag: "Consciente"
   },
   {
     titulo: "Sedación con Óxido Nitroso",
-    precio: "450.00",
     descripcion: "Es un procedimiento médico en el que el paciente inhala la mezcla de óxido nitroso y oxígeno a través de una mascarilla nasal. El gas hilarante tiene un efecto calmante y ansiolítico, por lo tanto asegura un tratamiento dental con menor percepción del dolor.",
     procedimiento: "Se inhala a través de una máscara nasal. Es extremadamente seguro y sus efectos desaparecen minutos después de retirar la máscara.",
     duracion: "Se pueden realizar varios procedimientos en un rango de 1 hora.",
@@ -37,15 +35,14 @@ const tiposSedacion = [
       "Traer una manta.",
       "Llevar una merienda ligera para que coma después de la sedación."
     ],
-    imagen: "sedacion-nitroso",
+    imagen: "sed-nitroso",
     tag: "Inhalada"
   },
   {
     titulo: "Sedación Profunda",
     descripcion: "Realizada por un médico anestesiólogo especializado. El niño duerme durante todo el procedimiento. Es la opción ideal para casos complejos o pacientes con necesidades especiales.",
     beneficios: ["Cero estrés para el niño", "Tratamiento completo en una cita", "Monitoreo constante profesional"],
-    imagen: "sedacion-profunda",
-    precio: "2000.00",
+    imagen: "sed-profunda",
     tag: "Hospitalaria / Consultorio"
   }
 ];
@@ -67,7 +64,7 @@ export default function SedacionPage() {
         <div className="grid grid-cols-1 gap-12 max-w-5xl mx-auto mb-20">
           {tiposSedacion.map((tipo, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tipo.imagen);
-            const imageUrl = imgData?.imageUrl || "https://picsum.photos/seed/pami-sed/800/600";
+            const imageUrl = imgData?.imageUrl || "/foto perfilpami.jpg";
             
             return (
               <Card key={index} className="border-none soft-shadow rounded-[3rem] overflow-hidden bg-white">
@@ -78,7 +75,7 @@ export default function SedacionPage() {
                         src={imageUrl}
                         alt={tipo.titulo}
                         fill
-                        className="object-cover"
+                        className="object-contain p-4 bg-pami-bgSoft/10"
                         data-ai-hint={imgData?.imageHint || "pediatric sedation"}
                         unoptimized={imageUrl.startsWith("/")}
                       />
@@ -86,12 +83,6 @@ export default function SedacionPage() {
                     <div className="md:w-1/2 p-8 md:p-10">
                       <div className="flex justify-between items-start mb-4">
                         <span className="text-pami-blue font-bold text-xs uppercase tracking-widest">{tipo.tag}</span>
-                        {tipo.precio && (
-                          <div className="text-right">
-                            <span className="text-2xl font-bold text-pami-blue block">S/ {tipo.precio}</span>
-                            <span className="text-[10px] text-muted-foreground font-medium">+ IGV</span>
-                          </div>
-                        )}
                       </div>
                       <h3 className="text-2xl font-bold text-[#2D3142] mb-4">{tipo.titulo}</h3>
                       <p className="text-muted-foreground mb-6 leading-relaxed">
