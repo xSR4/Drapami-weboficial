@@ -76,7 +76,7 @@
     {
       "id": "cert-anquiloglosia-v2",
       "description": "Certificado Anquiloglosia",
-      "imageUrl": "/Anquiloglosia.jpg",
+      "imageUrl": "/Anquilogosia.jpg",
       "imageHint": "ankyloglossia certificate"
     },
     {
@@ -106,7 +106,7 @@
     {
       "id": "cert-abordaje",
       "description": "Certificado Abordaje Clínico",
-      "imageUrl": "/Abordajecleanico.jpg",
+      "imageUrl": "/Abordajeclinico.jpg",
       "imageHint": "clinical approach certificate"
     },
     {
@@ -120,6 +120,24 @@
       "description": "Certificado Diplomado",
       "imageUrl": "/Diplomado.jpg",
       "imageHint": "pediatric dentistry diploma"
+    },
+    {
+      "id": "sedacion-midazolam",
+      "description": "Representación de sedación consciente",
+      "imageUrl": "https://picsum.photos/seed/sed1/800/600",
+      "imageHint": "pediatric sedation"
+    },
+    {
+      "id": "sedacion-nitroso",
+      "description": "Uso de óxido nitroso en niños",
+      "imageUrl": "https://picsum.photos/seed/sed2/800/600",
+      "imageHint": "nitrous oxide"
+    },
+    {
+      "id": "sedacion-profunda",
+      "description": "Sedación hospitalaria profesional",
+      "imageUrl": "https://picsum.photos/seed/sed3/800/600",
+      "imageHint": "dental anesthesia"
     }
   ]
 }

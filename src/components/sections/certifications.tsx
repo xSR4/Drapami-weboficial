@@ -19,14 +19,14 @@ const certifications = [
   {
     title: "Filosofía M.A.G.U.I",
     institution: "CEOP",
-    year: "2024",
+    year: "2026",
     type: "Capacitación",
     image: "cert-magui"
   },
   {
     title: "Manejo de Anquiloglosia",
     institution: "ECOPAL",
-    year: "2023",
+    year: "2026",
     type: "Capacitación",
     image: "cert-ecopal"
   },
@@ -40,7 +40,7 @@ const certifications = [
   {
     title: "Cirugía Oral en Niños",
     institution: "Curso de Especialización",
-    year: "2023",
+    year: "2024",
     type: "Capacitación",
     image: "cert-cirujia"
   },
@@ -59,15 +59,15 @@ const certifications = [
     image: "cert-sedacion"
   },
   {
-    title: "Sedación Consciente",
-    institution: "Capacitación Superior",
+    title: "Sedación Consciente con oxido nitroso",
+    institution: "Sedamedic",
     year: "2022",
     type: "Capacitación",
     image: "cert-sedacion2"
   },
   {
     title: "Habilitación de Sedación consciente",
-    institution: "Sedamedic",
+    institution: "CEGICAP",
     year: "2022",
     type: "Capacitación",
     image: "cert-sedacion3"
@@ -75,14 +75,14 @@ const certifications = [
   {
     title: "Uso de Resina Infiltrante",
     institution: "RM dental",
-    year: "2023",
+    year: "2024",
     type: "Capacitación",
     image: "cert-resina"
   },
   {
     title: "Anquiloglosia Avanzada",
     institution: "Formación Especializada",
-    year: "2024",
+    year: "2025",
     type: "Capacitación",
     image: "cert-anquiloglosia-v2"
   },
@@ -95,7 +95,7 @@ const certifications = [
   },
   {
     title: "Diplomado en Odontología Pediátrica",
-    institution: "Institución Educativa",
+    institution: "Centro de Posgrado de Odontología",
     year: "2021",
     type: "Diplomado",
     image: "cert-diplomado"

@@ -67,18 +67,20 @@ export default function SedacionPage() {
         <div className="grid grid-cols-1 gap-12 max-w-5xl mx-auto mb-20">
           {tiposSedacion.map((tipo, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tipo.imagen);
+            const imageUrl = imgData?.imageUrl || "https://picsum.photos/seed/pami-sed/800/600";
+            
             return (
               <Card key={index} className="border-none soft-shadow rounded-[3rem] overflow-hidden bg-white">
                 <CardContent className="p-0">
                   <div className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
                     <div className="md:w-1/2 relative h-80 md:h-auto min-h-[400px]">
                       <Image
-                        src={imgData?.imageUrl || ""}
+                        src={imageUrl}
                         alt={tipo.titulo}
                         fill
                         className="object-cover"
-                        data-ai-hint={imgData?.imageHint}
-                        unoptimized
+                        data-ai-hint={imgData?.imageHint || "pediatric sedation"}
+                        unoptimized={imageUrl.startsWith("/")}
                       />
                     </div>
                     <div className="md:w-1/2 p-8 md:p-10">
