@@ -42,7 +42,7 @@ export function Hero() {
           <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-pami-turquoise/10 rounded-full blur-3xl"></div>
           <div className="relative z-10 rounded-[3rem] overflow-hidden soft-shadow border-8 border-white">
             <Image
-              src={heroImage?.imageUrl || ""}
+              src={heroImage?.imageUrl || "/foto portada.jpg"}
               alt="Dra. Pami - Portada"
               width={800}
               height={1000}

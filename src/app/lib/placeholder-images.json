@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -8,15 +9,15 @@
     },
     {
       "id": "hero-dra-pami",
-      "description": "Female pediatric dentist laughing with a child patient in a colorful office",
-      "imageUrl": "https://picsum.photos/seed/pami-pediatric-hero/800/1000",
-      "imageHint": "pediatric dentist child"
+      "description": "Foto de portada de Dra. Pami",
+      "imageUrl": "/foto portada.jpg",
+      "imageHint": "pediatric dentist hero"
     },
     {
       "id": "about-dra-pami",
-      "description": "Dra. Pami showing a giant toothbrush to a curious child",
-      "imageUrl": "https://picsum.photos/seed/pami-pediatric-about/600/400",
-      "imageHint": "child dentist fun"
+      "description": "Foto de perfil de Dra. Pami",
+      "imageUrl": "/foto perfilpami.jpg",
+      "imageHint": "pediatric dentist profile"
     },
     {
       "id": "clinic-1",

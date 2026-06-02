@@ -21,7 +21,7 @@ export function About() {
             <div className="relative">
               <div className="absolute inset-0 bg-pami-blue rounded-[3rem] -rotate-3 -z-10 opacity-10"></div>
               <Image
-                src={aboutImage?.imageUrl || ""}
+                src={aboutImage?.imageUrl || "/foto perfilpami.jpg"}
                 alt="Dra. Pami - Especialista en Odontopediatría"
                 width={600}
                 height={400}
