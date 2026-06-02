@@ -44,6 +44,12 @@
       "imageHint": "odontosonrisas logo"
     },
     {
+      "id": "cert-mandic",
+      "description": "Especialización en Odontopediatría - São Leopoldo Mandic",
+      "imageUrl": "/CERTIFICADO SAO LEOPOLDO.jpg",
+      "imageHint": "specialization certificate"
+    },
+    {
       "id": "cert-ecopal",
       "description": "Capacitación en Anquiloglosia - ECOPAL",
       "imageUrl": "/ECOPAL-ANQUILOGLOSIA.jpg",

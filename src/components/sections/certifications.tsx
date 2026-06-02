@@ -10,6 +10,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const certifications = [
   {
+    title: "Especialista en Odontopediatría",
+    institution: "Faculdade São Leopoldo Mandic - Brasil",
+    year: "2022",
+    type: "Postgrado",
+    image: "cert-mandic"
+  },
+  {
     title: "Manejo de Anquiloglosia",
     institution: "ECOPAL",
     year: "2024",
@@ -22,13 +29,6 @@ const certifications = [
     year: "2024",
     type: "Capacitación",
     image: "cert-magui"
-  },
-  {
-    title: "Especialista en Odontopediatría",
-    institution: "Faculdade São Leopoldo Mandic - Brasil",
-    year: "2022",
-    type: "Postgrado",
-    image: "cert-1"
   },
   {
     title: "Curso Avanzado de Manejo de Conducta",
