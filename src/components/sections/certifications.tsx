@@ -13,91 +13,91 @@ const certifications = [
     title: "Especialista en Odontopediatría",
     institution: "Faculdade São Leopoldo Mandic - Brasil",
     year: "2022",
-    type: "Postgrado",
+    type: "Postgrado Internacional",
     image: "cert-mandic"
   },
   {
-    title: "Filosofía M.A.G.U.I",
-    institution: "CEOP",
+    title: "Abordaje Clínico y Manejo de la Anquiloglosia",
+    institution: "ECOPAL - Educación Continua para América Latina",
     year: "2026",
-    type: "Capacitación",
-    image: "cert-magui"
-  },
-  {
-    title: "Manejo de Anquiloglosia",
-    institution: "ECOPAL",
-    year: "2026",
-    type: "Capacitación",
+    type: "Capacitación Avanzada",
     image: "cert-ecopal"
   },
   {
-    title: "Ortopedia Maxilar",
-    institution: "Especialización Avanzada",
+    title: "Filosofía M.A.G.U.I - Manejo Clínico",
+    institution: "CEOP - Centro de Estudios de Odontología Preventiva",
+    year: "2026",
+    type: "Certificación Especializada",
+    image: "cert-magui"
+  },
+  {
+    title: "Ortopedia Maxilar en la Dentición Infantil",
+    institution: "Formación de Especialización Avanzada",
     year: "2024",
-    type: "Capacitación",
+    type: "Certificación Clínica",
     image: "cert-ortopedia"
   },
   {
-    title: "Cirugía Oral en Niños",
-    institution: "Curso de Especialización",
+    title: "Cirugía Oral en Pacientes Pediátricos",
+    institution: "Curso de Especialización Técnica",
     year: "2024",
-    type: "Capacitación",
+    type: "Capacitación Quirúrgica",
     image: "cert-cirujia"
   },
   {
-    title: "Láser en Odontopediatría",
-    institution: "Certificación Técnica",
-    year: "2022",
-    type: "Capacitación",
-    image: "cert-laser"
-  },
-  {
-    title: "Sedación y Manejo del Paciente",
-    institution: "Curso Avanzado",
-    year: "2022",
-    type: "Capacitación",
-    image: "cert-sedacion"
-  },
-  {
-    title: "Sedación Consciente con oxido nitroso",
-    institution: "Sedamedic",
-    year: "2022",
-    type: "Capacitación",
-    image: "cert-sedacion2"
-  },
-  {
-    title: "Habilitación de Sedación consciente",
-    institution: "CEGICAP",
-    year: "2022",
-    type: "Capacitación",
-    image: "cert-sedacion3"
-  },
-  {
-    title: "Uso de Resina Infiltrante",
-    institution: "RM dental",
+    title: "Uso de Resina Infiltrante para Caries Incipientes",
+    institution: "RM Dental Training",
     year: "2024",
-    type: "Capacitación",
+    type: "Certificación en Innovación",
     image: "cert-resina"
   },
   {
-    title: "Anquiloglosia Avanzada",
-    institution: "Formación Especializada",
+    title: "Anquiloglosia: Diagnóstico y Abordaje Clínico",
+    institution: "Formación Especializada Avanzada",
     year: "2025",
-    type: "Capacitación",
+    type: "Capacitación Técnica",
     image: "cert-anquiloglosia-v2"
   },
   {
-    title: "Abordaje Clínico Odontopediátrico",
-    institution: "Formación Profesional",
+    title: "Sedación Consciente con Óxido Nitroso",
+    institution: "Sedamedic - Especialistas en Sedación",
     year: "2022",
-    type: "Capacitación",
+    type: "Certificación de Habilitación",
+    image: "cert-sedacion2"
+  },
+  {
+    title: "Habilitación en Sedación Consciente Inhalatoria",
+    institution: "CEGICAP - Capacitación Profesional",
+    year: "2022",
+    type: "Certificación Técnica",
+    image: "cert-sedacion3"
+  },
+  {
+    title: "Manejo Conductual y Sedación en Odontopediatría",
+    institution: "Curso de Capacitación Avanzada",
+    year: "2022",
+    type: "Certificación en Conducta",
+    image: "cert-sedacion"
+  },
+  {
+    title: "Tecnología Láser aplicada a la Odontopediatría",
+    institution: "Certificación en Odontología de Vanguardia",
+    year: "2022",
+    type: "Capacitación Tecnológica",
+    image: "cert-laser"
+  },
+  {
+    title: "Abordaje Clínico Integral Odontopediátrico",
+    institution: "Programa de Formación Profesional Continua",
+    year: "2022",
+    type: "Certificación Integral",
     image: "cert-abordaje"
   },
   {
     title: "Diplomado en Odontología Pediátrica",
-    institution: "Centro de Posgrado de Odontología",
+    institution: "Centro de Posgrado de Odontología - Lima",
     year: "2021",
-    type: "Diplomado",
+    type: "Diplomado Académico",
     image: "cert-diplomado"
   }
 ];
@@ -108,7 +108,7 @@ export function Certifications() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#2D3142]">Capacitaciones y Certificaciones</h2>
-          <p className="text-muted-foreground">Formación constante para brindar la mejor atención basada en evidencia científica.</p>
+          <p className="text-muted-foreground">Formación académica constante para brindar una atención basada en la excelencia y evidencia científica actual.</p>
         </div>
 
         <Carousel className="w-full max-w-6xl mx-auto">
@@ -120,7 +120,6 @@ export function Certifications() {
               return (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-all group overflow-hidden h-full">
-                    {/* Image with Zoom capability */}
                     <Dialog>
                       <DialogTrigger asChild>
                         <div className="relative h-64 w-full overflow-hidden cursor-zoom-in">
@@ -168,7 +167,7 @@ export function Certifications() {
                         <p className="text-sm text-muted-foreground mb-1 italic">{cert.institution}</p>
                         <div className="flex items-center gap-2 mt-3 text-xs font-medium text-pami-blue">
                           <GraduationCap className="h-3 w-3" />
-                          <span>{cert.year}</span>
+                          <span>Año: {cert.year}</span>
                         </div>
                       </div>
                     </CardContent>
