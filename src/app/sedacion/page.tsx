@@ -9,41 +9,49 @@ import Link from "next/link";
 const tiposSedacion = [
   {
     titulo: "Sedación con Midazolam",
-    descripcion: "Es una sedación consciente administrada por vía oral o nasal. El niño permanece despierto pero en un estado de relajación profunda y tranquilidad.",
-    procedimiento: "Toda sedación debe ir acompañada de una Hoja de interconsulta. Necesito el nombre completo del paciente para enviarle el formato PDF (sin costo), y el Pediatra debe responder en la hoja o receta con el certificado médico 'NIÑO SANO' o 'APTO PARA SEDACIÓN'.",
-    duracion: "Se pueden realizar varios procedimientos en un rango máximo de 1 hora y 15 minutos.",
+    tag: "Consciente",
+    descripcion: "Es una sedación consciente administrada por vía oral o nasal. El niño permanece despierto pero en un estado de relajación profunda, tranquilidad y cooperación durante el tratamiento.",
+    procedimiento: "Se administra una dosis calculada según el peso del niño. Es indispensable presentar una hoja de interconsulta firmada por su pediatra con el certificado de 'Niño Sano' o 'Apto para Sedación'.",
+    duracion: "Ideal para sesiones de tratamiento integral con una duración máxima de 1 hora y 15 minutos.",
     indicaciones: [
       "Venir en ayunas completo (ni agua, ni leche).",
-      "Traer un frugos en cajita (durazno, no pulp).",
-      "Traer una muda de ropa y un pañal.",
-      "Traer una sobre sábana.",
-      "Asistir a su cita a la hora indicada y sano.",
-      "La noche previa dormir tarde y consumir cena ligera (no menestras ni carnes)."
+      "Traer un frugos en cajita (durazno, no pulp) para después del tratamiento.",
+      "Traer una muda de ropa completa y un pañal.",
+      "Traer una sobre sábana o mantita.",
+      "Asistir puntualmente a la cita y asegurar que el niño esté sano (sin gripe o tos).",
+      "La noche previa dormir tarde y consumir una cena muy ligera."
     ],
-    imagen: "sed-midazolam",
-    tag: "Consciente"
+    imagen: "sed-midazolam"
   },
   {
     titulo: "Sedación con Óxido Nitroso",
-    descripcion: "Es un procedimiento médico en el que el paciente inhala la mezcla de óxido nitroso y oxígeno a través de una mascarilla nasal. El gas hilarante tiene un efecto calmante y ansiolítico, por lo tanto asegura un tratamiento dental con menor percepción del dolor.",
-    procedimiento: "Se inhala a través de una máscara nasal. Es extremadamente seguro y sus efectos desaparecen minutos después de retirar la máscara.",
-    duracion: "Se pueden realizar varios procedimientos en un rango de 1 hora.",
+    tag: "Inhalada",
+    descripcion: "Conocido como el 'gas de la risa', es un método muy seguro donde el niño inhala una mezcla de gases que reduce la ansiedad y la percepción del dolor sin dormir al paciente.",
+    procedimiento: "Se utiliza una mascarilla nasal con aromas agradables. El efecto es inmediato y, al retirar la mascarilla, los efectos desaparecen en pocos minutos, permitiendo volver a la rutina normal.",
+    duracion: "Permite realizar diversos procedimientos en sesiones de aproximadamente 1 hora.",
     indicaciones: [
-      "Llegar a la hora puntual de la cita.",
-      "Dependiendo del horario de la sedación, tiene que estar entre 8 a 4 horas sin ingerir comidas como carne o menestras, de preferencia comer comidas ligeras.",
-      "No beber ningún líquido antes de la sedación.",
-      "Traer una manta.",
-      "Llevar una merienda ligera para que coma después de la sedación."
+      "Llegar puntual a la hora indicada.",
+      "Ayuno de 4 a 8 horas dependiendo de la edad (evitar comidas pesadas como carnes o menestras).",
+      "No ingerir líquidos antes del procedimiento.",
+      "Traer una manta o colcha para confort del niño.",
+      "Traer una merienda ligera para consumir al finalizar la sesión."
     ],
-    imagen: "sed-nitroso",
-    tag: "Inhalada"
+    imagen: "sed-nitroso"
   },
   {
     titulo: "Sedación Profunda",
-    descripcion: "Realizada por un médico anestesiólogo especializado. El niño duerme durante todo el procedimiento. Es la opción ideal para casos complejos o pacientes con necesidades especiales.",
-    beneficios: ["Cero estrés para el niño", "Tratamiento completo en una cita", "Monitoreo constante profesional"],
-    imagen: "sed-profunda",
-    tag: "Hospitalaria / Consultorio"
+    tag: "Hospitalaria / Consultorio",
+    descripcion: "Es un estado de sueño profundo controlado donde el niño no siente dolor ni recuerda el procedimiento. Es la opción de elección para casos de alta complejidad o pacientes con necesidades especiales.",
+    procedimiento: "Realizada íntegramente por un Médico Anestesiólogo especializado que monitorea los signos vitales en todo momento, garantizando la máxima seguridad clínica durante toda la intervención.",
+    duracion: "Variable según el caso clínico; permite completar todo el tratamiento dental necesario en una sola sesión.",
+    indicaciones: [
+      "Evaluación pre-anestésica obligatoria con el especialista.",
+      "Ayuno estricto de sólidos y líquidos de 8 horas.",
+      "Asistir con ambos padres o tutores legales.",
+      "Informar detalladamente sobre cualquier medicación o condición médica previa.",
+      "Reposo relativo en casa durante el resto del día tras el procedimiento."
+    ],
+    imagen: "sed-profunda"
   }
 ];
 
@@ -57,7 +65,7 @@ export default function SedacionPage() {
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-6 mt-4">Tratamientos bajo Sedación</h1>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            La sedación nos permite brindar una atención de calidad sin traumas, asegurando que tu hijo tenga una experiencia positiva y segura.
+            La sedación nos permite brindar una atención de calidad sin traumas, asegurando que tu hijo tenga una experiencia positiva, segura y libre de ansiedad.
           </p>
         </div>
 
@@ -85,32 +93,28 @@ export default function SedacionPage() {
                         <span className="text-pami-blue font-bold text-xs uppercase tracking-widest">{tipo.tag}</span>
                       </div>
                       <h3 className="text-2xl font-bold text-[#2D3142] mb-4">{tipo.titulo}</h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-muted-foreground mb-6 leading-relaxed text-justify">
                         {tipo.descripcion}
                       </p>
 
-                      {tipo.procedimiento && (
-                        <div className="mb-6 bg-pami-blue/5 p-4 rounded-2xl">
+                      <div className="space-y-4">
+                        <div className="bg-pami-blue/5 p-4 rounded-2xl">
                           <div className="flex items-center gap-2 text-pami-blue font-bold mb-2 text-sm">
                             <FileText className="h-4 w-4" /> Procedimiento
                           </div>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{tipo.procedimiento}</p>
+                          <p className="text-xs text-muted-foreground leading-relaxed text-justify">{tipo.procedimiento}</p>
                         </div>
-                      )}
 
-                      {tipo.duracion && (
-                        <div className="mb-6 bg-pami-turquoise/5 p-4 rounded-2xl">
+                        <div className="bg-pami-turquoise/5 p-4 rounded-2xl">
                           <div className="flex items-center gap-2 text-pami-turquoise font-bold mb-2 text-sm">
-                            <Clock className="h-4 w-4" /> Duración
+                            <Clock className="h-4 w-4" /> Duración Estimada
                           </div>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{tipo.duracion}</p>
+                          <p className="text-xs text-muted-foreground leading-relaxed text-justify">{tipo.duracion}</p>
                         </div>
-                      )}
 
-                      {tipo.indicaciones && (
                         <div className="bg-pami-pink/5 p-4 rounded-2xl">
                           <div className="flex items-center gap-2 text-pami-pink font-bold mb-2 text-sm">
-                            <ListChecks className="h-4 w-4" /> Indicaciones Importantes
+                            <ListChecks className="h-4 w-4" /> Indicaciones Principales
                           </div>
                           <ul className="space-y-2">
                             {tipo.indicaciones.map((ind, i) => (
@@ -121,18 +125,7 @@ export default function SedacionPage() {
                             ))}
                           </ul>
                         </div>
-                      )}
-
-                      {tipo.beneficios && (
-                        <ul className="space-y-3">
-                          {tipo.beneficios.map((ben, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm font-medium text-[#4A4E69]">
-                              <ShieldCheck className="h-5 w-5 text-pami-turquoise" />
-                              {ben}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </CardContent>
