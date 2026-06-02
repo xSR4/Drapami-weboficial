@@ -2,9 +2,10 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, CheckCircle2, Info } from "lucide-react";
+import { MessageCircle, CheckCircle2, Info, ZoomIn } from "lucide-react";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const procedimientos = [
   { 
@@ -102,23 +103,48 @@ export default function TratamientosPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
           {procedimientos.map((proc, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === proc.imagenId);
+            const imageUrl = imgData?.imageUrl || "/foto perfilpami.jpg";
+            
             return (
               <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden transition-all hover:scale-[1.02] bg-white flex flex-col ${proc.destaque ? 'ring-2 ring-pami-blue' : ''}`}>
-                <div className="relative h-64 w-full shrink-0">
-                  <Image
-                    src={imgData?.imageUrl || "/foto perfilpami.jpg"}
-                    alt={`Dra. Pami - ${proc.nombre}`}
-                    fill
-                    className="object-contain p-4"
-                    data-ai-hint={imgData?.imageHint || "pediatric dentistry"}
-                    unoptimized={imgData?.imageUrl.startsWith('/')}
-                  />
-                  {proc.destaque && (
-                    <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                      Recomendado
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="relative h-64 w-full shrink-0 group cursor-zoom-in overflow-hidden">
+                      <Image
+                        src={imageUrl}
+                        alt={`Dra. Pami - ${proc.nombre}`}
+                        fill
+                        className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                        data-ai-hint={imgData?.imageHint || "pediatric dentistry"}
+                        unoptimized={imageUrl.startsWith('/')}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                        <ZoomIn className="text-pami-blue opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8" />
+                      </div>
+                      {proc.destaque && (
+                        <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                          Recomendado
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0 bg-white/95 backdrop-blur-sm border-none overflow-hidden rounded-3xl">
+                    <div className="relative w-full h-[70vh] p-8">
+                      <Image
+                        src={imageUrl}
+                        alt={proc.nombre}
+                        fill
+                        className="object-contain p-4"
+                        unoptimized={imageUrl.startsWith('/')}
+                      />
+                    </div>
+                    <div className="bg-white p-6 text-center border-t border-pami-blue/10">
+                      <h3 className="text-2xl font-bold text-[#2D3142] mb-2">{proc.nombre}</h3>
+                      <p className="text-muted-foreground max-w-2xl mx-auto">{proc.descripcion}</p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
                 <CardContent className="p-8 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-[#2D3142] mb-4">
                     {proc.nombre}
