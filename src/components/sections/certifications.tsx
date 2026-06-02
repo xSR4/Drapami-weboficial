@@ -17,16 +17,23 @@ const certifications = [
     image: "cert-mandic"
   },
   {
-    title: "Diplomado en Odontología Pediátrica",
-    institution: "Institución Educativa",
+    title: "Filosofía M.A.G.U.I",
+    institution: "CEOP",
     year: "2024",
-    type: "Diplomado",
-    image: "cert-diplomado"
+    type: "Capacitación",
+    image: "cert-magui"
+  },
+  {
+    title: "Manejo de Anquiloglosia",
+    institution: "ECOPAL",
+    year: "2023",
+    type: "Capacitación",
+    image: "cert-ecopal"
   },
   {
     title: "Ortopedia Maxilar",
     institution: "Especialización Avanzada",
-    year: "2023",
+    year: "2024",
     type: "Capacitación",
     image: "cert-ortopedia"
   },
@@ -38,11 +45,46 @@ const certifications = [
     image: "cert-cirujia"
   },
   {
-    title: "Manejo de Anquiloglosia",
-    institution: "ECOPAL",
+    title: "Láser en Odontopediatría",
+    institution: "Certificación Técnica",
+    year: "2022",
+    type: "Capacitación",
+    image: "cert-laser"
+  },
+  {
+    title: "Sedación y Manejo del Paciente",
+    institution: "Curso Avanzado",
+    year: "2022",
+    type: "Capacitación",
+    image: "cert-sedacion"
+  },
+  {
+    title: "Sedación Consciente",
+    institution: "Capacitación Superior",
+    year: "2022",
+    type: "Capacitación",
+    image: "cert-sedacion2"
+  },
+  {
+    title: "Habilitación de Sedación consciente",
+    institution: "Sedamedic",
+    year: "2022",
+    type: "Capacitación",
+    image: "cert-sedacion3"
+  },
+  {
+    title: "Uso de Resina Infiltrante",
+    institution: "RM dental",
     year: "2023",
     type: "Capacitación",
-    image: "cert-ecopal"
+    image: "cert-resina"
+  },
+  {
+    title: "Anquiloglosia Avanzada",
+    institution: "Formación Especializada",
+    year: "2024",
+    type: "Capacitación",
+    image: "cert-anquiloglosia-v2"
   },
   {
     title: "Abordaje Clínico Odontopediátrico",
@@ -52,46 +94,11 @@ const certifications = [
     image: "cert-abordaje"
   },
   {
-    title: "Láser en Odontopediatría",
-    institution: "Certificación Técnica",
-    year: "2023",
-    type: "Capacitación",
-    image: "cert-laser"
-  },
-  {
-    title: "Sedación y Manejo del Paciente",
-    institution: "Curso Avanzado",
-    year: "2023",
-    type: "Capacitación",
-    image: "cert-sedacion"
-  },
-  {
-    title: "Diplomado en Sedación Consciente",
-    institution: "Capacitación Superior",
-    year: "2023",
+    title: "Diplomado en Odontología Pediátrica",
+    institution: "Institución Educativa",
+    year: "2021",
     type: "Diplomado",
-    image: "cert-sedacion2"
-  },
-  {
-    title: "Técnicas de Sedación Nivel III",
-    institution: "Centro de Especialización",
-    year: "2024",
-    type: "Capacitación",
-    image: "cert-sedacion3"
-  },
-  {
-    title: "Uso de Resina Infiltrante",
-    institution: "Certificación Estética",
-    year: "2023",
-    type: "Capacitación",
-    image: "cert-resina"
-  },
-  {
-    title: "Filosofía Magui",
-    institution: "Magui",
-    year: "2023",
-    type: "Capacitación",
-    image: "cert-magui"
+    image: "cert-diplomado"
   }
 ];
 
@@ -108,8 +115,7 @@ export function Certifications() {
           <CarouselContent className="-ml-4">
             {certifications.map((cert, index) => {
               const imgData = PlaceHolderImages.find(img => img.id === cert.image);
-              const imageUrl = imgData?.imageUrl || "https://picsum.photos/seed/cert/400/300";
-              const isLocal = imageUrl.startsWith('/');
+              const imageUrl = imgData?.imageUrl || "";
               
               return (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
@@ -123,7 +129,7 @@ export function Certifications() {
                             alt={cert.title}
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
-                            unoptimized={isLocal}
+                            unoptimized
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                             <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8" />
@@ -142,7 +148,7 @@ export function Certifications() {
                             alt={cert.title}
                             fill
                             className="object-contain"
-                            unoptimized={isLocal}
+                            unoptimized
                           />
                         </div>
                       </DialogContent>
