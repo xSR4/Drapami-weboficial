@@ -25,22 +25,22 @@
       "imageHint": "main dental office"
     },
     {
-      "id": "clinic-2",
-      "description": "Modern dental room with a screen for cartoons",
-      "imageUrl": "https://picsum.photos/seed/clinic-pami-2/600/400",
-      "imageHint": "pediatric dental chair"
+      "id": "clinic-molar32",
+      "description": "Logo de Molar32 Niños",
+      "imageUrl": "/logo molar.jpg",
+      "imageHint": "molar32 logo"
     },
     {
-      "id": "clinic-karisma-sm",
-      "description": "Clínica Karisma San Martín",
+      "id": "clinic-karisma",
+      "description": "Logo de Clínica Karisma",
       "imageUrl": "/karisma logo.jpg",
-      "imageHint": "pediatric dentistry room"
+      "imageHint": "karisma clinic logo"
     },
     {
-      "id": "clinic-karisma-pl",
-      "description": "Clínica Karisma Pueblo Libre",
-      "imageUrl": "/karisma logo.jpg",
-      "imageHint": "dental clinic reception"
+      "id": "clinic-odontosonrisas",
+      "description": "Logo de Odontosonrisas",
+      "imageUrl": "/odontosonrisas logo.jpg",
+      "imageHint": "odontosonrisas logo"
     },
     {
       "id": "blog-brushing",

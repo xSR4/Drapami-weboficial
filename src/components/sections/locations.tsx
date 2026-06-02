@@ -19,28 +19,28 @@ const clinics = [
     address: "Av. Guardia Peruana 431, Chorrillos",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
-    image: "clinic-molar32-chorrillos"
+    image: "clinic-molar32"
   },
   {
     name: "Molar32 niños - Sede Barranco",
     address: "Jr. San Ambrosio 420 - Barranco",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
-    image: "clinic-molar32-barranco"
+    image: "clinic-molar32"
   },
   {
     name: "Clínica Karisma - Sede San Martín",
     address: "Av. Alfredo Mendiola 290 - San Martin de Porres",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
-    image: "clinic-karisma-sm"
+    image: "clinic-karisma"
   },
   {
     name: "Clínica Karisma - Sede Pueblo Libre",
     address: "Av. Brasil 1644 - Pueblo Libre",
     phone: "+51 991 112 048",
     hours: "Previa Cita",
-    image: "clinic-karisma-pl"
+    image: "clinic-karisma"
   },
   {
     name: "Odontosonrisas - Sede Chorrillos",
