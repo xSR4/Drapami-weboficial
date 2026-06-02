@@ -140,16 +140,16 @@ export default function TratamientosPage() {
                     </div>
                     <div className="bg-white p-6 text-center border-t border-pami-blue/10">
                       <h3 className="text-2xl font-bold text-[#2D3142] mb-2">{proc.nombre}</h3>
-                      <p className="text-muted-foreground max-w-2xl mx-auto">{proc.descripcion}</p>
+                      <p className="text-muted-foreground max-w-2xl mx-auto text-justify">{proc.descripcion}</p>
                     </div>
                   </DialogContent>
                 </Dialog>
 
                 <CardContent className="p-8 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-[#2D3142] mb-4">
+                  <h3 className="text-xl font-bold text-[#2D3142] mb-4 text-center">
                     {proc.nombre}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1 text-justify">
                     {proc.descripcion}
                   </p>
                   
@@ -171,7 +171,7 @@ export default function TratamientosPage() {
               </div>
               <div className="text-center md:text-left">
                 <h4 className="text-xl font-bold text-[#2D3142] mb-2">Nota Importante</h4>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed text-justify">
                   Cada tratamiento es personalizado según las necesidades de tu hijo. En la consulta inicial evaluaremos el mejor camino para su salud bucal.
                 </p>
               </div>
