@@ -44,22 +44,16 @@
       "imageHint": "odontosonrisas logo"
     },
     {
-      "id": "blog-brushing",
-      "description": "Illustration of a child brushing teeth with a dinosaur timer",
-      "imageUrl": "https://picsum.photos/seed/brushing-kids/400/300",
-      "imageHint": "child brushing teeth"
+      "id": "cert-ecopal",
+      "description": "Capacitación en Anquiloglosia - ECOPAL",
+      "imageUrl": "/ECOPAL-ANQUILOGLOSIA.jpg",
+      "imageHint": "dentistry certificate"
     },
     {
-      "id": "blog-first-visit",
-      "description": "A happy child receiving a sticker after their first visit",
-      "imageUrl": "https://picsum.photos/seed/first-visit/400/300",
-      "imageHint": "child dentist sticker"
-    },
-    {
-      "id": "blog-ortho-kids",
-      "description": "Early orthodontic assessment for a young child",
-      "imageUrl": "https://picsum.photos/seed/ortho-kids/400/300",
-      "imageHint": "kids orthodontics"
+      "id": "cert-magui",
+      "description": "Capacitación Filosofía Magui",
+      "imageUrl": "/FILOSOFIA MAGUI.jpg",
+      "imageHint": "dentistry course certificate"
     },
     {
       "id": "cert-1",
