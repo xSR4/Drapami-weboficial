@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Award, GraduationCap, ZoomIn } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
 const certifications = [
   {
@@ -141,6 +141,7 @@ export function Certifications() {
                         </div>
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl p-0 bg-transparent border-none overflow-hidden rounded-2xl">
+                        <DialogTitle className="sr-only">Certificado: {cert.title}</DialogTitle>
                         <div className="relative w-full h-[80vh]">
                           <Image
                             src={imageUrl}

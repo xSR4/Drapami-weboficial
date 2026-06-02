@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MapPin, Phone, Clock, Building2, Play, Video } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
 const clinics = [
   {
@@ -139,6 +139,7 @@ export function Locations() {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-[400px] p-0 bg-transparent border-none overflow-hidden rounded-3xl">
+                    <DialogTitle className="sr-only">Video Tour: {clinic.name}</DialogTitle>
                     <div className="aspect-[9/16] w-full bg-black">
                       <iframe
                         src={`https://www.tiktok.com/embed/v2/${clinic.tiktokId}`}

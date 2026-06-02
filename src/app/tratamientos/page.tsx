@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, CheckCircle2, Info, ZoomIn } from "lucide-react";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
 const procedimientos = [
   { 
@@ -129,6 +129,7 @@ export default function TratamientosPage() {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-0 bg-white/95 backdrop-blur-sm border-none overflow-hidden rounded-3xl">
+                    <DialogTitle className="sr-only">Detalle del Tratamiento: {proc.nombre}</DialogTitle>
                     <div className="relative w-full h-[70vh] p-8">
                       <Image
                         src={imageUrl}
