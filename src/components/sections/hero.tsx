@@ -19,7 +19,7 @@ export function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-[#2D3142]">
             Donde cada <span className="text-pami-blue">sonrisa</span> infantil es una aventura
           </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+          <p className="text-lg text-muted-foreground mb-8 max-w-lg text-justify">
             Convertimos la visita al dentista en una experiencia divertida y sin miedos. 
             Cuidamos la salud bucal de tus hijos con paciencia, juegos y mucho amor.
           </p>
