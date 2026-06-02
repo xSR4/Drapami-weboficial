@@ -138,6 +138,66 @@
       "description": "Sedación hospitalaria profesional",
       "imageUrl": "https://picsum.photos/seed/sed3/800/600",
       "imageHint": "dental anesthesia"
+    },
+    {
+      "id": "tr-consulta",
+      "description": "Consulta Integral",
+      "imageUrl": "/consulta.png",
+      "imageHint": "dental consultation"
+    },
+    {
+      "id": "tr-rest-simple",
+      "description": "Restauración Simple",
+      "imageUrl": "/restauracionsimple.png",
+      "imageHint": "simple dental restoration"
+    },
+    {
+      "id": "tr-rest-compuesta",
+      "description": "Restauración Compuesta",
+      "imageUrl": "/restauracioncompuesta.png",
+      "imageHint": "composite dental restoration"
+    },
+    {
+      "id": "tr-rest-compleja",
+      "description": "Restauración Compleja",
+      "imageUrl": "/restauracioncompleja.png",
+      "imageHint": "complex dental restoration"
+    },
+    {
+      "id": "tr-sellantes",
+      "description": "Sellantes",
+      "imageUrl": "/sellantes.png",
+      "imageHint": "dental sealants"
+    },
+    {
+      "id": "tr-ext-simple",
+      "description": "Extracción Simple",
+      "imageUrl": "/extraccionsimple.png",
+      "imageHint": "simple extraction"
+    },
+    {
+      "id": "tr-ext-compleja",
+      "description": "Extracción Compleja",
+      "imageUrl": "/extraccioncompleja.png",
+      "imageHint": "complex extraction"
+    },
+    {
+      "id": "tr-corona-resina",
+      "description": "Corona de Resina",
+      "imageUrl": "/coronaderesina.png",
+      "imageHint": "resin crown"
+    },
+    {
+      "id": "tr-corona-metal",
+      "description": "Corona de Metal",
+      "imageUrl": "/coronademetal.png",
+      "imageHint": "metal crown"
+    },
+    {
+      "id": "tr-frenectomia",
+      "description": "Frenectomía",
+      "imageUrl": "/frenectomia.png",
+      "imageHint": "frenectomy"
     }
   ]
 }
