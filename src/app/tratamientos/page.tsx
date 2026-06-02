@@ -1,7 +1,10 @@
+
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const procedimientos = [
   { nombre: "Consulta", precio: "30.00", destaque: true },
@@ -22,38 +25,50 @@ const procedimientos = [
 ];
 
 export default function TratamientosPage() {
+  const pamiImage = PlaceHolderImages.find(img => img.id === "about-dra-pami");
+
   return (
     <main className="min-h-screen bg-pami-bgSoft/30 py-16">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
+          <span className="bg-pami-blue/10 text-pami-blue font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wider mb-4 inline-block">
+            Nuestros Servicios
+          </span>
           <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-4">Servicios Especializados</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Ofrecemos una amplia gama de procedimientos odontopediátricos con la tecnología más avanzada y un trato lleno de amor.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
           {procedimientos.map((proc, index) => (
-            <Card key={index} className={`border-none soft-shadow rounded-[2rem] overflow-hidden transition-all hover:scale-[1.02] ${proc.destaque ? 'ring-2 ring-pami-blue bg-white' : 'bg-white'}`}>
-              <CardContent className="p-8 flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-[#2D3142] leading-tight pr-4">
-                      {proc.nombre}
-                    </h3>
-                    {proc.destaque && (
-                      <span className="bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        Recomendado
-                      </span>
-                    )}
+            <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden transition-all hover:scale-[1.02] bg-white ${proc.destaque ? 'ring-2 ring-pami-blue' : ''}`}>
+              <div className="relative h-64 w-full">
+                <Image
+                  src={pamiImage?.imageUrl || "/foto perfilpami.jpg"}
+                  alt={`Dra. Pami - ${proc.nombre}`}
+                  fill
+                  className="object-cover"
+                  data-ai-hint="pediatric dentist puppet"
+                  unoptimized
+                />
+                {proc.destaque && (
+                  <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                    Recomendado
                   </div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold text-pami-blue">S/ {proc.precio}</span>
-                    <span className="text-xs text-muted-foreground font-medium">+ IGV</span>
-                  </div>
+                )}
+              </div>
+              <CardContent className="p-8">
+                <h3 className="text-xl font-bold text-[#2D3142] mb-2">
+                  {proc.nombre}
+                </h3>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-2xl font-bold text-pami-blue">S/ {proc.precio}</span>
+                  <span className="text-xs text-muted-foreground font-medium">+ IGV</span>
                 </div>
-                <div className="mt-6 flex items-center gap-2 text-sm text-pami-turquoise font-medium">
-                  <CheckCircle2 className="h-4 w-4" />
+                
+                <div className="flex items-center gap-2 text-sm text-pami-turquoise font-medium bg-pami-turquoise/5 p-3 rounded-xl">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
                   <span>Tratamiento Garantizado</span>
                 </div>
               </CardContent>
