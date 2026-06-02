@@ -1,8 +1,11 @@
 
+"use client";
+
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { MapPin, Phone, Clock, Building2 } from "lucide-react";
+import { MapPin, Phone, Clock, Building2, Play, Video } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const clinics = [
   {
@@ -12,7 +15,8 @@ const clinics = [
     phone: "+51 991 112 048",
     hours: "Lun - Sáb: 09:00 - 19:00",
     image: "clinic-1",
-    principal: true
+    principal: true,
+    tiktokId: "7462582393212259590"
   },
   {
     name: "Molar32 niños - Sede Chorrillos",
@@ -70,22 +74,30 @@ export function Locations() {
             const imgData = PlaceHolderImages.find(img => img.id === clinic.image);
             const isLocal = imgData?.imageUrl.startsWith('/');
             
-            return (
-              <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden bg-white transition-all hover:scale-[1.02] ${clinic.principal ? 'ring-2 ring-pami-blue' : ''}`}>
-                <div className="relative h-56 w-full">
+            const cardContent = (
+              <Card className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden bg-white transition-all hover:scale-[1.02] h-full ${clinic.principal ? 'ring-2 ring-pami-blue' : ''}`}>
+                <div className="relative h-56 w-full group overflow-hidden">
                   <Image
                     src={imgData?.imageUrl || "https://picsum.photos/seed/dentist/600/400"}
                     alt={clinic.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                     data-ai-hint={imgData?.imageHint || "dental clinic"}
                     unoptimized={isLocal}
                   />
                   {clinic.principal && (
-                    <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                      Sede Principal
-                    </div>
+                    <>
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                        <div className="bg-white/90 p-4 rounded-full shadow-lg scale-90 group-hover:scale-100 transition-transform">
+                          <Play className="h-6 w-6 text-pami-blue fill-current" />
+                        </div>
+                        <span className="absolute bottom-4 bg-white/90 text-pami-blue text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ver Tour Video</span>
+                      </div>
+                      <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                        Sede Principal
+                      </div>
+                    </>
                   )}
                 </div>
                 <CardContent className="p-8">
@@ -117,6 +129,29 @@ export function Locations() {
                 </CardContent>
               </Card>
             );
+
+            if (clinic.principal && clinic.tiktokId) {
+              return (
+                <Dialog key={index}>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer">
+                      {cardContent}
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[400px] p-0 bg-transparent border-none overflow-hidden rounded-3xl">
+                    <div className="aspect-[9/16] w-full bg-black">
+                      <iframe
+                        src={`https://www.tiktok.com/embed/v2/${clinic.tiktokId}`}
+                        className="w-full h-full border-none"
+                        allow="fullscreen"
+                      ></iframe>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              );
+            }
+
+            return <div key={index}>{cardContent}</div>;
           })}
         </div>
       </div>
