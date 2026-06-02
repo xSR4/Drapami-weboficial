@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -27,7 +26,7 @@ export async function sendContactEmail(data: ContactEmailData) {
   try {
     const { data: resData, error } = await resend.emails.send({
       from: 'Dra. Pami Web <onboarding@resend.dev>',
-      to: 'r.alva@pucp.edu.pe',
+      to: 'drapamiconsultorios@gmail.com',
       subject: `Nueva Consulta: ${data.subject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
