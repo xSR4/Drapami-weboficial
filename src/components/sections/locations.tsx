@@ -251,12 +251,12 @@ export function Locations() {
         </div>
 
         <div className="mb-20">
-          <div className="mb-8">
+          <div className="mb-8 text-center max-w-2xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-[#2D3142] mb-2">
               Consultorio Principal
             </h3>
 
-            <p className="text-muted-foreground max-w-2xl">
+             <p className="text-muted-foreground">
               Nuestra sede principal está diseñada para que los niños se sientan
               cómodos, tranquilos y seguros durante su atención dental.
             </p>
@@ -266,12 +266,12 @@ export function Locations() {
         </div>
 
         <div>
-          <div className="mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-[#2D3142] mb-2">
+          <div className="mb-8 text-center max-w-2xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#2D3142] mb-2">
               Clínicas Aliadas
             </h3>
 
-            <p className="text-muted-foreground max-w-2xl">
+             <p className="text-muted-foreground">
               También puedes encontrarnos en clínicas aliadas ubicadas en
               diferentes zonas de Lima. La atención es previa cita.
             </p>
