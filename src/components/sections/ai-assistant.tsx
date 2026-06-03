@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { askDraPamiAIDentalAssistant } from "@/ai/flows/ask-dra-pami-ai-dental-assistant";
+import { getDraPamiAdvice } from "@/ai/flows/ask-dra-pami-ai-dental-assistant";
 import { Loader2, Send, Sparkles } from "lucide-react";
 
 export function AIAssistant() {
@@ -19,7 +19,7 @@ export function AIAssistant() {
 
     setLoading(true);
     try {
-      const advice = await askDraPamiAIDentalAssistant(input);
+      const advice = await getDraPamiAdvice(input);
       setResponse(advice);
     } catch (error) {
       console.error("AI Assistant Error:", error);
@@ -79,3 +79,5 @@ export function AIAssistant() {
     </section>
   );
 }
+
+

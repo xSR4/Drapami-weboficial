@@ -1,70 +1,69 @@
-
 'use server';
-/**
- * @fileOverview An AI assistant specialized in pediatric dentistry.
- *
- * - askDraPamiAIDentalAssistant - A function that handles parent queries for pediatric dental advice.
- */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { ai } from '@/ai/genkit';
+import { z } from 'genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
-const AskDraPamiAIDentalAssistantInputSchema = z
-  .string()
-  .describe('The parent\'s question regarding pediatric dental hygiene, baby teeth, or child treatments.');
-export type AskDraPamiAIDentalAssistantInput = z.infer<
-  typeof AskDraPamiAIDentalAssistantInputSchema
->;
+const AskDraPamiAIDentalAssistantInputSchema = z.string();
+const AskDraPamiAIDentalAssistantOutputSchema = z.string();
 
-const AskDraPamiAIDentalAssistantOutputSchema = z
-  .string()
-  .describe('The expert pediatric dental advice provided by Dra. Pami\'s virtual assistant.');
-export type AskDraPamiAIDentalAssistantOutput = z.infer<
-  typeof AskDraPamiAIDentalAssistantOutputSchema
->;
+const MODELS = ['gemini-2.5-flash', 'gemini-2.5-flash-lite'];
 
-export async function askDraPamiAIDentalAssistant(
-  input: AskDraPamiAIDentalAssistantInput
-): Promise<AskDraPamiAIDentalAssistantOutput> {
-  return askDraPamiAIDentalAssistantFlow(input);
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const askDraPamiPrompt = ai.definePrompt({
-  name: 'askDraPamiAIDentalAssistantPrompt',
-  input: {schema: AskDraPamiAIDentalAssistantInputSchema},
-  output: {schema: AskDraPamiAIDentalAssistantOutputSchema},
-  prompt: `You are Dra. Pami's virtual assistant, an expert in Pediatric Dentistry (Odontopediatría). Your goal is to provide professional, warm, empathetic, and expert advice to parents about their children's dental health.
+function isTemporaryGeminiError(error: unknown) {
+  const err = error as {
+    code?: number;
+    status?: string;
+    message?: string;
+    originalMessage?: string;
+  };
 
-Guidelines:
-- Tone: Professional, reassuring, warm, and child-centered.
-- Audience: Parents worried about their children's teeth (from babies to teens).
-- Focus: Baby teeth (dientes de leche), first visit, prevention, brushing techniques for kids, and trauma advice.
-- Language: Spanish.
+  const message = `${err.message ?? ''} ${err.originalMessage ?? ''}`.toLowerCase();
 
-Patient's Question: {{{.}}}
+  return (
+    err.code === 503 ||
+    err.status === 'UNAVAILABLE' ||
+    message.includes('503') ||
+    message.includes('high demand') ||
+    message.includes('service unavailable')
+  );
+}
 
-Virtual Assistant's Advice:`,
-  config: {
-    safetySettings: [
-      {
-        category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-        threshold: 'BLOCK_NONE',
-      },
-      {
-        category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-        threshold: 'BLOCK_NONE',
-      },
-      {
-        category: 'HARM_CATEGORY_HARASSMENT',
-        threshold: 'BLOCK_NONE',
-      },
-      {
-        category: 'HARM_CATEGORY_HATE_SPEECH',
-        threshold: 'BLOCK_NONE',
-      },
-    ],
-  },
-});
+async function generateWithFallback(prompt: string) {
+  let lastError: unknown;
+
+  for (const modelName of MODELS) {
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        return await ai.generate({
+          model: googleAI.model(modelName),
+          prompt,
+        });
+      } catch (error) {
+        lastError = error;
+
+        if (!isTemporaryGeminiError(error)) {
+          throw error;
+        }
+
+        console.warn(
+          `Modelo temporalmente no disponible: ${modelName}. Intento ${attempt}/2`
+        );
+
+        await sleep(800 * attempt);
+      }
+    }
+  }
+
+  throw lastError;
+}
+
+export async function askDraPamiAIDentalAssistant(input: string): Promise<string> {
+  return askDraPamiAIDentalAssistantFlow(input);
+}
 
 const askDraPamiAIDentalAssistantFlow = ai.defineFlow(
   {
@@ -72,8 +71,48 @@ const askDraPamiAIDentalAssistantFlow = ai.defineFlow(
     inputSchema: AskDraPamiAIDentalAssistantInputSchema,
     outputSchema: AskDraPamiAIDentalAssistantOutputSchema,
   },
-  async input => {
-    const {output} = await askDraPamiPrompt(input);
-    return output!;
+  async (input) => {
+    try {
+      if (!process.env.GEMINI_API_KEY) {
+        throw new Error('Falta la variable de entorno GEMINI_API_KEY');
+      }
+
+      const prompt = `You are Dra. Pami's virtual assistant, an expert in Pediatric Dentistry (Odontopediatría). Your goal is to provide professional, warm, empathetic, and expert advice to parents about their children's dental health.
+
+Guidelines:
+- Tone: Professional, reassuring, warm, and child-centered.
+- Audience: Parents worried about their children's teeth, from babies to teens.
+- Focus: Baby teeth, first visit, prevention, brushing techniques for kids, and trauma advice.
+- Language: Spanish.
+- Important: Do not replace a real dentist. If the case seems urgent, recommend contacting a pediatric dentist.
+
+Patient's Question: ${input}
+
+Virtual Assistant's Advice:`;
+
+      const response = await generateWithFallback(prompt);
+
+      return response.text?.trim() || 'Lo siento, no pude generar una respuesta.';
+    } catch (error) {
+      console.error('--- ERROR EN GENKIT AI ---', error);
+      throw error;
+    }
   }
 );
+
+export async function getDraPamiAdvice(question: string) {
+  'use server';
+
+  try {
+    const textoSeguro =
+      question && question.trim() !== ''
+        ? String(question)
+        : 'Hola, ¿cómo cuido los dientes de mi bebé?';
+
+    return await askDraPamiAIDentalAssistant(textoSeguro);
+  } catch (error) {
+    console.error('--- ERROR EN FLOW ---', error);
+
+    return 'En este momento la asistente está recibiendo muchas consultas y no pudo responder. Por favor intenta nuevamente en unos minutos.';
+  }
+}
