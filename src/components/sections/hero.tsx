@@ -23,56 +23,19 @@ export function Hero() {
             Convertimos la visita al dentista en una experiencia divertida y sin miedos. 
             Cuidamos la salud bucal de tus hijos con paciencia, juegos y mucho amor.
           </p>
-         <div className="flex flex-col sm:flex-row gap-4">
-  <Button
-    asChild
-    size="lg"
-    className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg cursor-pointer"
-  >
-    <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
-      <MessageCircle className="h-5 w-5" />
-      Agendar Primera Consulta
-    </a>
-  </Button>
-
-  <Button
-    asChild
-    size="lg"
-    variant="outline"
-    className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14"
-  >
-    <Link href="/tratamientos">
-      Ver Tratamientos
-    </Link>
-  </Button>
-
-  <Dialog>
-    <DialogTrigger asChild>
-      <Button
-        type="button"
-        size="lg"
-        className="relative overflow-hidden rounded-full px-8 h-14 bg-pami-pink hover:bg-pami-pink/90 text-white font-bold shadow-xl shadow-pami-pink/30 ring-4 ring-pami-pink/20 animate-pulse"
-      >
-        <Video className="mr-2 h-5 w-5" />
-        Recorrido Virtual
-      </Button>
-    </DialogTrigger>
-
-    <DialogContent className="max-w-[400px] p-0 bg-transparent border-none overflow-hidden rounded-3xl">
-      <DialogTitle className="sr-only">
-        Recorrido virtual del consultorio Dra. Pami
-      </DialogTitle>
-
-      <div className="aspect-[9/16] w-full bg-black">
-        <iframe
-          src={`https://www.tiktok.com/embed/v2/${virtualTourTiktokId}`}
-          className="w-full h-full border-none"
-          allow="fullscreen"
-        />
-      </div>
-    </DialogContent>
-  </Dialog>
-</div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg cursor-pointer">
+              <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                Agendar Primera Consulta
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
+              <Link href="/tratamientos">
+                Ver Tratamientos
+              </Link>
+            </Button>
+          </div>
         </div>
         <div className="md:w-1/2 relative">
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-pami-pink/10 rounded-full blur-3xl"></div>
