@@ -244,10 +244,7 @@ export function Locations() {
             ¿Dónde encontrarnos?
           </h2>
 
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Atendemos en nuestro consultorio principal y en prestigiosas clínicas
-            aliadas para estar más cerca de ti.
-          </p>
+          
         </div>
 
         <div className="mb-20">
