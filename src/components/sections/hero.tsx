@@ -15,7 +15,7 @@ export function Hero() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-dra-pami");
 
   return (
-    <section className="relative overflow-hidden pt-20 pb-12 md:pt-32 md:pb-24 bg-white">
+    <section className="relative overflow-hidden pt-6 pb-12 md:pt-12 md:pb-20 bg-white">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-12 md:mb-0 z-10">
           <div className="inline-flex items-center gap-2 bg-pami-pink/10 text-pami-pink px-4 py-2 rounded-full mb-6 font-bold text-sm">
@@ -44,18 +44,7 @@ export function Hero() {
               </a>
             </Button>
 
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14"
-            >
-              <Link href="/tratamientos">
-                Ver Tratamientos
-              </Link>
-            </Button>
-
-            <Dialog>
+              <Dialog>
               <DialogTrigger asChild>
                 <Button
                   size="lg"
@@ -83,6 +72,17 @@ export function Hero() {
                 </div>
               </DialogContent>
             </Dialog>
+
+             <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full px-8 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14"
+            >
+              <Link href="/tratamientos">
+                Ver Tratamientos
+              </Link>
+            </Button>
           </div>
         </div>
 
