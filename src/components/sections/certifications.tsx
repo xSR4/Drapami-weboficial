@@ -12,7 +12,7 @@ const certifications = [
   {
     title: "Especialista en Odontopediatría",
     institution: "Faculdade São Leopoldo Mandic - Brasil",
-    year: "2022",
+    year: "2025",
     type: "Postgrado Internacional",
     image: "cert-mandic"
   },
