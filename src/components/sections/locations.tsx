@@ -18,7 +18,7 @@ const clinics = [
     principal: true,
     tiktokId: "7462582393212259590"
   },
-  {
+  /*{
     name: "Molar32 niños - Sede Chorrillos",
     address: "Av. Guardia Peruana 431, Chorrillos",
     phone: "+51 991 112 048",
@@ -52,7 +52,7 @@ const clinics = [
     phone: "+51 991 112 048",
     hours: "Previa Cita",
     image: "clinic-odontosonrisas"
-  }
+  }*/
 ];
 
 export function Locations() {
