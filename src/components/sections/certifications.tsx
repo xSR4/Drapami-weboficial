@@ -118,7 +118,7 @@ export function Certifications() {
               const imageUrl = imgData?.imageUrl || "";
               
               return (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <Card className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-all group overflow-hidden h-full">
                     <Dialog>
                       <DialogTrigger asChild>
@@ -177,9 +177,9 @@ export function Certifications() {
               );
             })}
           </CarouselContent>
-          <div className="hidden md:flex justify-end gap-2 mt-8">
-            <CarouselPrevious className="static translate-y-0 hover:bg-pami-blue hover:text-white border-pami-blue/20" />
-            <CarouselNext className="static translate-y-0 hover:bg-pami-blue hover:text-white border-pami-blue/20" />
+          <div className="flex justify-center md:justify-end gap-3 mt-6">
+          <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-full bg-white shadow-sm border-pami-blue/20 text-pami-blue hover:bg-pami-blue hover:text-white" />
+          <CarouselNext className="static translate-y-0 h-10 w-10 rounded-full bg-white shadow-sm border-pami-blue/20 text-pami-blue hover:bg-pami-blue hover:text-white" />
           </div>
         </Carousel>
       </div>

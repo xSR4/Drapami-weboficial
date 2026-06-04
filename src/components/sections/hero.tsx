@@ -52,19 +52,19 @@ export function Hero() {
                   className="rounded-full px-8 border-pami-pink text-pami-pink hover:bg-pami-pink/10 h-14 flex items-center gap-2"
                 >
                   <PlayCircle className="h-5 w-5" />
-                  Tour Virtual
+                  Consultorio Virtual
                 </Button>
               </DialogTrigger>
 
               <DialogContent className="max-w-[420px] p-0 overflow-hidden rounded-3xl border-none">
                 <DialogHeader className="sr-only">
-                  <DialogTitle>Tour virtual Dra. Pami</DialogTitle>
+                  <DialogTitle>Consultorio Virtual Dra. Pami</DialogTitle>
                 </DialogHeader>
 
                 <div className="w-full bg-black">
                   <iframe
                     src="https://www.tiktok.com/embed/v2/7462582393212259590"
-                    title="Tour virtual Dra. Pami"
+                    title="Consultorio Virtual Dra. Pami"
                     className="w-full h-[720px]"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
