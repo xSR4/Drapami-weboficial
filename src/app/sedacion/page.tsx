@@ -1,10 +1,12 @@
-
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ShieldCheck, Heart, Clock, FileText, ListChecks } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Link from "next/link";
+import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
 
 const tiposSedacion = [
   {
@@ -55,6 +57,21 @@ const tiposSedacion = [
   }
 ];
 
+
+export const metadata: Metadata = {
+  title: "Sedación odontológica para niños en Lima",
+  description:
+    "Opciones de sedación odontológica infantil con evaluación profesional: óxido nitroso, sedación medicamentosa y sedación profunda según cada caso.",
+  alternates: { canonical: `${siteConfig.url}/sedacion` },
+  openGraph: {
+    url: `${siteConfig.url}/sedacion`,
+    title: "Sedación odontológica para niños en Lima | Dra. Pami",
+    description:
+      "Opciones de sedación odontológica infantil con evaluación profesional: óxido nitroso, sedación medicamentosa y sedación profunda según cada caso.",
+    images: [{ url: "/hero-dra-pami.webp", alt: "Dra. Pami - Odontopediatría" }],
+  },
+};
+
 export default function SedacionPage() {
   return (
     <main className="min-h-screen bg-pami-bgSoft/30 py-16">
@@ -72,7 +89,7 @@ export default function SedacionPage() {
         <div className="grid grid-cols-1 gap-12 max-w-5xl mx-auto mb-20">
           {tiposSedacion.map((tipo, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tipo.imagen);
-            const imageUrl = imgData?.imageUrl || "/foto perfilpami.jpg";
+            const imageUrl = imgData?.imageUrl || "/about-dra-pami.webp";
             
             return (
               <Card key={index} className="border-none soft-shadow rounded-[3rem] overflow-hidden bg-white">
@@ -84,8 +101,8 @@ export default function SedacionPage() {
                         alt={tipo.titulo}
                         fill
                         className="object-contain p-4 bg-pami-bgSoft/10"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         data-ai-hint={imgData?.imageHint || "pediatric sedation"}
-                        unoptimized={imageUrl.startsWith("/")}
                       />
                     </div>
                     <div className="md:w-1/2 p-8 md:p-10">
@@ -142,10 +159,10 @@ export default function SedacionPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-10 h-14">
-              <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+              <TrackedExternalLink href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer" eventName="whatsapp_click" eventParams={{ placement: "sedacion_bottom_cta", service: "sedacion" }}>
                 <MessageCircle className="h-5 w-5 mr-2" />
                 Consultar por WhatsApp
-              </a>
+              </TrackedExternalLink>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full px-10 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
               <Link href="/">

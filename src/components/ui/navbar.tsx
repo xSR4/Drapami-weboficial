@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
+import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
+import { siteConfig } from "@/lib/site-config";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +33,6 @@ export function Navbar() {
               height={48}
               className="h-12 w-auto object-contain"
               priority
-              unoptimized
             />
           </div>
         </Link>
@@ -52,10 +53,16 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           {/* CTA Button (Hidden on very small phones, shown on sm+) */}
           <Button asChild className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full hidden sm:flex items-center gap-2 h-11 px-6 shadow-md shadow-pami-blue/20">
-            <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+            <TrackedExternalLink
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              eventName="whatsapp_click"
+              eventParams={{ placement: "navbar_desktop" }}
+            >
               <MessageCircle className="h-4 w-4" />
               Agendar Cita
-            </a>
+            </TrackedExternalLink>
           </Button>
 
           {/* Mobile Menu Toggle */}
@@ -76,8 +83,7 @@ export function Navbar() {
                       width={120}
                       height={48}
                       className="h-12 w-auto object-contain"
-                      unoptimized
-                    />
+                            />
                   </div>
                   <nav className="flex flex-col gap-6 text-center">
                     {navLinks.map((link) => (
@@ -91,10 +97,16 @@ export function Navbar() {
                       </Link>
                     ))}
                     <Button asChild className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full flex items-center justify-center gap-2 h-14 mt-4 shadow-lg shadow-pami-blue/20">
-                      <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+                      <TrackedExternalLink
+                        href={siteConfig.whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        eventName="whatsapp_click"
+                        eventParams={{ placement: "navbar_mobile" }}
+                      >
                         <MessageCircle className="h-5 w-5" />
                         Agendar Cita
-                      </a>
+                      </TrackedExternalLink>
                     </Button>
                   </nav>
                 </div>

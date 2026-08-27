@@ -1,4 +1,5 @@
-
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Certifications } from "@/components/sections/certifications";
@@ -6,6 +7,21 @@ import { AIAssistant } from "@/components/sections/ai-assistant";
 import { Locations } from "@/components/sections/locations";
 import { Footer } from "@/components/sections/footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
+
+
+export const metadata: Metadata = {
+  title: "Odontopediatra en San Juan de Lurigancho",
+  description:
+    "Odontopediatra en San Juan de Lurigancho para bebés, niños y adolescentes. Prevención, tratamientos infantiles, ortopedia y sedación según evaluación profesional.",
+  alternates: { canonical: siteConfig.url },
+  openGraph: {
+    url: siteConfig.url,
+    title: "Odontopediatra en San Juan de Lurigancho | Dra. Pami",
+    description:
+      "Atención odontopediátrica para bebés, niños y adolescentes en San Juan de Lurigancho, Lima.",
+    images: [{ url: "/hero-dra-pami.webp", alt: "Dra. Pami - Odontopediatría" }],
+  },
+};
 
 export default function Home() {
   return (

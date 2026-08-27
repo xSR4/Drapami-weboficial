@@ -34,6 +34,9 @@ import {
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/app/actions/contact";
+import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
+import { trackGAEvent } from "@/lib/analytics";
+import { siteConfig } from "@/lib/site-config";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "El nombre es requerido"),
@@ -133,6 +136,11 @@ export function Footer() {
         });
       }
 
+      trackGAEvent("generate_lead", {
+        lead_source: "website_contact_form",
+        form_name: "footer_contact",
+      });
+
       setIsSubmitted(true);
     } catch (error) {
       console.error("Error al procesar la consulta:", error);
@@ -166,16 +174,28 @@ export function Footer() {
                 <div className="bg-pami-blue/10 p-3 rounded-full">
                   <Phone className="h-5 w-5 text-pami-blue" />
                 </div>
-                <span className="font-medium">+51 991 112 048</span>
+                <TrackedExternalLink
+                  href={siteConfig.phoneHref}
+                  eventName="phone_click"
+                  eventParams={{ placement: "footer_contact" }}
+                  className="font-medium hover:text-pami-blue transition-colors"
+                >
+                  {siteConfig.phoneDisplay}
+                </TrackedExternalLink>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="bg-pami-turquoise/10 p-3 rounded-full">
                   <Mail className="h-5 w-5 text-pami-turquoise" />
                 </div>
-                <span className="font-medium">
-                  drapamiconsultorios@gmail.com
-                </span>
+                <TrackedExternalLink
+                  href={`mailto:${siteConfig.email}`}
+                  eventName="email_click"
+                  eventParams={{ placement: "footer_contact" }}
+                  className="font-medium hover:text-pami-turquoise transition-colors"
+                >
+                  {siteConfig.email}
+                </TrackedExternalLink>
               </div>
 
               <div className="flex items-center gap-4">
@@ -219,7 +239,11 @@ export function Footer() {
               </div>
             ) : (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                  data-clarity-mask="true"
+                >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -338,7 +362,6 @@ export function Footer() {
               width={192}
               height={88}
               className="h-22 w-auto object-contain"
-              unoptimized
             />
           </div>
 
