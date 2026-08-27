@@ -1,7 +1,18 @@
 import { Resend } from 'resend';
 
 /**
- * Cliente de Resend configurado.
- * Asegúrate de tener la variable RESEND_API_KEY en tu archivo .env
+ * Devuelve un cliente de Resend solo cuando la API key está disponible.
+ *
+ * Esto evita que toda la aplicación falle al importar este módulo cuando
+ * RESEND_API_KEY todavía no ha sido configurada (por ejemplo, en desarrollo
+ * local o durante un Preview Deployment).
  */
-export const resend = new Resend(process.env.RESEND_API_KEY);
+export function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  return new Resend(apiKey);
+}

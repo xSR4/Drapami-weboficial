@@ -1,6 +1,6 @@
 'use server';
 
-import { resend } from '@/lib/resend';
+import { getResendClient } from '@/lib/resend';
 
 interface ContactEmailData {
   fullName: string;
@@ -16,11 +16,19 @@ export async function sendContactEmail(data: ContactEmailData) {
     return { success: false, error: 'RESEND_API_KEY no configurada' };
   }
 
-  const toEmail = process.env.CONTACT_TO_EMAIL || 'r.alva@pucp.edu.pe';
+  const resend = getResendClient();
+
+  if (!resend) {
+    console.error('Error: no se pudo inicializar Resend.');
+    return { success: false, error: 'RESEND_API_KEY no configurada' };
+  }
+
+  const toEmail = process.env.CONTACT_TO_EMAIL || 'drapamiconsultorios@gmail.com';
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ||  process.env.RESEND_FROM_EMAIL || 'Dra. Pami Web <onboarding@resend.dev>';
 
   try {
     const { data: resData, error } = await resend.emails.send({
-      from: 'Dra. Pami Web <onboarding@resend.dev>',
+      from: fromEmail,
       to: [toEmail],
       replyTo: data.email,
       subject: `Nueva Consulta: ${data.subject}`,
@@ -45,7 +53,7 @@ export async function sendContactEmail(data: ContactEmailData) {
           </div>
 
           <div style="background-color: #f1f5f9; padding: 16px; text-align: center; font-size: 12px; color: #64748b;">
-            Este mensaje fue enviado desde el formulario de contacto de drapami.com
+            Este mensaje fue enviado desde el formulario de contacto de drapami.pe
           </div>
         </div>
       `,

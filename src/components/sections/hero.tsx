@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import { MessageCircle, Sparkles, PlayCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
+import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find(img => img.id === "hero-dra-pami");
@@ -38,10 +40,16 @@ export function Hero() {
               size="lg"
               className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-8 flex items-center gap-2 h-14 shadow-lg cursor-pointer"
             >
-              <a href="https://wa.link/5dmwvi" target="_blank" rel="noopener noreferrer">
+              <TrackedExternalLink
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                eventName="whatsapp_click"
+                eventParams={{ placement: "home_hero", service: "primera_consulta" }}
+              >
                 <MessageCircle className="h-5 w-5" />
                 Agendar Primera Consulta
-              </a>
+              </TrackedExternalLink>
             </Button>
 
               <Dialog>
@@ -92,12 +100,12 @@ export function Hero() {
 
           <div className="relative z-10 rounded-[3rem] overflow-hidden soft-shadow border-8 border-white">
             <Image
-              src={heroImage?.imageUrl || "/foto portada.jpg"}
+              src={heroImage?.imageUrl || "/hero-dra-pami.webp"}
               alt="Dra. Pami - Portada"
               width={800}
               height={1000}
               className="object-cover w-full h-auto"
-              unoptimized
+              sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
           </div>

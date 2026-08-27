@@ -17,6 +17,7 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
 
 type Clinic = {
   name: string;
@@ -106,7 +107,14 @@ function ClinicInfo({ clinic }: { clinic: Clinic }) {
 
       <div className="flex items-center gap-3 text-sm text-muted-foreground">
         <Phone className="h-4 w-4 text-pami-turquoise shrink-0" />
-        <span>{clinic.phone}</span>
+        <TrackedExternalLink
+          href="tel:+51991112048"
+          eventName="phone_click"
+          eventParams={{ placement: "locations", location: clinic.name }}
+          className="hover:text-pami-blue transition-colors"
+        >
+          {clinic.phone}
+        </TrackedExternalLink>
       </div>
 
       <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -128,11 +136,9 @@ function PrincipalClinicCard({ clinic }: { clinic: Clinic }) {
             src={image.src}
             alt={clinic.name}
             fill
-            priority
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition-transform duration-500 group-hover:scale-110"
             data-ai-hint={image.hint}
-            unoptimized={image.isLocal}
           />
 
           <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
@@ -211,7 +217,6 @@ function AlliedClinicCard({ clinic }: { clinic: Clinic }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           data-ai-hint={image.hint}
-          unoptimized={image.isLocal}
         />
 
         <div className="absolute top-4 right-4 bg-pami-turquoise text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">

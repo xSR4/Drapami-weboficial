@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { getDraPamiAdvice } from "@/ai/flows/ask-dra-pami-ai-dental-assistant";
 import { Loader2, Send, Sparkles } from "lucide-react";
+import { trackGAEvent } from "@/lib/analytics";
 
 export function AIAssistant() {
   const [input, setInput] = useState("");
@@ -16,6 +17,8 @@ export function AIAssistant() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
+
+    trackGAEvent("ai_question", { placement: "home_ai_assistant" });
 
     setLoading(true);
     try {
@@ -43,7 +46,11 @@ export function AIAssistant() {
             </CardDescription>
           </CardHeader>
           <CardContent className="p-8 bg-white">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-8">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 mb-8"
+              data-clarity-mask="true"
+            >
               <div className="relative">
                 <Input
                   placeholder="Ej: ¿Cómo debo cuidar mis brackets?"

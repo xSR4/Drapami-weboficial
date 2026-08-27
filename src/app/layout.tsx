@@ -5,13 +5,55 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/ui/navbar";
 import { FirebaseClientProvider } from "@/firebase";
+import { LocalBusinessJsonLd } from "@/components/seo/local-business-jsonld";
+import { siteConfig } from "@/lib/site-config";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
-  title: "Dra. Pami - Odontopediatría con Amor",
-  description:
-    "Especialista en sonrisas infantiles. Odontología pediátrica enfocada en la prevención y el bienestar de los más pequeños.",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: "Dra. Pami | Odontopediatría en Lima",
+    template: "%s | Dra. Pami",
+  },
+  description: siteConfig.description,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.siteName,
+    title: "Dra. Pami | Odontopediatría en Lima",
+    description: siteConfig.description,
+    images: [
+      {
+        url: "/hero-dra-pami.webp",
+        alt: "Dra. Pami - Especialista en Odontopediatría",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dra. Pami | Odontopediatría en Lima",
+    description: siteConfig.description,
+    images: ["/hero-dra-pami.webp"],
+  },
+  verification: googleSiteVerification
+    ? { google: googleSiteVerification }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -23,7 +65,7 @@ export default function RootLayout({
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
   return (
-    <html lang="es">
+    <html lang="es-PE">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -32,9 +74,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@400;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <LocalBusinessJsonLd />
       </head>
 
       <body className="font-body antialiased bg-background pt-24">
@@ -44,12 +87,10 @@ export default function RootLayout({
           <Toaster />
         </FirebaseClientProvider>
 
-        {/* Vercel Analytics */}
         <Analytics />
 
-        {/* Microsoft Clarity - al final */}
         {clarityId && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
+          <Script id="microsoft-clarity" strategy="lazyOnload">
             {`
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -59,10 +100,9 @@ export default function RootLayout({
             `}
           </Script>
         )}
-      </body>
 
-      {/* Google Analytics 4 */}
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+        {gaId && <GoogleAnalytics gaId={gaId} />}
+      </body>
     </html>
   );
 }

@@ -128,7 +128,7 @@ export function Certifications() {
                             alt={cert.title}
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
-                            unoptimized
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                             <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8" />
@@ -148,7 +148,7 @@ export function Certifications() {
                             alt={cert.title}
                             fill
                             className="object-contain"
-                            unoptimized
+                            sizes="90vw"
                           />
                         </div>
                       </DialogContent>

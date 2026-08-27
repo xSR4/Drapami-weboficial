@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -10,19 +9,19 @@
     {
       "id": "hero-dra-pami",
       "description": "Foto de portada de Dra. Pami",
-      "imageUrl": "/foto portada.jpg",
+      "imageUrl": "/hero-dra-pami.webp",
       "imageHint": "pediatric dentist hero"
     },
     {
       "id": "about-dra-pami",
       "description": "Foto de perfil de Dra. Pami",
-      "imageUrl": "/foto perfilpami.jpg",
+      "imageUrl": "/about-dra-pami.webp",
       "imageHint": "pediatric dentist profile"
     },
     {
       "id": "clinic-1",
       "description": "Foto real del consultorio principal de Dra. Pami",
-      "imageUrl": "/consultorio.jpg",
+      "imageUrl": "/clinic-1.webp",
       "imageHint": "main dental office"
     },
     {
@@ -46,187 +45,187 @@
     {
       "id": "cert-mandic",
       "description": "Especialización en Odontopediatría - São Leopoldo Mandic",
-      "imageUrl": "/CERTIFICADO SAO LEOPOLDO.jpg",
+      "imageUrl": "/cert-mandic.webp",
       "imageHint": "specialization certificate"
     },
     {
       "id": "cert-ecopal",
       "description": "Capacitación en Anquiloglosia - ECOPAL",
-      "imageUrl": "/ECOPAL-ANQUILOGLOSIA.jpg",
+      "imageUrl": "/cert-ecopal.webp",
       "imageHint": "dentistry certificate"
     },
     {
       "id": "cert-magui",
       "description": "Capacitación Filosofía Magui",
-      "imageUrl": "/FILOSOFIA-MAGUI.jpg",
+      "imageUrl": "/cert-magui.webp",
       "imageHint": "dentistry course certificate"
     },
     {
       "id": "cert-ortopedia",
       "description": "Certificado Ortopedia Maxilar",
-      "imageUrl": "/Ortopediamaxilar.jpg",
+      "imageUrl": "/cert-ortopedia.webp",
       "imageHint": "maxillary orthopedics certificate"
     },
     {
       "id": "cert-cirujia",
       "description": "Certificado Cirugía Oral",
-      "imageUrl": "/Cirujiaoral.jpg",
+      "imageUrl": "/cert-cirujia.webp",
       "imageHint": "oral surgery certificate"
     },
     {
       "id": "cert-anquiloglosia-v2",
       "description": "Certificado Anquiloglosia",
-      "imageUrl": "/Anquilogosia.jpg",
+      "imageUrl": "/cert-anquiloglosia-v2.webp",
       "imageHint": "ankyloglossia certificate"
     },
     {
       "id": "cert-laser",
       "description": "Certificado Láser",
-      "imageUrl": "/Laser.jpg",
+      "imageUrl": "/cert-laser.webp",
       "imageHint": "laser dentistry certificate"
     },
     {
       "id": "cert-sedacion",
       "description": "Certificado Sedación",
-      "imageUrl": "/Sedacion.jpg",
+      "imageUrl": "/cert-sedacion.webp",
       "imageHint": "sedation certificate"
     },
     {
       "id": "cert-sedacion2",
       "description": "Certificado Sedación 2",
-      "imageUrl": "/Sedacion2.jpg",
+      "imageUrl": "/cert-sedacion2.webp",
       "imageHint": "sedation training 2"
     },
     {
       "id": "cert-sedacion3",
       "description": "Certificado Sedación 3",
-      "imageUrl": "/Sedacion3.jpg",
+      "imageUrl": "/cert-sedacion3.webp",
       "imageHint": "sedation training 3"
     },
     {
       "id": "cert-abordaje",
       "description": "Certificado Abordaje Clínico",
-      "imageUrl": "/Abordajeclinico.jpg",
+      "imageUrl": "/cert-abordaje.webp",
       "imageHint": "clinical approach certificate"
     },
     {
       "id": "cert-resina",
       "description": "Certificado Resina Infiltrante",
-      "imageUrl": "/Resinainfiltrante.jpg",
+      "imageUrl": "/cert-resina.webp",
       "imageHint": "infiltrating resin certificate"
     },
     {
       "id": "cert-diplomado",
       "description": "Certificado Diplomado",
-      "imageUrl": "/Diplomado.jpg",
+      "imageUrl": "/cert-diplomado.webp",
       "imageHint": "pediatric dentistry diploma"
     },
     {
       "id": "tr-consulta",
       "description": "Consulta Integral",
-      "imageUrl": "/consulta.png",
+      "imageUrl": "/tr-consulta.webp",
       "imageHint": "dental consultation"
     },
     {
       "id": "tr-rest-simple",
       "description": "Restauración Simple",
-      "imageUrl": "/restauracionsimple.png",
+      "imageUrl": "/tr-rest-simple.webp",
       "imageHint": "simple dental restoration"
     },
     {
       "id": "tr-rest-compuesta",
       "description": "Restauración Compuesta",
-      "imageUrl": "/restauracioncompuesta.png",
+      "imageUrl": "/tr-rest-compuesta.webp",
       "imageHint": "composite dental restoration"
     },
     {
       "id": "tr-rest-compleja",
       "description": "Restauración Compleja",
-      "imageUrl": "/restauracioncompleja.png",
+      "imageUrl": "/tr-rest-compleja.webp",
       "imageHint": "complex dental restoration"
     },
     {
       "id": "tr-sellantes",
       "description": "Sellantes",
-      "imageUrl": "/sellantes.png",
+      "imageUrl": "/tr-sellantes.webp",
       "imageHint": "dental sealants"
     },
     {
       "id": "tr-ext-simple",
       "description": "Extracción Simple",
-      "imageUrl": "/extraccionsimple.png",
+      "imageUrl": "/tr-ext-simple.webp",
       "imageHint": "simple extraction"
     },
     {
       "id": "tr-ext-compleja",
       "description": "Extracción Compleja",
-      "imageUrl": "/extraccioncompleja.png",
+      "imageUrl": "/tr-ext-compleja.webp",
       "imageHint": "complex extraction"
     },
     {
       "id": "tr-corona-resina",
       "description": "Corona de Resina",
-      "imageUrl": "/coronaderesina.png",
+      "imageUrl": "/tr-corona-resina.webp",
       "imageHint": "resin crown"
     },
     {
       "id": "tr-corona-metal",
       "description": "Corona de Metal",
-      "imageUrl": "/coronademetal.png",
+      "imageUrl": "/tr-corona-metal.webp",
       "imageHint": "metal crown"
     },
     {
       "id": "tr-frenectomia",
       "description": "Frenectomía",
-      "imageUrl": "/frenectomia.png",
+      "imageUrl": "/tr-frenectomia.webp",
       "imageHint": "frenectomy"
     },
     {
       "id": "tr-pulpectomia",
       "description": "Pulpectomía",
-      "imageUrl": "/pulpectomia.png",
+      "imageUrl": "/tr-pulpectomia.webp",
       "imageHint": "pulpectomy"
     },
     {
       "id": "tr-radiografia",
       "description": "Radiografía",
-      "imageUrl": "/radiografia.png",
+      "imageUrl": "/tr-radiografia.webp",
       "imageHint": "dental x-ray"
     },
     {
       "id": "tr-profilaxis",
       "description": "Profilaxis y Flúor",
-      "imageUrl": "/profilaxisyfluor.png",
+      "imageUrl": "/tr-profilaxis.webp",
       "imageHint": "dental prophylaxis"
     },
     {
       "id": "tr-perno-corona",
       "description": "Perno y Corona",
-      "imageUrl": "/pernoycorona.png",
+      "imageUrl": "/tr-perno-corona.webp",
       "imageHint": "dental crown"
     },
     {
       "id": "tr-evaluacion-ortopedia",
       "description": "Evaluación Ortopedia",
-      "imageUrl": "/evaluacionortopedia.png",
+      "imageUrl": "/tr-evaluacion-ortopedia.webp",
       "imageHint": "orthopedic evaluation"
     },
     {
       "id": "sed-midazolam",
       "description": "Imagen descriptiva de sedación con Midazolam",
-      "imageUrl": "/midazolam.png",
+      "imageUrl": "/sed-midazolam.webp",
       "imageHint": "midazolam sedation"
     },
     {
       "id": "sed-nitroso",
       "description": "Imagen descriptiva de sedación con Óxido Nitroso",
-      "imageUrl": "/oxidonitroso.png",
+      "imageUrl": "/sed-nitroso.webp",
       "imageHint": "nitrous oxide sedation"
     },
     {
       "id": "sed-profunda",
       "description": "Imagen descriptiva de sedación profunda",
-      "imageUrl": "/profunda.png",
+      "imageUrl": "/sed-profunda.webp",
       "imageHint": "deep sedation"
     }
   ]
