@@ -122,7 +122,11 @@ export function Certifications() {
                   <Card className="border-none shadow-sm rounded-3xl bg-white hover:shadow-md transition-all group overflow-hidden h-full">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <div className="relative h-64 w-full overflow-hidden cursor-zoom-in">
+                        <button
+                          type="button"
+                          aria-label={`Ampliar certificado: ${cert.title}`}
+                          className="relative h-64 w-full overflow-hidden cursor-zoom-in p-0 border-0 bg-transparent text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pami-blue focus-visible:ring-offset-2"
+                        >
                           <Image
                             src={imageUrl}
                             alt={cert.title}
@@ -130,18 +134,30 @@ export function Certifications() {
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                            <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8" />
+
+                          <div
+                            className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center"
+                            aria-hidden="true"
+                          >
+                            <ZoomIn
+                              className="text-white opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8"
+                              aria-hidden="true"
+                            />
                           </div>
+
                           <div className="absolute top-4 left-4 z-10">
                             <span className="bg-white/90 backdrop-blur-sm text-pami-turquoise text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full shadow-sm">
                               {cert.type}
                             </span>
                           </div>
-                        </div>
+                        </button>
                       </DialogTrigger>
+
                       <DialogContent className="max-w-4xl p-0 bg-transparent border-none overflow-hidden rounded-2xl">
-                        <DialogTitle className="sr-only">Certificado: {cert.title}</DialogTitle>
+                        <DialogTitle className="sr-only">
+                          Certificado: {cert.title}
+                        </DialogTitle>
+
                         <div className="relative w-full h-[80vh]">
                           <Image
                             src={imageUrl}

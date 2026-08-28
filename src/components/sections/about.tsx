@@ -32,7 +32,7 @@ export function About() {
             </div>
           </div>
           <div className="md:w-1/2">
-            <h4 className="text-pami-blue font-bold tracking-wider uppercase text-sm mb-4">Sobre Dra. Pami</h4>
+            <p className="text-pami-blue font-bold tracking-wider uppercase text-sm mb-4">Sobre Dra. Pami</p>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#2D3142]">Experta en sonrisas pequeñitas</h2>
             <p className="text-muted-foreground mb-8 text-lg leading-relaxed text-justify">
               Soy la Dra. Pami, especialista formada en la Faculdade São Leopoldo Mandic de Brasil, con un enfoque único en la atención integral de bebés. Mi misión es transformar la experiencia dental en un momento de amor y aprendizaje. Con registro de especialista RNE 04819, garantizo un tratamiento basado en evidencia científica y calidez humana.
@@ -42,7 +42,7 @@ export function About() {
                 <div key={i} className="flex gap-4 items-start p-5 bg-white rounded-2xl shadow-sm border border-transparent hover:border-pami-blue/20 transition-all hover:scale-105">
                   <div className="mt-1 bg-muted p-2 rounded-xl">{h.icon}</div>
                   <div>
-                    <h5 className="font-bold text-sm mb-1">{h.title}</h5>
+                    <h3 className="font-bold text-sm mb-1">{h.title}</h3>
                     <p className="text-xs text-muted-foreground">{h.text}</p>
                   </div>
                 </div>

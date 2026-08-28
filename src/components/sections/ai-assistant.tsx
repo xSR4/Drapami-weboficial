@@ -59,12 +59,27 @@ export function AIAssistant() {
                   className="rounded-full py-6 pl-6 pr-16 bg-pami-bgSoft border-none focus-visible:ring-pami-blue"
                   disabled={loading}
                 />
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={loading || !input}
+                  aria-label={
+                    loading
+                      ? "Procesando consulta"
+                      : "Enviar consulta al asistente virtual"
+                  }
                   className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 p-0 bg-pami-blue hover:bg-pami-blue/90"
                 >
-                  {loading ? <Loader2 className="animate-spin h-5 w-5" /> : <Send className="h-5 w-5" />}
+                  {loading ? (
+                    <Loader2
+                      className="animate-spin h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Send
+                      className="h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  )}
                 </Button>
               </div>
             </form>
