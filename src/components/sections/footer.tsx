@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -24,13 +24,7 @@ import {
   Instagram,
   Facebook
 } from "lucide-react";
-import {
-  useFirestore,
-  useAuth,
-  setDocumentNonBlocking,
-  initiateAnonymousSignIn,
-  useUser
-} from "@/firebase";
+
 import { doc, collection } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/app/actions/contact";
@@ -49,9 +43,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function Footer() {
-  const { firestore } = useFirestore();
-  const auth = useAuth();
-  const { user, isUserLoading } = useUser();
   const { toast } = useToast();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,13 +59,7 @@ export function Footer() {
     },
   });
 
-  useEffect(() => {
-    if (!user && !isUserLoading && auth) {
-      initiateAnonymousSignIn(auth);
-    }
-  }, [user, isUserLoading, auth]);
-
-  const handleResetForm = () => {
+ const handleResetForm = () => {
     form.reset({
       fullName: "",
       email: "",
@@ -90,27 +75,6 @@ export function Footer() {
     setIsSubmitting(true);
 
     try {
-      // 1. Guardar en Firestore solo si Firestore está disponible
-      if (firestore) {
-        const submissionsRef = collection(firestore, "contactFormSubmissions");
-        const newDocRef = doc(submissionsRef);
-
-        const submissionData = {
-          id: newDocRef.id,
-          fullName: values.fullName,
-          email: values.email,
-          phoneNumber: values.phoneNumber || "",
-          subject: values.subject,
-          message: values.message,
-          submissionDateTime: new Date().toISOString(),
-          isRead: false,
-        };
-
-        setDocumentNonBlocking(newDocRef, submissionData, { merge: true });
-      } else {
-        console.warn("Firestore no disponible. Se intentará enviar solo por correo.");
-      }
-
       // 2. Enviar correo electrónico vía Resend
       const emailResult = await sendContactEmail({
         fullName: values.fullName,
@@ -120,28 +84,30 @@ export function Footer() {
         message: values.message,
       });
 
-      if (!emailResult.success) {
-        console.error("Error al enviar email:", emailResult.error);
+        if (!emailResult.success) {
+          console.error("Error al enviar email:", emailResult.error);
 
-        toast({
-          title: "Aviso",
-          description:
-            "La consulta fue procesada, pero hubo un problema al enviar el correo de notificación.",
-          variant: "destructive",
-        });
-      } else {
+          toast({
+            title: "No pudimos enviar tu consulta",
+            description:
+              "Hubo un problema al enviar el mensaje. Por favor, inténtalo nuevamente o contáctanos por WhatsApp.",
+            variant: "destructive",
+          });
+
+          return;
+        }
+
         toast({
           title: "¡Consulta enviada!",
           description: "Tu mensaje ha sido recibido exitosamente.",
         });
-      }
 
-      trackGAEvent("generate_lead", {
-        lead_source: "website_contact_form",
-        form_name: "footer_contact",
-      });
+        trackGAEvent("generate_lead", {
+          lead_source: "website_contact_form",
+          form_name: "footer_contact",
+        });
 
-      setIsSubmitted(true);
+        setIsSubmitted(true);
     } catch (error) {
       console.error("Error al procesar la consulta:", error);
 
