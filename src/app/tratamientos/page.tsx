@@ -1,225 +1,254 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, CheckCircle2, Info, ZoomIn } from "lucide-react";
-import Link from "next/link";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import {
+  ArrowRight,
+  ClipboardList,
+  Heart,
+  MessageCircle,
+  Search,
+  Smile,
+  Sparkles,
+} from "lucide-react";
+
 import { TrackedExternalLink } from "@/components/analytics/tracked-external-link";
-
-const procedimientos = [
-  { 
-    nombre: "Consulta Integral", 
-    descripcion: "Evaluación completa de la salud bucal con técnicas de adaptación lúdica para que tu pequeño se sienta seguro y feliz.",
-    destaque: true,
-    imagenId: "tr-consulta"
-  },
-  { 
-    nombre: "Restauración Simple", 
-    descripcion: "Curación de caries pequeñas utilizando materiales estéticos de alta calidad para devolver la salud al dientecito.",
-    imagenId: "tr-rest-simple"
-  },
-  { 
-    nombre: "Restauración Compuesta", 
-    descripcion: "Tratamiento para caries medianas que requiere la reconstrucción de varias paredes del diente de forma estética.",
-    imagenId: "tr-rest-compuesta"
-  },
-  { 
-    nombre: "Restauraciones Complejas", 
-    descripcion: "Reparación profunda de piezas dentales con daños extensos para recuperar su función y apariencia natural.",
-    imagenId: "tr-rest-compleja"
-  },
-  { 
-    nombre: "Sellantes de Fosas y Fisuras", 
-    descripcion: "Capa protectora aplicada en las muelitas para evitar que los restos de comida causen caries en el futuro.",
-    imagenId: "tr-sellantes"
-  },
-  { 
-    nombre: "Extracción Simple", 
-    descripcion: "Retiro cuidadoso de un diente de leche que ya cumplió su ciclo o presenta un daño que no permite salvarlo.",
-    imagenId: "tr-ext-simple"
-  },
-  { 
-    nombre: "Extracción Compleja", 
-    descripcion: "Procedimiento especializado para retirar piezas dentales que requieren un abordaje técnico más detallado.",
-    imagenId: "tr-ext-compleja"
-  },
-  { 
-    nombre: "Corona de Resina", 
-    descripcion: "Funda estética y resistente diseñada especialmente para proteger los dientes frontales muy dañados.",
-    imagenId: "tr-corona-resina"
-  },
-  { 
-    nombre: "Corona de Metal", 
-    descripcion: "Protección extra fuerte y duradera para muelitas posteriores que han perdido mucha estructura dental.",
-    imagenId: "tr-corona-metal"
-  },
-  { 
-    nombre: "Frenectomía", 
-    descripcion: "Pequeña intervención para liberar frenillos que dificultan el habla, la alimentación o el correcto desarrollo.",
-    imagenId: "tr-frenectomia"
-  },
-  { 
-    nombre: "Pulpectomía", 
-    descripcion: "Tratamiento de nervio para salvar muelitas con infecciones profundas, evitando su pérdida prematura.",
-    imagenId: "tr-pulpectomia"
-  },
-  { 
-    nombre: "Radiografía Periapical", 
-    descripcion: "Imagen detallada de la raíz del diente para un diagnóstico preciso de lo que no se ve a simple vista.",
-    imagenId: "tr-radiografia"
-  },
-  { 
-    nombre: "Profilaxis + Barniz de Flúor", 
-    descripcion: "Limpieza profesional profunda seguida de una aplicación de flúor de alta concentración para fortalecer el esmalte.",
-    imagenId: "tr-profilaxis"
-  },
-  { 
-    nombre: "Perno + Corona", 
-    descripcion: "Refuerzo interno y funda protectora para reconstruir dientes con gran pérdida de tejido dental.",
-    imagenId: "tr-perno-corona"
-  },
-  { 
-    nombre: "Evaluación de Ortopedia", 
-    descripcion: "Estudio del crecimiento de los huesos de la cara para detectar y corregir problemas de mordida a temprana edad.",
-    imagenId: "tr-evaluacion-ortopedia"
-  },
-];
-
+import { Footer } from "@/components/sections/footer";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Tratamientos odontopediátricos para niños en Lima",
+  title: "Tratamientos dentales para bebés y niños | Dra. Pami",
   description:
-    "Conoce los tratamientos odontopediátricos de Dra. Pami para bebés, niños y adolescentes: prevención, restauraciones, ortopedia, frenectomía y más.",
-  alternates: { canonical: `${siteConfig.url}/tratamientos` },
-  openGraph: {
-    url: `${siteConfig.url}/tratamientos`,
-    title: "Tratamientos odontopediátricos para niños en Lima | Dra. Pami",
-    description:
-      "Conoce los tratamientos odontopediátricos de Dra. Pami para bebés, niños y adolescentes: prevención, restauraciones, ortopedia, frenectomía y más.",
-    images: [{ url: "/hero-dra-pami.webp", alt: "Dra. Pami - Odontopediatría" }],
+    "Encuentra por dónde empezar con la atención dental de tu peque en Dra. Pami Odontopediatría, San Juan de Lurigancho.",
+  alternates: {
+    canonical: `${siteConfig.url}/tratamientos`,
   },
 };
 
+const procedimientos = [
+  "Evaluación del frenillo y frenectomía",
+  "Hipomineralización molar-incisivo (HMI)",
+  "Operculectomía",
+  "Mesiodens y otros dientes supernumerarios",
+  "Radiografías dentales",
+  "Pulpectomías",
+  "Coronas dentales",
+];
+
+const motivos = [
+  {
+    id: "primera-visita",
+    Icon: Heart,
+    titulo: "Es su primera visita al dentista",
+    subtitulo: "Conoce cómo acompañamos a tu peque a su ritmo.",
+    ficha: "Primera visita dental",
+    descripcion:
+      "Un espacio para que tu peque conozca el consultorio y tú puedas compartir tus dudas.",
+    consulta:
+      "Conversamos contigo, le explicamos cada paso a tu peque y revisamos su sonrisa según cómo se sienta.",
+    mensaje:
+      "Hola, Dra. Pami. Quisiera agendar la primera visita dental de mi peque.",
+  },
+  {
+    id: "limpieza-control",
+    Icon: Sparkles,
+    titulo: "Quiero una limpieza o un control",
+    subtitulo: "Explora las opciones de prevención.",
+    ficha: "Control, limpieza dental y flúor",
+    descripcion:
+      "Consulta por un control dental o por servicios como la limpieza, el barniz de flúor y los sellantes.",
+    consulta:
+      "La odontopediatra revisará la boca de tu peque y conversará contigo sobre los cuidados que corresponden según su evaluación.",
+    mensaje:
+      "Hola, Dra. Pami. Quisiera información sobre un control o una limpieza dental para mi peque.",
+  },
+  {
+    id: "manchita",
+    Icon: Search,
+    titulo: "Vi una manchita y me preocupa",
+    subtitulo: "Conoce cómo empieza la evaluación.",
+    ficha: "Evaluación de manchas y caries",
+    descripcion:
+      "Si notaste una manchita o un cambio en un diente, puedes contarnos cuándo lo viste y qué te preocupa.",
+    consulta:
+      "La odontopediatra revisará el diente y te explicará lo que observa y las opciones que corresponden, incluidas las restauraciones si se requieren.",
+    mensaje:
+      "Hola, Dra. Pami. Vi una manchita en un diente de mi peque y quisiera agendar una evaluación.",
+  },
+  {
+    id: "mordida",
+    Icon: Smile,
+    titulo: "Tengo dudas sobre su mordida",
+    subtitulo: "Conoce la evaluación de crecimiento y mordida.",
+    ficha: "Evaluación de crecimiento y mordida",
+    descripcion:
+      "Una consulta para conversar sobre cómo están creciendo los maxilares y cómo encajan los dientes de tu peque.",
+    consulta:
+      "La odontopediatra escuchará tus dudas, revisará la mordida y te explicará los siguientes pasos según lo que observe.",
+    mensaje:
+      "Hola, Dra. Pami. Tengo dudas sobre la mordida de mi peque y quisiera agendar una evaluación.",
+  },
+  {
+    id: "movimiento-lengua",
+    Icon: MessageCircle,
+    titulo: "A mi peque le cuesta comer o pronunciar algunos sonidos",
+    subtitulo: "Cuéntanos qué has notado al comer, hablar o mover la lengua.",
+    ficha: "Revisemos cómo mueve la lengua tu peque",
+    descripcion:
+      "Durante la consulta podemos revisar cómo mueve la lengua y observar el frenillo, la pequeña banda de tejido que está debajo de ella.",
+    consulta:
+      "La odontopediatra escuchará lo que has observado en casa y te explicará si conviene una evaluación adicional.",
+    mensaje:
+      "Hola, Dra. Pami. Quisiera agendar una evaluación para mi peque. Me preocupa cómo come o pronuncia algunos sonidos.",
+  },
+  {
+    id: "tratamiento-estudio",
+    Icon: ClipboardList,
+    titulo: "Me indicaron un tratamiento o estudio",
+    subtitulo: "Consulta por un procedimiento específico.",
+    ficha: "Consulta por un tratamiento o estudio",
+    descripcion:
+      "Si ya tienes una indicación o quieres preguntar por uno de estos servicios, podemos orientarte.",
+    consulta:
+      "Si tienes una indicación, un informe o una radiografía previa, puedes llevarlo a la consulta para revisarlo con la odontopediatra.",
+    mensaje:
+      "Hola, Dra. Pami. Quisiera consultar por un tratamiento o estudio dental para mi peque.",
+    procedimientos,
+  },
+];
+
+function crearEnlaceWhatsApp(mensaje: string) {
+  const url = new URL(siteConfig.whatsappUrl);
+  url.searchParams.set("text", mensaje);
+  return url.toString();
+}
+
 export default function TratamientosPage() {
   return (
-    <main className="min-h-screen bg-pami-bgSoft/30 py-16">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="bg-pami-blue/10 text-pami-blue font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wider mb-4 inline-block">
-            Nuestros Servicios
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2D3142] mb-4">Servicios Especializados</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Ofrecemos una atención odontopediátrica integral, enfocada en la prevención y el bienestar emocional de tus hijos.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
-          {procedimientos.map((proc, index) => {
-            const imgData = PlaceHolderImages.find(img => img.id === proc.imagenId);
-            const imageUrl = imgData?.imageUrl || "/about-dra-pami.webp";
-            
-            return (
-              <Card key={index} className={`border-none soft-shadow rounded-[2.5rem] overflow-hidden transition-all hover:scale-[1.02] bg-white flex flex-col ${proc.destaque ? 'ring-2 ring-pami-blue' : ''}`}>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="relative h-64 w-full shrink-0 group cursor-zoom-in overflow-hidden">
-                      <Image
-                        src={imageUrl}
-                        alt={`Dra. Pami - ${proc.nombre}`}
-                        fill
-                        className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        data-ai-hint={imgData?.imageHint || "pediatric dentistry"}
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
-                        <ZoomIn className="text-pami-blue opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8" />
-                      </div>
-                      {proc.destaque && (
-                        <div className="absolute top-4 right-4 bg-pami-blue text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                          Recomendado
-                        </div>
-                      )}
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl p-0 bg-white/95 backdrop-blur-sm border-none overflow-hidden rounded-3xl">
-                    <DialogTitle className="sr-only">Detalle del Tratamiento: {proc.nombre}</DialogTitle>
-                    <div className="relative w-full h-[70vh] p-8">
-                      <Image
-                        src={imageUrl}
-                        alt={proc.nombre}
-                        fill
-                        className="object-contain p-4"
-                        sizes="90vw"
-                      />
-                    </div>
-                    <div className="bg-white p-6 text-center border-t border-pami-blue/10">
-                      <h3 className="text-2xl font-bold text-[#2D3142] mb-2">{proc.nombre}</h3>
-                      <p className="text-muted-foreground max-w-2xl mx-auto text-justify">{proc.descripcion}</p>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-
-                <CardContent className="p-8 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-[#2D3142] mb-4 text-center">
-                    {proc.nombre}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1 text-justify">
-                    {proc.descripcion}
-                  </p>
-                  
-                  <div className="flex items-center gap-2 text-sm text-pami-turquoise font-medium bg-pami-turquoise/5 p-3 rounded-xl mt-auto">
-                    <CheckCircle2 className="h-4 w-4 shrink-0" />
-                    <span>Tratamiento especializado</span>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-pami-orange/10 border-none rounded-[2rem] p-8 md:p-12 mb-12">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
-              <div className="bg-white p-4 rounded-full shadow-sm">
-                <Info className="h-8 w-8 text-pami-orange" />
-              </div>
-              <div className="text-center md:text-left">
-                <h4 className="text-xl font-bold text-[#2D3142] mb-2">Nota Importante</h4>
-                <p className="text-muted-foreground leading-relaxed text-justify">
-                  Cada tratamiento es personalizado según las necesidades de tu hijo. En la consulta inicial evaluaremos el mejor camino para su salud bucal.
-                </p>
-              </div>
+    <>
+      <main className="bg-pami-bgSoft/30">
+        <header className="px-6 py-12 text-center md:py-16">
+          <div className="container mx-auto grid max-w-6xl items-center gap-5 px-6 py-4 md:grid-cols-2 md:gap-10 md:py-4">
+            <div>
+              <p className="mb-3 text-sm font-semibold text-pami-purple">
+                Atención dental infantil
+              </p>
+              <h1 className="mb-4 text-4xl font-bold leading-tight text-[#2D3142] md:text-5xl">
+                ¿Cómo podemos ayudar a tu peque?
+              </h1>
+              <p className="max-w-lg text-lg leading-relaxed text-muted-foreground">
+                Si es su primera visita, quieres hacer un control o tienes
+                alguna duda, aquí puedes encontrar por dónde empezar.
+              </p>
             </div>
-          </Card>
 
-          <div className="text-center space-y-6">
-            <h2 className="text-2xl font-bold text-[#2D3142]">¿Tienes alguna duda o quieres agendar?</h2>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="bg-pami-blue hover:bg-pami-blue/90 text-white rounded-full px-10 h-14 shadow-lg shadow-pami-blue/20">
-                <TrackedExternalLink
-                  href={siteConfig.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  eventName="whatsapp_click"
-                  eventParams={{ placement: "tratamientos_bottom_cta", service: "tratamientos" }}
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Agendar por WhatsApp
-                </TrackedExternalLink>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-10 border-pami-turquoise text-pami-turquoise hover:bg-pami-turquoise/10 h-14">
-                <Link href="/">
-                  Volver al Inicio
-                </Link>
-              </Button>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-pami-bgSoft soft-shadow">
+              <Image
+                src="/tratamientos/portadatratamientos.webp"
+                alt="Portada de atención dental infantil de Dra. Pami"
+                fill
+                sizes="(max-width: 767px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
-        </div>
-      </div>
-    </main>
+        </header>
+
+        <section
+          aria-labelledby="motivos-consulta"
+          className="container mx-auto max-w-6xl px-6 pb-16 pt-4"
+        >
+          <h2
+            id="motivos-consulta"
+            className="mb-6 text-2xl font-bold text-[#2D3142] md:text-3xl"
+          >
+            Elige el motivo de tu consulta
+          </h2>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {motivos.map((motivo) => (
+              <Dialog key={motivo.id}>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="group flex h-full w-full cursor-pointer items-center gap-4 rounded-2xl border border-pami-blue/15 bg-white p-5 text-left transition-colors hover:border-pami-blue/40 hover:bg-pami-blue/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pami-blue focus-visible:ring-offset-2"
+                  >
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-pami-pink/10 text-pami-blue">
+                      <motivo.Icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-semibold text-[#2D3142]">
+                        {motivo.titulo}
+                      </span>
+                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                        {motivo.subtitulo}
+                      </span>
+                    </span>
+
+                    <ArrowRight
+                      className="h-5 w-5 shrink-0 text-pami-blue"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </DialogTrigger>
+
+                <DialogContent className="max-h-[85dvh] w-[calc(100%_-_2rem)] max-w-lg gap-4 overflow-y-auto rounded-2xl bg-white p-6 sm:p-8">
+                  <DialogTitle className="pr-8 text-2xl font-bold text-[#2D3142]">
+                    {motivo.ficha}
+                  </DialogTitle>
+
+                  <DialogDescription className="text-sm leading-relaxed text-muted-foreground">
+                    {motivo.descripcion}
+                  </DialogDescription>
+
+                  {motivo.procedimientos && (
+                    <ul className="list-disc space-y-1 rounded-xl bg-pami-blue/5 py-4 pl-8 pr-4 text-sm text-[#2D3142]">
+                      {motivo.procedimientos.map((procedimiento) => (
+                        <li key={procedimiento}>{procedimiento}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className="rounded-xl bg-pami-bgSoft/50 p-4">
+                    <h3 className="mb-1 font-semibold text-[#2D3142]">
+                      Qué esperar en la consulta
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {motivo.consulta}
+                    </p>
+                  </div>
+
+                  <TrackedExternalLink
+                    href={crearEnlaceWhatsApp(motivo.mensaje)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    eventName="whatsapp_click"
+                    eventParams={{
+                      placement: "motivos_consulta",
+                      service: motivo.id,
+                    }}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-pami-blue px-5 py-3 text-center font-semibold text-white transition-colors hover:bg-pami-blue/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pami-blue focus-visible:ring-offset-2"
+                  >
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                    Consultar por WhatsApp
+                  </TrackedExternalLink>
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <Footer showContact={false} />
+      <WhatsAppFloat />
+    </>
   );
 }

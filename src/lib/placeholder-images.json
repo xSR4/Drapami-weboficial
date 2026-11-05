@@ -3,7 +3,7 @@
     {
       "id": "logo-pami",
       "description": "Logo oficial de Dra. Pami - Odontopediatría.",
-      "imageUrl": "/logopami.png",
+      "imageUrl": "/logos/logopami.png",
       "imageHint": "pediatric dentist logo"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "clinic-karisma-sm",
       "description": "Clínica Karisma San Martín",
-      "imageUrl": "/karisma logo.jpg",
+      "imageUrl": "/logos/karisma.webp",
       "imageHint": "pediatric dentistry room"
     },
     {

@@ -51,7 +51,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export function Footer() {
+export function Footer({ showContact = true }: { showContact?: boolean } = {}) {
   const { toast } = useToast();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -131,242 +131,244 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-white pt-20">
+    <footer className={showContact ? "bg-white pt-20" : "bg-white"}>
       <div className="container mx-auto px-6 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          <div>
-            <h2 className="text-3xl font-bold mb-6 text-[#2D3142]">
-              Contáctanos
-            </h2>
+        {showContact && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-[#2D3142]">
+                Contáctanos
+              </h2>
 
-            <p className="text-muted-foreground mb-8">
-              Estamos aquí para resolver cualquier duda sobre la salud bucal de
-              tus pequeños. Envíanos un mensaje y te responderemos lo antes
-              posible.
-            </p>
+              <p className="text-muted-foreground mb-8">
+                Estamos aquí para resolver cualquier duda sobre la salud bucal de
+                tus pequeños. Envíanos un mensaje y te responderemos lo antes
+                posible.
+              </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="bg-pami-blue/10 p-3 rounded-full">
-                  <Phone
-                    className="h-5 w-5 text-pami-blue"
-                    aria-hidden="true"
-                  />
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-pami-blue/10 p-3 rounded-full">
+                    <Phone
+                      className="h-5 w-5 text-pami-blue"
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  <TrackedExternalLink
+                    href={siteConfig.phoneHref}
+                    eventName="phone_click"
+                    eventParams={{
+                      placement: "footer_contact",
+                    }}
+                    className="font-medium hover:text-pami-blue transition-colors"
+                  >
+                    {siteConfig.phoneDisplay}
+                  </TrackedExternalLink>
                 </div>
 
-                <TrackedExternalLink
-                  href={siteConfig.phoneHref}
-                  eventName="phone_click"
-                  eventParams={{
-                    placement: "footer_contact",
-                  }}
-                  className="font-medium hover:text-pami-blue transition-colors"
-                >
-                  {siteConfig.phoneDisplay}
-                </TrackedExternalLink>
-              </div>
+                <div className="flex items-center gap-4">
+                  <div className="bg-pami-turquoise/10 p-3 rounded-full">
+                    <Mail
+                      className="h-5 w-5 text-pami-turquoise"
+                      aria-hidden="true"
+                    />
+                  </div>
 
-              <div className="flex items-center gap-4">
-                <div className="bg-pami-turquoise/10 p-3 rounded-full">
-                  <Mail
-                    className="h-5 w-5 text-pami-turquoise"
-                    aria-hidden="true"
-                  />
+                  <TrackedExternalLink
+                    href={`mailto:${siteConfig.email}`}
+                    eventName="email_click"
+                    eventParams={{
+                      placement: "footer_contact",
+                    }}
+                    className="font-medium hover:text-pami-turquoise transition-colors"
+                  >
+                    {siteConfig.email}
+                  </TrackedExternalLink>
                 </div>
 
-                <TrackedExternalLink
-                  href={`mailto:${siteConfig.email}`}
-                  eventName="email_click"
-                  eventParams={{
-                    placement: "footer_contact",
-                  }}
-                  className="font-medium hover:text-pami-turquoise transition-colors"
-                >
-                  {siteConfig.email}
-                </TrackedExternalLink>
-              </div>
+                <div className="flex items-center gap-4">
+                  <div className="bg-pami-pink/10 p-3 rounded-full">
+                    <MapPin
+                      className="h-5 w-5 text-pami-pink"
+                      aria-hidden="true"
+                    />
+                  </div>
 
-              <div className="flex items-center gap-4">
-                <div className="bg-pami-pink/10 p-3 rounded-full">
-                  <MapPin
-                    className="h-5 w-5 text-pami-pink"
-                    aria-hidden="true"
-                  />
-                </div>
+                  <div className="flex flex-col">
+                    <span className="font-medium">
+                      Calle El Hábito 866 - SJL
+                    </span>
 
-                <div className="flex flex-col">
-                  <span className="font-medium">
-                    Calle El Hábito 866 - SJL
-                  </span>
-
-                  <span className="text-[10px] text-muted-foreground">
-                    Ref: Altura estación Santa Rosa
-                  </span>
+                    <span className="text-[10px] text-muted-foreground">
+                      Ref: Altura estación Santa Rosa
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="bg-pami-bgSoft/50 p-8 rounded-[2rem] border border-pami-blue/5">
-            {isSubmitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in-up">
-                <div className="bg-pami-blue/10 p-4 rounded-full mb-6">
-                  <CheckCircle2
-                    className="h-12 w-12 text-pami-blue"
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <h3 className="text-2xl font-bold text-[#2D3142] mb-2">
-                  ¡Mensaje enviado!
-                </h3>
-
-                <p className="text-muted-foreground max-w-xs mx-auto mb-8">
-                  Gracias por contactarnos. Dra. Pami ha recibido tu consulta y
-                  se pondrá en contacto contigo a la brevedad.
-                </p>
-
-                <Button
-                  onClick={handleResetForm}
-                  variant="outline"
-                  className="rounded-xl border-pami-blue text-pami-blue hover:bg-pami-blue/10"
-                >
-                  Enviar otro mensaje
-                </Button>
-              </div>
-            ) : (
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-4"
-                  data-clarity-mask="true"
-                >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="fullName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Nombre completo"
-                              autoComplete="name"
-                              aria-label="Nombre completo"
-                              className="rounded-xl bg-white border-none shadow-sm h-12"
-                              {...field}
-                            />
-                          </FormControl>
-
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Correo electrónico"
-                              type="email"
-                              autoComplete="email"
-                              aria-label="Correo electrónico"
-                              className="rounded-xl bg-white border-none shadow-sm h-12"
-                              {...field}
-                            />
-                          </FormControl>
-
-                          <FormMessage />
-                        </FormItem>
-                      )}
+            <div className="bg-pami-bgSoft/50 p-8 rounded-[2rem] border border-pami-blue/5">
+              {isSubmitted ? (
+                <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in-up">
+                  <div className="bg-pami-blue/10 p-4 rounded-full mb-6">
+                    <CheckCircle2
+                      className="h-12 w-12 text-pami-blue"
+                      aria-hidden="true"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="phoneNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Teléfono / WhatsApp"
-                              type="tel"
-                              autoComplete="tel"
-                              aria-label="Teléfono o WhatsApp"
-                              className="rounded-xl bg-white border-none shadow-sm h-12"
-                              {...field}
-                            />
-                          </FormControl>
+                  <h3 className="text-2xl font-bold text-[#2D3142] mb-2">
+                    ¡Mensaje enviado!
+                  </h3>
 
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Asunto"
-                              aria-label="Asunto de la consulta"
-                              className="rounded-xl bg-white border-none shadow-sm h-12"
-                              {...field}
-                            />
-                          </FormControl>
-
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Cuéntanos cómo podemos ayudar a tu pequeño..."
-                            aria-label="Mensaje de la consulta"
-                            className="rounded-xl bg-white border-none shadow-sm min-h-[120px]"
-                            {...field}
-                          />
-                        </FormControl>
-
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <p className="text-muted-foreground max-w-xs mx-auto mb-8">
+                    Gracias por contactarnos. Dra. Pami ha recibido tu consulta y
+                    se pondrá en contacto contigo a la brevedad.
+                  </p>
 
                   <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold shadow-lg shadow-pami-blue/20"
+                    onClick={handleResetForm}
+                    variant="outline"
+                    className="rounded-xl border-pami-blue text-pami-blue hover:bg-pami-blue/10"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2
-                          className="mr-2 h-4 w-4 animate-spin"
-                          aria-hidden="true"
-                        />
-                        Enviando...
-                      </>
-                    ) : (
-                      "Enviar consulta"
-                    )}
+                    Enviar otro mensaje
                   </Button>
-                </form>
-              </Form>
-            )}
+                </div>
+              ) : (
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-4"
+                    data-clarity-mask="true"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                placeholder="Nombre completo"
+                                autoComplete="name"
+                                aria-label="Nombre completo"
+                                className="rounded-xl bg-white border-none shadow-sm h-12"
+                                {...field}
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                placeholder="Correo electrónico"
+                                type="email"
+                                autoComplete="email"
+                                aria-label="Correo electrónico"
+                                className="rounded-xl bg-white border-none shadow-sm h-12"
+                                {...field}
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="phoneNumber"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                placeholder="Teléfono / WhatsApp"
+                                type="tel"
+                                autoComplete="tel"
+                                aria-label="Teléfono o WhatsApp"
+                                className="rounded-xl bg-white border-none shadow-sm h-12"
+                                {...field}
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="subject"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                placeholder="Asunto"
+                                aria-label="Asunto de la consulta"
+                                className="rounded-xl bg-white border-none shadow-sm h-12"
+                                {...field}
+                              />
+                            </FormControl>
+
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Cuéntanos cómo podemos ayudar a tu pequeño..."
+                              aria-label="Mensaje de la consulta"
+                              className="rounded-xl bg-white border-none shadow-sm min-h-[120px]"
+                              {...field}
+                            />
+                          </FormControl>
+
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-pami-blue hover:bg-pami-blue/90 text-white rounded-xl h-12 font-bold shadow-lg shadow-pami-blue/20"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2
+                            className="mr-2 h-4 w-4 animate-spin"
+                            aria-hidden="true"
+                          />
+                          Enviando...
+                        </>
+                      ) : (
+                        "Enviar consulta"
+                      )}
+                    </Button>
+                  </form>
+                </Form>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="relative h-22 w-48 flex items-center">

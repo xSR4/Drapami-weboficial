@@ -3,7 +3,7 @@
     {
       "id": "logo-pami",
       "description": "Logo oficial de Dra. Pami - Odontopediatría.",
-      "imageUrl": "/logopami.png",
+      "imageUrl": "/logos/logopami.png",
       "imageHint": "pediatric dentist logo"
     },
     {
@@ -21,103 +21,103 @@
     {
       "id": "clinic-1",
       "description": "Foto real del consultorio principal de Dra. Pami",
-      "imageUrl": "/clinic-1.webp",
+      "imageUrl": "/logos/clinic-1.webp",
       "imageHint": "main dental office"
     },
     {
       "id": "clinic-molar32",
       "description": "Logo de Molar32 Niños",
-      "imageUrl": "/logo molar.jpg",
+      "imageUrl": "/logos/molar32ninos.webp",
       "imageHint": "molar32 logo"
     },
     {
       "id": "clinic-karisma",
       "description": "Logo de Clínica Karisma",
-      "imageUrl": "/karisma logo.jpg",
+      "imageUrl": "/logos/karisma.webp",
       "imageHint": "karisma clinic logo"
     },
     {
       "id": "clinic-odontosonrisas",
       "description": "Logo de Odontosonrisas",
-      "imageUrl": "/odontosonrisas logo.jpg",
+      "imageUrl": "/logos/odontosonrisa.webp",
       "imageHint": "odontosonrisas logo"
     },
     {
       "id": "cert-mandic",
       "description": "Especialización en Odontopediatría - São Leopoldo Mandic",
-      "imageUrl": "/cert-mandic.webp",
+      "imageUrl": "/certificaciones/drapami/cert-mandic.webp",
       "imageHint": "specialization certificate"
     },
     {
       "id": "cert-ecopal",
       "description": "Capacitación en Anquiloglosia - ECOPAL",
-      "imageUrl": "/cert-ecopal.webp",
+      "imageUrl": "/certificaciones/drapami/cert-ecopal.webp",
       "imageHint": "dentistry certificate"
     },
     {
       "id": "cert-magui",
       "description": "Capacitación Filosofía Magui",
-      "imageUrl": "/cert-magui.webp",
+      "imageUrl": "/certificaciones/drapami/cert-magui.webp",
       "imageHint": "dentistry course certificate"
     },
     {
       "id": "cert-ortopedia",
       "description": "Certificado Ortopedia Maxilar",
-      "imageUrl": "/cert-ortopedia.webp",
+      "imageUrl": "/certificaciones/drapami/cert-ortopedia.webp",
       "imageHint": "maxillary orthopedics certificate"
     },
     {
       "id": "cert-cirujia",
       "description": "Certificado Cirugía Oral",
-      "imageUrl": "/cert-cirujia.webp",
+      "imageUrl": "/certificaciones/drapami/cert-cirujia.webp",
       "imageHint": "oral surgery certificate"
     },
     {
       "id": "cert-anquiloglosia-v2",
       "description": "Certificado Anquiloglosia",
-      "imageUrl": "/cert-anquiloglosia-v2.webp",
+      "imageUrl": "/certificaciones/drapami/cert-anquiloglosia-v2.webp",
       "imageHint": "ankyloglossia certificate"
     },
     {
       "id": "cert-laser",
       "description": "Certificado Láser",
-      "imageUrl": "/cert-laser.webp",
+      "imageUrl": "/certificaciones/drapami/cert-laser.webp",
       "imageHint": "laser dentistry certificate"
     },
     {
       "id": "cert-sedacion",
       "description": "Certificado Sedación",
-      "imageUrl": "/cert-sedacion.webp",
+      "imageUrl": "/certificaciones/drapami/cert-sedacion.webp",
       "imageHint": "sedation certificate"
     },
     {
       "id": "cert-sedacion2",
       "description": "Certificado Sedación 2",
-      "imageUrl": "/cert-sedacion2.webp",
+      "imageUrl": "/certificaciones/drapami/cert-sedacion2.webp",
       "imageHint": "sedation training 2"
     },
     {
       "id": "cert-sedacion3",
       "description": "Certificado Sedación 3",
-      "imageUrl": "/cert-sedacion3.webp",
+      "imageUrl": "/certificaciones/drapami/cert-sedacion3.webp",
       "imageHint": "sedation training 3"
     },
     {
       "id": "cert-abordaje",
       "description": "Certificado Abordaje Clínico",
-      "imageUrl": "/cert-abordaje.webp",
+      "imageUrl": "/certificaciones/drapami/cert-abordaje.webp",
       "imageHint": "clinical approach certificate"
     },
     {
       "id": "cert-resina",
       "description": "Certificado Resina Infiltrante",
-      "imageUrl": "/cert-resina.webp",
+      "imageUrl": "/certificaciones/drapami/cert-resina.webp",
       "imageHint": "infiltrating resin certificate"
     },
     {
       "id": "cert-diplomado",
       "description": "Certificado Diplomado",
-      "imageUrl": "/cert-diplomado.webp",
+      "imageUrl": "/certificaciones/drapami/cert-diplomado.webp",
       "imageHint": "pediatric dentistry diploma"
     },
     {
@@ -213,19 +213,19 @@
     {
       "id": "sed-midazolam",
       "description": "Imagen descriptiva de sedación con Midazolam",
-      "imageUrl": "/sed-midazolam.webp",
+      "imageUrl": "/sedacion/midazolam.webp",
       "imageHint": "midazolam sedation"
     },
     {
       "id": "sed-nitroso",
       "description": "Imagen descriptiva de sedación con Óxido Nitroso",
-      "imageUrl": "/sed-nitroso.webp",
+      "imageUrl": "/sedacion/oxidonitroso.webp",
       "imageHint": "nitrous oxide sedation"
     },
     {
       "id": "sed-profunda",
       "description": "Imagen descriptiva de sedación profunda",
-      "imageUrl": "/sed-profunda.webp",
+      "imageUrl": "/sedacion/profunda.webp",
       "imageHint": "deep sedation"
     }
   ]

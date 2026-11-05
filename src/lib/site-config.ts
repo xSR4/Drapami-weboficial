@@ -4,7 +4,7 @@ export const siteConfig = {
   url: "https://www.drapami.pe",
   locale: "es_PE",
   description:
-    "Odontopediatra en San Juan de Lurigancho para bebés, niños y adolescentes. Prevención, tratamientos infantiles, ortopedia y sedación según evaluación profesional.",
+    "Odontopediatria en San Juan de Lurigancho para bebés, niños y adolescentes. Prevención, tratamientos infantiles, ortopedia y sedación según evaluación profesional.",
   phoneDisplay: "+51 991 112 048",
   phoneHref: "tel:+51991112048",
   whatsappUrl:
