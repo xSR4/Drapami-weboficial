@@ -373,7 +373,7 @@ export function Footer({ showContact = true }: { showContact?: boolean } = {}) {
         <div className="pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="relative h-22 w-48 flex items-center">
             <Image
-              src="/logopami.png"
+              src="/logos/logopami.png"
               alt="Dra. Pami"
               width={192}
               height={88}
