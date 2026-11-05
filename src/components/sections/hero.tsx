@@ -68,17 +68,21 @@ export function Hero() {
                 </Button>
               </DialogTrigger>
 
-              <DialogContent className="max-w-[420px] overflow-hidden rounded-3xl border-none p-0">
+              <DialogContent className="w-[calc(100%_-_2rem)] max-w-[400px] gap-0 overflow-hidden rounded-3xl border-none bg-black p-0 sm:rounded-3xl [&>button]:right-3 [&>button]:top-3 [&>button]:z-20 [&>button]:rounded-full [&>button]:bg-white [&>button]:p-2 [&>button]:text-[#2D3142] [&>button]:opacity-100">
                 <DialogHeader className="sr-only">
-                  <DialogTitle>Consultorio Virtual Dra. Pami</DialogTitle>
+                  <DialogTitle>Conoce el consultorio de Dra. Pami</DialogTitle>
                 </DialogHeader>
 
-                <div className="w-full bg-black">
+                <div
+                  className="relative mx-auto aspect-[9/16] w-full bg-black"
+                  style={{ maxWidth: "calc(85dvh * 9 / 16)" }}
+                >
                   <iframe
-                    src="https://www.tiktok.com/embed/v2/7462582393212259590"
-                    title="Consultorio Virtual Dra. Pami"
-                    className="h-[720px] w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    src="https://www.youtube-nocookie.com/embed/9Pc3x4UjF0U?autoplay=1&mute=1&playsinline=1&rel=0"
+                    title="Conoce el consultorio de Dra. Pami"
+                    className="absolute inset-0 h-full w-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
                 </div>
